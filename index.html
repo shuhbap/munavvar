@@ -1,152 +1,459 @@
 <!DOCTYPE html>
-<html lang="ml">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUNAWIR & LABEEBA</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Munawir & Labeeba - Wedding Invitation</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet"/>
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #fce4ec, #f8e8e0);
+            font-family: 'Inter', sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            background: #1a0e0a;
             padding: 20px;
+            position: relative;
         }
+
+        /* Background Glow */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(212, 175, 55, 0.10) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 100%, rgba(220, 120, 120, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .card {
-            max-width: 600px;
-            background: white;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-            padding: 40px 30px;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .card:hover {
-            transform: scale(1.01);
-        }
-        .badge {
-            background: #d4a373;
-            color: white;
-            display: inline-block;
-            padding: 6px 18px;
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            width: 100%;
+            background: linear-gradient(145deg, #fdf6ed, #f8ede4);
             border-radius: 40px;
-            font-size: 14px;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
+            padding: 50px 35px 40px;
+            text-align: center;
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.6),
+                0 0 0 1px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: transform 0.4s ease;
         }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Gold Ornament */
+        .ornament {
+            font-size: 2.2rem;
+            letter-spacing: 12px;
+            color: #b8860b;
+            opacity: 0.6;
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #b8860b, #d4af37);
+            color: #1a0e0a;
+            font-weight: 600;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 6px 24px;
+            border-radius: 50px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
+        }
+
         h1 {
-            font-size: 2.6rem;
-            color: #5a2d2d;
-            margin-bottom: 5px;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2c1810;
+            line-height: 1.2;
+            margin-bottom: 4px;
         }
-        .sub-title {
-            font-size: 1.1rem;
-            color: #7a4a4a;
-            margin-bottom: 25px;
-            border-top: 2px dashed #e8d5c4;
-            border-bottom: 2px dashed #e8d5c4;
-            padding: 12px 0;
-        }
-        .names {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #8b3e3e;
-            margin: 10px 0;
-        }
-        .names span {
-            color: #d4a373;
+
+        .ampersand {
+            color: #b8860b;
+            font-size: 2.2rem;
             margin: 0 8px;
+            display: inline-block;
         }
-        .detail {
-            background: #fcf6f1;
-            border-radius: 20px;
-            padding: 20px;
+
+        .sub-text {
+            font-size: 1rem;
+            color: #8a6e5a;
+            font-weight: 300;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            border-top: 2px solid rgba(184, 134, 11, 0.25);
+            border-bottom: 2px solid rgba(184, 134, 11, 0.25);
+            padding: 12px 0;
+            display: inline-block;
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #b8860b, transparent);
+            margin: 20px auto;
+        }
+
+        .details {
+            background: rgba(255, 248, 240, 0.6);
+            border-radius: 24px;
+            padding: 28px 20px;
             margin: 20px 0;
-            line-height: 1.9;
-            font-size: 1.05rem;
-            color: #3d2b2b;
+            border: 1px solid rgba(184, 134, 11, 0.15);
+            backdrop-filter: blur(4px);
         }
-        .detail i {
-            font-style: normal;
-            background: #d4a373;
-            color: white;
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-right: 6px;
+
+        .detail-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 8px 0;
+            font-size: 1.1rem;
+            color: #3d2b1f;
+            flex-wrap: wrap;
         }
+
+        .detail-row .icon {
+            font-size: 1.4rem;
+            min-width: 36px;
+        }
+
+        .detail-row .label {
+            font-weight: 600;
+            color: #b8860b;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(184, 134, 11, 0.10);
+            padding: 2px 14px;
+            border-radius: 30px;
+        }
+
+        .detail-row .value {
+            font-weight: 500;
+            color: #2c1810;
+        }
+
+        .venue-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #b8860b;
+            font-weight: 700;
+        }
+
+        /* RSVP Button */
         .rsvp-btn {
             display: inline-block;
-            background: #8b3e3e;
-            color: white;
-            padding: 14px 45px;
+            background: linear-gradient(135deg, #b8860b, #d4af37);
+            color: #1a0e0a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 16px 50px;
             border-radius: 60px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 10px;
-            transition: 0.3s;
+            margin-top: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(184, 134, 11, 0.3);
             border: none;
             cursor: pointer;
+            letter-spacing: 1px;
         }
+
         .rsvp-btn:hover {
-            background: #5a2d2d;
             transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(184, 134, 11, 0.45);
         }
-        .footer {
-            margin-top: 25px;
+
+        .rsvp-note {
             font-size: 0.85rem;
-            color: #999;
+            color: #8a6e5a;
+            margin-top: 14px;
+            font-style: italic;
         }
-        @media (max-width: 480px) {
-            h1 { font-size: 2rem; }
-            .names { font-size: 1.5rem; }
+
+        .footer {
+            margin-top: 28px;
+            font-size: 0.7rem;
+            color: #b8a090;
+            letter-spacing: 2px;
+            border-top: 1px solid rgba(184, 134, 11, 0.12);
+            padding-top: 20px;
+        }
+
+        .footer span {
+            color: #b8860b;
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 100;
+            background: rgba(26, 14, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 60px;
+            padding: 10px 18px 10px 22px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .music-player:hover {
+            transform: scale(1.04);
+            border-color: #d4af37;
+        }
+
+        .music-player .note {
+            font-size: 1.4rem;
+            animation: pulse 1.8s infinite;
+        }
+
+        .music-player .status {
+            font-size: 0.7rem;
+            color: #d4af37;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+        }
+
+        .music-player .toggle-icon {
+            font-size: 1.2rem;
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.15);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        /* Responsive */
+        @media (max-width: 550px) {
+            .card { padding: 30px 18px 28px; }
+            h1 { font-size: 1.8rem; }
+            .ampersand { font-size: 1.6rem; }
+            .detail-row { font-size: 0.95rem; gap: 6px; }
+            .venue-name { font-size: 1.1rem; }
+            .rsvp-btn { padding: 14px 30px; font-size: 1rem; }
+            .music-player { bottom: 15px; right: 15px; padding: 8px 12px 8px 16px; }
+            .music-player .status { display: none; }
+        }
+
+        @media (max-width: 400px) {
+            h1 { font-size: 1.5rem; }
+            .badge { font-size: 0.6rem; padding: 4px 16px; }
         }
     </style>
 </head>
 <body>
+
+    <!-- ===== MAIN CARD ===== -->
     <div class="card">
-        <div class="badge">✨ സ്നേഹപൂർവ്വം ക്ഷണിക്കുന്നു ✨</div>
-        <h1>വിവാഹം</h1>
-        <div class="sub-title">
-            <span style="font-size:1.3rem;">❤️</span> ഞങ്ങൾ വിവാഹിതരാകുന്നു <span style="font-size:1.3rem;">❤️</span>
+
+        <div class="ornament">✦ ✦ ✦</div>
+
+        <div class="badge">💛 We're Getting Married</div>
+
+        <h1>
+            MUNAWIR <span style="color:#b8860b;">&amp;</span> LABEEBA
+        </h1>
+
+        <div class="sub-text">— Invite You to Celebrate —</div>
+
+        <div class="divider"></div>
+
+        <div class="details">
+
+            <div class="detail-row">
+                <span class="icon">📅</span>
+                <span class="label">Date</span>
+                <span class="value"><strong>Sunday, 19 July 2026</strong></span>
+            </div>
+
+            <div class="detail-row">
+                <span class="icon">⏰</span>
+                <span class="label">Time</span>
+                <span class="value"><strong>6:30 PM onwards</strong></span>
+            </div>
+
+            <div class="detail-row">
+                <span class="icon">📍</span>
+                <span class="label">Venue</span>
+                <span class="value venue-name">VISTA CONVENTION CENTER</span>
+            </div>
+
+            <div class="detail-row" style="font-size:0.9rem; color:#6a5a4a; padding-top:2px;">
+                <span>Vengad, Kerala</span>
+            </div>
+
         </div>
 
-        <div class="names">
-            <span id="groomName">വരൻ</span> 
-            <span>✧</span> 
-            <span id="brideName">വധു</span>
-        </div>
+        <!-- RSVP -->
+        <a href="#" class="rsvp-btn" id="rsvpBtn">💛 RSVP Now</a>
+        <p class="rsvp-note">✨ Your presence is our greatest gift ✨</p>
 
-        <div class="detail">
-            <p><i>📅</i> <span id="weddingDate">2026, ജൂൺ 28</span></p>
-            <p><i>⏰</i> <span id="weddingTime">വൈകീട്ട് 6:30 മണി</span></p>
-            <p><i>📍</i> <span id="weddingVenue">ഓഡിറ്റോറിയം, കോഴിക്കോട്</span></p>
-        </div>
-
-        <a href="#" class="rsvp-btn" id="rsvpBtn">✅ RSVP രജിസ്റ്റർ ചെയ്യുക</a>
-        <p style="margin-top:12px; font-size:0.9rem; color:#7a4a4a;">
-            🙏 നിങ്ങളുടെ സാന്നിദ്ധ്യമാണ് ഞങ്ങളുടെ ആഗ്രഹം
-        </p>
         <div class="footer">
-            <!-- Vercel + GitHub badge -->
-            <span>🚀 Hosted with ❤️ on Vercel</span>
+            <span>✦</span> Gold &amp; Light Red Theme <span>✦</span>
+            <br style="display: none;" />
+            <span style="display:inline-block; margin-top:6px;">🚀 Hosted with ❤️ on Vercel</span>
         </div>
+
     </div>
 
+    <!-- ===== MUSIC PLAYER ===== -->
+    <div class="music-player" id="musicPlayer">
+        <span class="note">🎵</span>
+        <span class="status" id="musicStatus">Playing</span>
+        <span class="toggle-icon" id="musicToggle">⏸</span>
+    </div>
+
+    <!-- ===== AUDIO (Hidden) ===== -->
+    <audio id="bgMusic" loop preload="auto">
+        <!-- Replace this URL with your own song -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Your browser does not support audio.
+    </audio>
+
     <script>
-        // RSVP ബട്ടൺ ക്ലിക്ക് ചെയ്യുമ്പോൾ അറിയിപ്പ്
+        // =========================
+        // 1. RSVP BUTTON
+        // =========================
         document.getElementById('rsvpBtn').addEventListener('click', function(e) {
             e.preventDefault();
-            alert('🎉 നന്ദി! RSVP ലിങ്ക് ഉടൻ ലഭ്യമാകും.\nഇപ്പോൾ WhatsApp വഴി അറിയിക്കാം: +91 9876543210');
+            alert(
+                '🎉 Thank you, ' +
+                'Munawir & Labeeba!\n\n' +
+                'Please RSVP via WhatsApp:\n' +
+                '+91 98765 43210\n\n' +
+                'Or visit: rsvp.yourwedding.com (coming soon)'
+            );
         });
 
-        // നിങ്ങൾക്ക് ഇവിടെ പേരുകളും തീയതിയും മാറ്റാം
-        // document.getElementById('groomName').innerText = 'അഭി';
-        // document.getElementById('brideName').innerText = 'അനു';
+        // =========================
+        // 2. MUSIC PLAYER
+        // =========================
+        const audio = document.getElementById('bgMusic');
+        const player = document.getElementById('musicPlayer');
+        const statusEl = document.getElementById('musicStatus');
+        const toggleEl = document.getElementById('musicToggle');
+
+        let isPlaying = false;
+
+        // Auto-play on user interaction (required by modern browsers)
+        function tryAutoPlay() {
+            audio.play().then(() => {
+                isPlaying = true;
+                statusEl.textContent = 'Playing';
+                toggleEl.textContent = '⏸';
+            }).catch(() => {
+                // If autoplay blocked, show paused state
+                isPlaying = false;
+                statusEl.textContent = 'Paused';
+                toggleEl.textContent = '▶';
+            });
+        }
+
+        // Click on player = toggle
+        player.addEventListener('click', function(e) {
+            // Prevent toggling when clicking the toggle icon specifically (handled below)
+            if (e.target === toggleEl) return;
+
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                statusEl.textContent = 'Paused';
+                toggleEl.textContent = '▶';
+            } else {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    statusEl.textContent = 'Playing';
+                    toggleEl.textContent = '⏸';
+                }).catch(() => {});
+            }
+        });
+
+        // Toggle icon click
+        toggleEl.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                statusEl.textContent = 'Paused';
+                toggleEl.textContent = '▶';
+            } else {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    statusEl.textContent = 'Playing';
+                    toggleEl.textContent = '⏸';
+                }).catch(() => {});
+            }
+        });
+
+        // Update icon when audio ends naturally (loop)
+        audio.addEventListener('ended', function() {
+            // loop is on, so it will restart, but we keep playing state
+        });
+
+        // Handle visibility change - pause when tab hidden (optional)
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden && isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                statusEl.textContent = 'Paused';
+                toggleEl.textContent = '▶';
+            }
+        });
+
+        // Try to start playing as soon as user taps/clicks anywhere on page
+        document.addEventListener('click', function initAudio() {
+            tryAutoPlay();
+            document.removeEventListener('click', initAudio);
+        }, { once: true });
+
+        // Also try on load (may work in some browsers)
+        window.addEventListener('load', function() {
+            setTimeout(tryAutoPlay, 500);
+        });
+
+        console.log('🎵 Wedding Invite ready — Gold & Light Red theme ✨');
     </script>
+
 </body>
-  </html>
+    </html>
