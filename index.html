@@ -296,93 +296,91 @@
         }
         .qr-box img:hover { transform: scale(1.03); }
 
-        /* ===== MAP - GROOM'S VENUE ONLY ===== */
-        .map-wrapper {
-            width: 100%;
-            max-width: 240px;
-            margin: 0 auto;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid rgba(70, 89, 64, 0.06);
-            box-shadow: 0 4px 16px rgba(70, 89, 64, 0.06);
-            background: white;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+        
 
-        .map-wrapper:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 28px rgba(70, 89, 64, 0.10);
-        }
+/* ===== VENUE MAP CARDS ===== */
 
-        .map-wrapper a {
-            display: block;
-            text-decoration: none;
-        }
+.venue-map-card{
+    width:100%;
+    max-width:720px;
+    margin:25px auto;
+    background:#fff;
+    border-radius:30px;
+    overflow:hidden;
+    border:1px solid rgba(70,89,64,.08);
+    box-shadow:0 10px 30px rgba(70,89,64,.06);
+}
 
-        .map-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-            padding: 4px;
-            background: white;
-        }
+.venue-map-card iframe{
+    width:100%;
+    height:320px;
+    border:none;
+}
 
-        .map-venue-label {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
-            color: #465940;
-            font-weight: 600;
-            letter-spacing: 1px;
-            opacity: 0.5;
-            margin-top: 6px;
-        }
+.venue-info{
+    padding:28px 24px;
+    text-align:center;
+}
 
-        .map-buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 8px;
-            flex-wrap: wrap;
-        }
+.venue-title{
+    display:block;
+    font-size:.75rem;
+    letter-spacing:5px;
+    color:#A67C2E;
+    font-weight:600;
+    margin-bottom:10px;
+}
 
-        .map-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.55rem;
-            font-weight: 500;
-            padding: 5px 16px;
-            border-radius: 30px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(70, 89, 64, 0.06);
-            transition: all 0.2s ease;
-            font-family: 'Inter', sans-serif;
-        }
+.venue-info h3{
+    font-family:'Cormorant Garamond', serif;
+    font-size:2rem;
+    font-weight:600;
+    color:#2c3a28;
+    margin-bottom:22px;
+}
 
-        .map-btn .icon {
-            font-size: 0.8rem;
-            line-height: 1;
-        }
+.open-map-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    max-width:420px;
+    padding:18px;
+    border-radius:50px;
+    text-decoration:none;
+    font-size:1rem;
+    font-weight:500;
+    color:#A67C2E;
+    border:2px solid #A67C2E;
+    background:white;
+    transition:.3s ease;
+}
 
-        .map-btn.google {
-            background: rgba(66, 133, 244, 0.06);
-            border-color: rgba(66, 133, 244, 0.10);
-            color: #4285F4;
-        }
-        .map-btn.google:hover {
-            background: rgba(66, 133, 244, 0.12);
-            transform: translateY(-1px);
-        }
+.open-map-btn:hover{
+    background:#A67C2E;
+    color:white;
+    transform:translateY(-2px);
+}
 
-        .map-btn.apple {
-            background: rgba(0, 0, 0, 0.03);
-            border-color: rgba(0, 0, 0, 0.06);
-            color: #1a1a1a;
-        }
-        .map-btn.apple:hover {
-            background: rgba(0, 0, 0, 0.06);
-            transform: translateY(-1px);
+@media(max-width:700px){
+
+    .venue-map-card{
+        border-radius:24px;
+    }
+
+    .venue-map-card iframe{
+        height:240px;
+    }
+
+    .venue-info h3{
+        font-size:1.6rem;
+    }
+
+    .open-map-btn{
+        padding:15px;
+        font-size:.95rem;
+    }
         }
 
         /* ===== FOOTER ===== */
@@ -640,33 +638,55 @@
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=YourPlaceAddressHere" alt="Place QR Code" />
             </div>
 
-            <!-- MAP - GROOM'S VENUE -->
-            <div class="map-box">
-                <span class="label">◈ Location Map ◈</span>
+            <!-- ===== GROOM'S VENUE ===== -->
+<div class="venue-map-card animate-on-scroll">
 
-                <!-- Map Image - Click to open Google Maps -->
-                <div class="map-wrapper">
-                    <a href="https://www.google.com/maps?q=Kunnathodi+Keezhmuri+Vengad+Malappuram" target="_blank">
-                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=Kunnathodi+Keezhmuri+Vengad+Malappuram&zoom=14&size=400x200&markers=color:green%7CKunnathodi+Keezhmuri+Vengad+Malappuram&key=AIzaSyA1xT4p2B7fN4x5y6z7w8v9u" alt="Groom's Venue Map" />
-                    </a>
-                </div>
+    <iframe
+        src="https://www.google.com/maps?q=Kunnathodi+Keezhmuri+Vengad+Malappuram&output=embed"
+        loading="lazy"
+        allowfullscreen>
+    </iframe>
 
-                <!-- Venue Label -->
-                <div class="map-venue-label">✦ Groom's Venue ✦</div>
+    <div class="venue-info">
+        <span class="venue-title">GROOM'S VENUE</span>
+        <h3>Munawir Family</h3>
 
-                <!-- Google & Apple Map Buttons -->
-                <div class="map-buttons">
-                    <a href="https://www.google.com/maps?q=Kunnathodi+Keezhmuri+Vengad+Malappuram" target="_blank" class="map-btn google">
-                        <span class="icon">◈</span> Google Maps
-                    </a>
-                    <a href="https://maps.apple.com/?address=Kunnathodi%20Keezhmuri,%20Vengad,%20Malappuram,%20Kerala&q=Kunnathodi%20Keezhmuri" target="_blank" class="map-btn apple">
-                        <span class="icon">◈</span> Apple Maps
-                    </a>
-                </div>
-            </div>
+        <a href="https://www.google.com/maps?q=Kunnathodi+Keezhmuri+Vengad+Malappuram"
+           target="_blank"
+           class="open-map-btn">
+            📍 Open in Maps
+        </a>
+    </div>
 
-        </div>
+</div>
 
+<div class="divider-symbol animate-on-scroll">✦</div>
+
+<!-- ===== BRIDE'S VENUE ===== -->
+<div class="venue-map-card animate-on-scroll">
+
+    <iframe
+        src="https://www.google.com/maps?q=Kizhayur+Pattambi+Palakkad&output=embed"
+        loading="lazy"
+        allowfullscreen>
+    </iframe>
+
+    <div class="venue-info">
+        <span class="venue-title">BRIDE'S VENUE</span>
+        <h3>Labeeba House</h3>
+
+        <a href="https://www.google.com/maps?q=Kizhayur+Pattambi+Palakkad"
+           target="_blank"
+           class="open-map-btn">
+            📍 Open in Maps
+        </a>
+    </div>
+
+</div>
+
+                
+
+                
         <!-- FOOTER -->
         <div class="footer animate-on-scroll">
             <div class="main-line">Complements Family &amp; Friends</div>
