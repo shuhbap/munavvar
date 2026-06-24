@@ -71,55 +71,36 @@
             margin-bottom: 30px;
         }
 
-        /* ===== ISLAMIC CALLIGRAPHY ===== */
-        .bismillah {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: #465940;
-            opacity: 0.7;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            line-height: 1.4;
+        /* ===== ISLAMIC CALLIGRAPHY IMAGES ===== */
+        .calligraphy-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
         }
 
-        .bismillah-arabic {
-            font-size: 2.2rem;
-            font-weight: 400;
-            color: #465940;
-            opacity: 0.6;
-            margin-bottom: 15px;
-            font-family: 'Times New Roman', serif;
-            letter-spacing: 4px;
+        .calligraphy-image {
+            max-width: 380px;
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
-        .barakkallahu {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 400;
-            color: #465940;
-            opacity: 0.6;
-            margin-top: 10px;
-            letter-spacing: 3px;
+        .calligraphy-image.bismillah {
+            max-width: 320px;
         }
 
-        .barakkallahu-arabic {
-            font-size: 2rem;
-            font-weight: 400;
-            color: #465940;
-            opacity: 0.5;
-            margin: 5px 0 15px;
-            font-family: 'Times New Roman', serif;
-            letter-spacing: 3px;
+        .calligraphy-image.barakkallahu {
+            max-width: 350px;
         }
 
-        /* ===== DIVIDER ===== */
-        .divider-symbol {
-            font-size: 1.8rem;
+        .calligraphy-divider {
+            font-size: 1.6rem;
             color: #465940;
-            opacity: 0.15;
-            letter-spacing: 15px;
-            margin: 8px 0 15px;
+            opacity: 0.12;
+            letter-spacing: 12px;
+            margin: 6px 0;
         }
 
         /* ===== NAMES ===== */
@@ -192,10 +173,10 @@
         }
 
         .detail-row .symbol {
-            font-size: 1.3rem;
-            min-width: 30px;
+            font-size: 1.2rem;
+            min-width: 28px;
             color: #465940;
-            opacity: 0.5;
+            opacity: 0.4;
             font-weight: 300;
         }
 
@@ -237,8 +218,8 @@
 
         .qr-box, .map-box {
             flex: 1;
-            min-width: 180px;
-            max-width: 260px;
+            min-width: 160px;
+            max-width: 240px;
             text-align: center;
         }
 
@@ -247,7 +228,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #465940;
-            opacity: 0.6;
+            opacity: 0.5;
             margin-bottom: 8px;
             display: block;
         }
@@ -265,23 +246,6 @@
         .map-box img {
             max-width: 200px;
             padding: 4px;
-        }
-
-        .qr-placeholder, .map-placeholder {
-            width: 100%;
-            max-width: 180px;
-            height: 180px;
-            margin: 0 auto;
-            background: rgba(70, 89, 64, 0.04);
-            border-radius: 12px;
-            border: 1px dashed rgba(70, 89, 64, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: #465940;
-            opacity: 0.4;
-            padding: 10px;
         }
 
         /* ===== FOOTER ===== */
@@ -372,14 +336,13 @@
             .card { padding: 30px 18px 25px; border-radius: 30px; }
             h1 { font-size: 2.2rem; }
             .ampersand { font-size: 1.8rem; margin: 0 6px; }
-            .bismillah { font-size: 1.4rem; }
-            .bismillah-arabic { font-size: 1.6rem; }
-            .barakkallahu { font-size: 1.5rem; }
-            .barakkallahu-arabic { font-size: 1.5rem; }
+            .calligraphy-image { max-width: 260px; }
+            .calligraphy-image.bismillah { max-width: 220px; }
+            .calligraphy-image.barakkallahu { max-width: 240px; }
             .detail-row { font-size: 0.9rem; gap: 6px; }
             .venue-name { font-size: 1.1rem; }
             .qr-map-container { flex-direction: column; align-items: center; gap: 15px; padding: 15px; }
-            .qr-box, .map-box { max-width: 220px; }
+            .qr-box, .map-box { max-width: 200px; }
             .bg-ornament { display: none; }
             .music-player { bottom: 18px; right: 18px; padding: 8px 12px 8px 16px; }
             .music-player .status { display: none; }
@@ -387,10 +350,9 @@
 
         @media (max-width: 400px) {
             h1 { font-size: 1.6rem; }
-            .bismillah { font-size: 1.1rem; }
-            .bismillah-arabic { font-size: 1.3rem; }
-            .barakkallahu { font-size: 1.2rem; }
-            .barakkallahu-arabic { font-size: 1.2rem; }
+            .calligraphy-image { max-width: 200px; }
+            .calligraphy-image.bismillah { max-width: 170px; }
+            .calligraphy-image.barakkallahu { max-width: 190px; }
             .invitation-image { max-width: 100%; }
         }
     </style>
@@ -406,28 +368,42 @@
     <!-- ===== MAIN CARD ===== -->
     <div class="card">
 
-        <!-- ISLAMIC CALLIGRAPHY -->
-        <div class="bismillah-arabic">﷽</div>
-        <div class="bismillah">Bismillahir Rahmanir Raheem</div>
+        <!-- ISLAMIC CALLIGRAPHY IMAGES -->
+        <div class="calligraphy-container">
 
-        <div class="divider-symbol">❧ ❧ ❧</div>
+            <!-- Bismillahir Rahmanir Raheem - Image 1 -->
+            <img 
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 120'%3E%3Ctext x='50%25' y='50%25' font-size='42' text-anchor='middle' dominant-baseline='central' font-family='Times New Roman, serif' fill='%23465940' opacity='0.6'%3E%uFDFD%3C/text%3E%3Ctext x='50%25' y='80%25' font-size='14' text-anchor='middle' dominant-baseline='central' font-family='Playfair Display, serif' fill='%23465940' opacity='0.4' letter-spacing='4'%3EBismillahir Rahmanir Raheem%3C/text%3E%3C/svg%3E"
+                alt="Bismillahir Rahmanir Raheem"
+                class="calligraphy-image bismillah"
+            />
 
-        <!-- NAMES -->
-        <h1>
-            MUNAWIR <span class="ampersand">&amp;</span> LABEEBA
-        </h1>
+            <div class="calligraphy-divider">❧ ❧ ❧</div>
 
-        <div class="sub-text">— Invite You to Celebrate —</div>
+            <!-- NAMES -->
+            <h1>
+                MUNAWIR <span class="ampersand">&amp;</span> LABEEBA
+            </h1>
 
-        <div class="barakkallahu-arabic">بارك الله لكما</div>
-        <div class="barakkallahu">Barakkallahu Lakuma</div>
+            <div class="sub-text">— Invite You to Celebrate —</div>
 
-        <div class="divider-symbol">❧ ❧ ❧</div>
+            <div class="calligraphy-divider">❧ ❧ ❧</div>
+
+            <!-- Barakkallahu Lakuma - Image 2 -->
+            <img 
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100'%3E%3Ctext x='50%25' y='40%25' font-size='36' text-anchor='middle' dominant-baseline='central' font-family='Times New Roman, serif' fill='%23465940' opacity='0.5'%3E%u0628%u0627%u0631%u0643%20%u0627%u0644%u0644%u0647%20%u0644%u0643%u0645%u0627%3C/text%3E%3Ctext x='50%25' y='75%25' font-size='14' text-anchor='middle' dominant-baseline='central' font-family='Playfair Display, serif' fill='%23465940' opacity='0.4' letter-spacing='4'%3EBarakkallahu Lakuma%3C/text%3E%3C/svg%3E"
+                alt="Barakkallahu Lakuma"
+                class="calligraphy-image barakkallahu"
+            />
+
+        </div>
+
+        <div class="calligraphy-divider">❧ ❧ ❧</div>
 
         <!-- INVITATION LETTER IMAGE -->
         <div class="invitation-image">
             <!-- REPLACE src WITH YOUR INVITATION LETTER IMAGE URL -->
-            <img src="https://xenocdn.xenocdn.workers.dev/bcbf2003.jpeg" alt="Invitation Letter" />
+            <img src="https://via.placeholder.com/800x400/FDFBF0/465940?text=Invitation+Letter+Image" alt="Invitation Letter" />
         </div>
 
         <!-- DETAILS -->
@@ -565,4 +541,4 @@
     </script>
 
 </body>
-    </html>
+</html>
