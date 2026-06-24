@@ -6,7 +6,7 @@
     <title>Munawir & Labeeba - Wedding Invitation</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet"/>
 
     <style>
         * {
@@ -33,117 +33,138 @@
             position: fixed;
             inset: 0;
             background:
-                radial-gradient(ellipse at 30% 20%, rgba(70, 89, 64, 0.05) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 80%, rgba(70, 89, 64, 0.06) 0%, transparent 60%);
+                radial-gradient(ellipse at 30% 20%, rgba(70, 89, 64, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(70, 89, 64, 0.05) 0%, transparent 60%);
             z-index: 0;
             pointer-events: none;
         }
 
         .bg-ornament {
             position: fixed;
-            font-size: 2rem;
-            color: rgba(70, 89, 64, 0.06);
+            font-size: 1.6rem;
+            color: rgba(70, 89, 64, 0.05);
             z-index: 0;
             pointer-events: none;
             font-family: serif;
         }
-        .bg-ornament.tl { top: 25px; left: 25px; }
-        .bg-ornament.tr { top: 25px; right: 25px; }
-        .bg-ornament.bl { bottom: 25px; left: 25px; }
-        .bg-ornament.br { bottom: 25px; right: 25px; }
+        .bg-ornament.tl { top: 30px; left: 30px; }
+        .bg-ornament.tr { top: 30px; right: 30px; }
+        .bg-ornament.bl { bottom: 30px; left: 30px; }
+        .bg-ornament.br { bottom: 30px; right: 30px; }
 
         /* ===== MAIN CARD ===== */
         .card {
             position: relative;
             z-index: 1;
-            max-width: 780px;
+            max-width: 760px;
             width: 100%;
-            background: rgba(253, 251, 240, 0.85);
+            background: rgba(253, 251, 240, 0.88);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
-            border-radius: 40px;
-            padding: 50px 40px 40px;
+            border-radius: 36px;
+            padding: 48px 38px 36px;
             text-align: center;
-            border: 1px solid rgba(70, 89, 64, 0.10);
+            border: 1px solid rgba(70, 89, 64, 0.08);
             box-shadow:
-                0 20px 60px rgba(70, 89, 64, 0.08),
-                0 0 0 1px rgba(70, 89, 64, 0.04);
+                0 20px 60px rgba(70, 89, 64, 0.06),
+                0 0 0 1px rgba(70, 89, 64, 0.03);
             margin-bottom: 30px;
         }
 
-        /* ===== ISLAMIC CALLIGRAPHY IMAGES ===== */
+        /* ===== ISLAMIC CALLIGRAPHY - ARABIC ONLY ===== */
         .calligraphy-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
+            gap: 4px;
+            margin-bottom: 8px;
         }
 
-        .calligraphy-image {
-            max-width: 380px;
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .calligraphy-image.bismillah {
-            max-width: 320px;
-        }
-
-        .calligraphy-image.barakkallahu {
-            max-width: 350px;
-        }
-
-        .calligraphy-divider {
-            font-size: 1.6rem;
+        .calligraphy-arabic {
+            font-family: 'Times New Roman', 'Amiri', serif;
+            font-size: 2.4rem;
+            font-weight: 400;
             color: #465940;
-            opacity: 0.12;
-            letter-spacing: 12px;
-            margin: 6px 0;
+            opacity: 0.55;
+            letter-spacing: 6px;
+            line-height: 1.5;
         }
 
-        /* ===== NAMES ===== */
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.2rem;
+        .calligraphy-arabic.bismillah {
+            font-size: 2.6rem;
+            letter-spacing: 8px;
+        }
+
+        .calligraphy-arabic.barakkallahu {
+            font-size: 2.2rem;
+            letter-spacing: 5px;
+        }
+
+        .divider-symbol {
+            font-size: 1.4rem;
+            color: #465940;
+            opacity: 0.10;
+            letter-spacing: 12px;
+            margin: 6px 0 12px;
+        }
+
+        /* ===== NAMES - Premium Standard ===== */
+        .names-container {
+            margin: 8px 0 4px;
+        }
+
+        .groom-name {
+            font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+            font-size: 3.4rem;
             font-weight: 700;
             color: #2c3a28;
-            line-height: 1.2;
-            margin: 5px 0;
+            letter-spacing: 3px;
+            line-height: 1.1;
         }
 
         .ampersand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
             color: #465940;
-            font-size: 2.6rem;
-            margin: 0 12px;
+            opacity: 0.35;
+            margin: 2px 14px;
             display: inline-block;
-            opacity: 0.5;
             font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .bride-name {
+            font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+            font-size: 3.4rem;
+            font-weight: 700;
+            color: #2c3a28;
+            letter-spacing: 3px;
+            line-height: 1.1;
         }
 
         .sub-text {
-            font-size: 0.9rem;
-            color: #5a6a52;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: #6a7a62;
             font-weight: 300;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            margin: 10px 0 20px;
-            border-top: 1px solid rgba(70, 89, 64, 0.10);
-            border-bottom: 1px solid rgba(70, 89, 64, 0.10);
-            padding: 10px 0;
+            margin: 8px 0 12px;
+            border-top: 1px solid rgba(70, 89, 64, 0.08);
+            border-bottom: 1px solid rgba(70, 89, 64, 0.08);
+            padding: 8px 0;
             display: inline-block;
         }
 
         /* ===== INVITATION LETTER IMAGE ===== */
         .invitation-image {
             width: 100%;
-            max-width: 500px;
-            margin: 15px auto 20px;
-            border-radius: 16px;
+            max-width: 480px;
+            margin: 12px auto 18px;
+            border-radius: 14px;
             overflow: hidden;
-            border: 1px solid rgba(70, 89, 64, 0.08);
-            box-shadow: 0 8px 25px rgba(70, 89, 64, 0.06);
+            border: 1px solid rgba(70, 89, 64, 0.06);
+            box-shadow: 0 6px 20px rgba(70, 89, 64, 0.04);
         }
 
         .invitation-image img {
@@ -154,40 +175,40 @@
 
         /* ===== DETAILS ===== */
         .details {
-            background: rgba(70, 89, 64, 0.03);
-            border-radius: 20px;
-            padding: 25px 20px;
-            margin: 20px 0;
-            border: 1px solid rgba(70, 89, 64, 0.06);
+            background: rgba(70, 89, 64, 0.02);
+            border-radius: 18px;
+            padding: 20px 18px;
+            margin: 16px 0;
+            border: 1px solid rgba(70, 89, 64, 0.05);
         }
 
         .detail-row {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            padding: 6px 0;
-            font-size: 1.05rem;
+            gap: 10px;
+            padding: 5px 0;
+            font-size: 1rem;
             color: #2c3a28;
             flex-wrap: wrap;
         }
 
         .detail-row .symbol {
-            font-size: 1.2rem;
-            min-width: 28px;
+            font-size: 1rem;
+            min-width: 24px;
             color: #465940;
-            opacity: 0.4;
+            opacity: 0.30;
             font-weight: 300;
         }
 
         .detail-row .label {
-            font-weight: 600;
+            font-weight: 500;
             color: #465940;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            background: rgba(70, 89, 64, 0.06);
-            padding: 2px 14px;
+            background: rgba(70, 89, 64, 0.05);
+            padding: 2px 12px;
             border-radius: 30px;
         }
 
@@ -197,130 +218,133 @@
         }
 
         .venue-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
             color: #465940;
-            font-weight: 700;
+            font-weight: 600;
         }
 
-        /* ===== QR CODE & MAP SECTION ===== */
+        /* ===== QR CODE & MAP ===== */
         .qr-map-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 25px;
+            gap: 20px;
             justify-content: center;
-            margin: 25px 0 15px;
-            padding: 20px;
-            background: rgba(70, 89, 64, 0.02);
-            border-radius: 20px;
-            border: 1px solid rgba(70, 89, 64, 0.06);
+            margin: 20px 0 12px;
+            padding: 18px;
+            background: rgba(70, 89, 64, 0.015);
+            border-radius: 18px;
+            border: 1px solid rgba(70, 89, 64, 0.04);
         }
 
         .qr-box, .map-box {
             flex: 1;
-            min-width: 160px;
-            max-width: 240px;
+            min-width: 150px;
+            max-width: 220px;
             text-align: center;
         }
 
         .qr-box .label, .map-box .label {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             color: #465940;
-            opacity: 0.5;
-            margin-bottom: 8px;
+            opacity: 0.35;
+            margin-bottom: 6px;
             display: block;
+            font-weight: 400;
         }
 
         .qr-box img, .map-box img {
             width: 100%;
-            max-width: 180px;
+            max-width: 160px;
             height: auto;
-            border-radius: 12px;
-            border: 1px solid rgba(70, 89, 64, 0.06);
+            border-radius: 10px;
+            border: 1px solid rgba(70, 89, 64, 0.05);
             background: white;
-            padding: 8px;
+            padding: 6px;
         }
 
         .map-box img {
-            max-width: 200px;
-            padding: 4px;
+            max-width: 180px;
+            padding: 3px;
         }
 
-        /* ===== FOOTER ===== */
+        /* ===== FOOTER - Subtle & Small ===== */
         .footer {
-            margin-top: 15px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(70, 89, 64, 0.08);
+            margin-top: 10px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(70, 89, 64, 0.06);
         }
 
         .footer p {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
             color: #465940;
             font-weight: 400;
-            letter-spacing: 3px;
-            opacity: 0.7;
+            letter-spacing: 2.5px;
+            opacity: 0.35;
         }
 
         .footer .sub-footer {
             font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
+            font-size: 0.55rem;
             color: #8a9a82;
             letter-spacing: 2px;
-            margin-top: 6px;
+            margin-top: 4px;
+            opacity: 0.30;
         }
 
         /* ===== MUSIC PLAYER ===== */
         .music-player {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 28px;
+            right: 28px;
             z-index: 100;
-            background: rgba(70, 89, 64, 0.92);
+            background: rgba(70, 89, 64, 0.88);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(253, 251, 240, 0.12);
-            border-radius: 60px;
-            padding: 10px 18px 10px 22px;
+            border: 1px solid rgba(253, 251, 240, 0.08);
+            border-radius: 50px;
+            padding: 8px 16px 8px 20px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            box-shadow: 0 8px 32px rgba(70, 89, 64, 0.30);
+            gap: 10px;
+            box-shadow: 0 6px 24px rgba(70, 89, 64, 0.20);
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .music-player:hover {
-            transform: scale(1.04);
-            border-color: rgba(253, 251, 240, 0.25);
+            transform: scale(1.03);
+            border-color: rgba(253, 251, 240, 0.20);
         }
 
         .music-player .note {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+            50% { transform: scale(1.12); }
         }
 
         .music-player .status {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             color: #d4dccf;
-            font-weight: 400;
+            font-weight: 300;
             letter-spacing: 0.5px;
+            opacity: 0.7;
         }
 
         .music-player .toggle-icon {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #FDFBF0;
-            background: rgba(253, 251, 240, 0.10);
+            background: rgba(253, 251, 240, 0.08);
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 26px;
+            height: 26px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -328,32 +352,33 @@
         }
 
         .music-player .toggle-icon:hover {
-            background: rgba(253, 251, 240, 0.20);
+            background: rgba(253, 251, 240, 0.16);
         }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 650px) {
-            .card { padding: 30px 18px 25px; border-radius: 30px; }
-            h1 { font-size: 2.2rem; }
+            .card { padding: 28px 16px 22px; border-radius: 28px; }
+            .groom-name, .bride-name { font-size: 2.4rem; }
             .ampersand { font-size: 1.8rem; margin: 0 6px; }
-            .calligraphy-image { max-width: 260px; }
-            .calligraphy-image.bismillah { max-width: 220px; }
-            .calligraphy-image.barakkallahu { max-width: 240px; }
-            .detail-row { font-size: 0.9rem; gap: 6px; }
+            .calligraphy-arabic.bismillah { font-size: 2rem; }
+            .calligraphy-arabic.barakkallahu { font-size: 1.7rem; }
+            .detail-row { font-size: 0.88rem; gap: 4px; }
             .venue-name { font-size: 1.1rem; }
-            .qr-map-container { flex-direction: column; align-items: center; gap: 15px; padding: 15px; }
-            .qr-box, .map-box { max-width: 200px; }
+            .qr-map-container { flex-direction: column; align-items: center; gap: 12px; padding: 12px; }
+            .qr-box, .map-box { max-width: 180px; }
             .bg-ornament { display: none; }
-            .music-player { bottom: 18px; right: 18px; padding: 8px 12px 8px 16px; }
+            .music-player { bottom: 16px; right: 16px; padding: 6px 12px 6px 16px; }
             .music-player .status { display: none; }
+            .footer p { font-size: 0.8rem; }
         }
 
         @media (max-width: 400px) {
-            h1 { font-size: 1.6rem; }
-            .calligraphy-image { max-width: 200px; }
-            .calligraphy-image.bismillah { max-width: 170px; }
-            .calligraphy-image.barakkallahu { max-width: 190px; }
+            .groom-name, .bride-name { font-size: 1.8rem; letter-spacing: 1px; }
+            .calligraphy-arabic.bismillah { font-size: 1.6rem; }
+            .calligraphy-arabic.barakkallahu { font-size: 1.4rem; }
             .invitation-image { max-width: 100%; }
+            .card { padding: 20px 12px 18px; }
+            .footer p { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -368,42 +393,36 @@
     <!-- ===== MAIN CARD ===== -->
     <div class="card">
 
-        <!-- ISLAMIC CALLIGRAPHY IMAGES -->
+        <!-- ISLAMIC CALLIGRAPHY - ARABIC ONLY -->
         <div class="calligraphy-container">
-
-            <!-- Bismillahir Rahmanir Raheem - Image 1 -->
-            <img 
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 120'%3E%3Ctext x='50%25' y='50%25' font-size='42' text-anchor='middle' dominant-baseline='central' font-family='Times New Roman, serif' fill='%23465940' opacity='0.6'%3E%uFDFD%3C/text%3E%3Ctext x='50%25' y='80%25' font-size='14' text-anchor='middle' dominant-baseline='central' font-family='Playfair Display, serif' fill='%23465940' opacity='0.4' letter-spacing='4'%3EBismillahir Rahmanir Raheem%3C/text%3E%3C/svg%3E"
-                alt="Bismillahir Rahmanir Raheem"
-                class="calligraphy-image bismillah"
-            />
-
-            <div class="calligraphy-divider">❧ ❧ ❧</div>
-
-            <!-- NAMES -->
-            <h1>
-                MUNAWIR <span class="ampersand">&amp;</span> LABEEBA
-            </h1>
-
-            <div class="sub-text">— Invite You to Celebrate —</div>
-
-            <div class="calligraphy-divider">❧ ❧ ❧</div>
-
-            <!-- Barakkallahu Lakuma - Image 2 -->
-            <img 
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100'%3E%3Ctext x='50%25' y='40%25' font-size='36' text-anchor='middle' dominant-baseline='central' font-family='Times New Roman, serif' fill='%23465940' opacity='0.5'%3E%u0628%u0627%u0631%u0643%20%u0627%u0644%u0644%u0647%20%u0644%u0643%u0645%u0627%3C/text%3E%3Ctext x='50%25' y='75%25' font-size='14' text-anchor='middle' dominant-baseline='central' font-family='Playfair Display, serif' fill='%23465940' opacity='0.4' letter-spacing='4'%3EBarakkallahu Lakuma%3C/text%3E%3C/svg%3E"
-                alt="Barakkallahu Lakuma"
-                class="calligraphy-image barakkallahu"
-            />
-
+            <div class="calligraphy-arabic bismillah">﷽</div>
+            <div class="calligraphy-arabic bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
         </div>
 
-        <div class="calligraphy-divider">❧ ❧ ❧</div>
+        <div class="divider-symbol">❧ ❧ ❧</div>
+
+        <!-- NAMES - Premium Standard -->
+        <div class="names-container">
+            <div class="groom-name">MUNAWIR</div>
+            <div class="ampersand">&amp;</div>
+            <div class="bride-name">LABEEBA</div>
+        </div>
+
+        <div class="sub-text">— Invite You to Celebrate —</div>
+
+        <div class="divider-symbol">❧ ❧ ❧</div>
+
+        <!-- BARAKALLAHU - ARABIC ONLY -->
+        <div class="calligraphy-container">
+            <div class="calligraphy-arabic barakkallahu">بَارَكَ اللَّهُ لَكُمَا</div>
+        </div>
+
+        <div class="divider-symbol">❧ ❧ ❧</div>
 
         <!-- INVITATION LETTER IMAGE -->
         <div class="invitation-image">
             <!-- REPLACE src WITH YOUR INVITATION LETTER IMAGE URL -->
-            <img src="https://via.placeholder.com/800x400/FDFBF0/465940?text=Invitation+Letter+Image" alt="Invitation Letter" />
+            <img src="https://xenocdn.xenocdn.workers.dev/bcbf2003.jpeg" alt="Invitation Letter" />
         </div>
 
         <!-- DETAILS -->
@@ -427,7 +446,7 @@
                 <span class="value venue-name">VISTA CONVENTION CENTER</span>
             </div>
 
-            <div class="detail-row" style="font-size:0.9rem; color:#5a6a52; padding-top:2px;">
+            <div class="detail-row" style="font-size:0.85rem; color:#5a6a52; padding-top:2px;">
                 <span class="symbol">◈</span>
                 <span>Vengad, Kerala</span>
             </div>
@@ -451,7 +470,7 @@
 
         </div>
 
-        <!-- FOOTER -->
+        <!-- FOOTER - Subtle & Small -->
         <div class="footer">
             <p>Complements Family &amp; Friends</p>
             <div class="sub-footer">❧ ❧ ❧</div>
@@ -469,7 +488,7 @@
     <!-- ===== AUDIO (Islamic Nasheed) ===== -->
     <audio id="bgMusic" loop preload="auto">
         <!-- REPLACE WITH YOUR ISLAMIC NASHEED MP3 URL -->
-        <source src="https://www.islamcan.com/audio/nasheed/ya-nabiy-salam-alayka.mp3" type="audio/mpeg">
+        <source src="https://xenocdn.xenocdn.workers.dev/36a65906.mp4" type="audio/mpeg">
         <source src="https://archive.org/download/nasheedcollection/07%20Qamaran.mp3" type="audio/mpeg">
         Your browser does not support audio.
     </audio>
@@ -541,4 +560,4 @@
     </script>
 
 </body>
-</html>
+        </html>
