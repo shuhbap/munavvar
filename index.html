@@ -27,7 +27,6 @@
             overflow-x: hidden;
         }
 
-        /* background texture */
         body::before {
             content: '';
             position: fixed;
@@ -52,7 +51,6 @@
         .bg-ornament.bl { bottom: 30px; left: 30px; }
         .bg-ornament.br { bottom: 30px; right: 30px; }
 
-        /* ===== MAIN CARD ===== */
         .card {
             position: relative;
             z-index: 1;
@@ -65,14 +63,11 @@
             padding: 50px 45px 40px;
             text-align: center;
             border: 1px solid rgba(70, 89, 64, 0.06);
-            box-shadow:
-                0 20px 60px rgba(70, 89, 64, 0.05),
-                0 0 0 1px rgba(70, 89, 64, 0.02);
+            box-shadow: 0 20px 60px rgba(70, 89, 64, 0.05), 0 0 0 1px rgba(70, 89, 64, 0.02);
             margin-bottom: 30px;
-            transition: transform 0.2s ease;
         }
 
-        /* ===== ISLAMIC CALLIGRAPHY - SVG ===== */
+        /* ===== CALLIGRAPHY ===== */
         .calligraphy-container {
             display: flex;
             flex-direction: column;
@@ -87,14 +82,8 @@
             height: auto;
             display: block;
         }
-
-        .calligraphy-svg.bismillah {
-            max-width: 420px;
-        }
-
-        .calligraphy-svg.barakkallahu {
-            max-width: 520px;
-        }
+        .calligraphy-svg.bismillah { max-width: 420px; }
+        .calligraphy-svg.barakkallahu { max-width: 520px; }
 
         .divider-symbol {
             font-size: 1.2rem;
@@ -105,11 +94,8 @@
         }
 
         /* ===== NAMES ===== */
-        .names-container {
-            margin: 6px 0 2px;
-        }
-
-        .groom-name {
+        .names-container { margin: 6px 0 2px; }
+        .groom-name, .bride-name {
             font-family: 'Cormorant Garamond', 'Playfair Display', serif;
             font-size: 3.6rem;
             font-weight: 700;
@@ -117,7 +103,6 @@
             letter-spacing: 4px;
             line-height: 1.1;
         }
-
         .ampersand {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.6rem;
@@ -127,15 +112,6 @@
             display: inline-block;
             font-weight: 300;
             letter-spacing: 3px;
-        }
-
-        .bride-name {
-            font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-            font-size: 3.6rem;
-            font-weight: 700;
-            color: #2c3a28;
-            letter-spacing: 4px;
-            line-height: 1.1;
         }
 
         .sub-text {
@@ -152,7 +128,7 @@
             display: inline-block;
         }
 
-        /* ===== FAMILY DETAILS ===== */
+        /* ===== FAMILY ===== */
         .family-details {
             display: flex;
             flex-wrap: wrap;
@@ -164,13 +140,7 @@
             border-radius: 18px;
             border: 1px solid rgba(70, 89, 64, 0.04);
         }
-
-        .family-box {
-            flex: 1;
-            min-width: 160px;
-            text-align: center;
-        }
-
+        .family-box { flex: 1; min-width: 160px; text-align: center; }
         .family-box .name {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
@@ -178,7 +148,6 @@
             color: #2c3a28;
             letter-spacing: 1px;
         }
-
         .family-box .address {
             font-family: 'Inter', sans-serif;
             font-size: 0.8rem;
@@ -188,14 +157,13 @@
             margin-top: 4px;
             letter-spacing: 0.5px;
         }
-
         .family-divider {
             width: 1px;
             background: rgba(70, 89, 64, 0.06);
             flex-shrink: 0;
         }
 
-        /* ===== INVITATION LETTER IMAGE ===== */
+        /* ===== INVITATION LETTER ===== */
         .invitation-image {
             width: 100%;
             max-width: 520px;
@@ -205,14 +173,9 @@
             border: 1px solid rgba(70, 89, 64, 0.05);
             box-shadow: 0 6px 24px rgba(70, 89, 64, 0.04);
         }
+        .invitation-image img { width: 100%; height: auto; display: block; }
 
-        .invitation-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* ===== SAVE THE DATE VIDEO ===== */
+        /* ===== VIDEO ===== */
         .video-container {
             width: 100%;
             max-width: 520px;
@@ -223,13 +186,7 @@
             box-shadow: 0 6px 24px rgba(70, 89, 64, 0.04);
             background: rgba(70, 89, 64, 0.02);
         }
-
-        .video-container video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
+        .video-container video { width: 100%; height: auto; display: block; }
         .video-label {
             font-family: 'Inter', sans-serif;
             font-size: 0.6rem;
@@ -249,7 +206,6 @@
             margin: 14px 0 16px;
             border: 1px solid rgba(70, 89, 64, 0.04);
         }
-
         .detail-row {
             display: flex;
             align-items: center;
@@ -260,7 +216,6 @@
             color: #2c3a28;
             flex-wrap: wrap;
         }
-
         .detail-row .symbol {
             font-size: 0.9rem;
             min-width: 22px;
@@ -268,7 +223,6 @@
             opacity: 0.25;
             font-weight: 300;
         }
-
         .detail-row .label {
             font-weight: 500;
             color: #465940;
@@ -280,12 +234,7 @@
             border-radius: 30px;
             opacity: 0.7;
         }
-
-        .detail-row .value {
-            font-weight: 500;
-            color: #1e2a1b;
-        }
-
+        .detail-row .value { font-weight: 500; color: #1e2a1b; }
         .detail-row .highlight-date {
             background: rgba(70, 89, 64, 0.06);
             padding: 2px 20px;
@@ -296,7 +245,6 @@
             border: 1px solid rgba(70, 89, 64, 0.04);
             box-shadow: 0 2px 8px rgba(70, 89, 64, 0.02);
         }
-
         .venue-name {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.4rem;
@@ -304,14 +252,14 @@
             font-weight: 600;
         }
 
-        /* ===== QR CODE & MAP - Interactive ===== */
+        /* ===== QR & MAP - WITH VISIBLE MAP ===== */
         .qr-map-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 25px;
             justify-content: center;
             margin: 18px 0 12px;
-            padding: 20px 10px;
+            padding: 20px 15px;
             background: rgba(70, 89, 64, 0.015);
             border-radius: 18px;
             border: 1px solid rgba(70, 89, 64, 0.04);
@@ -319,75 +267,72 @@
 
         .qr-box, .map-box {
             flex: 1;
-            min-width: 140px;
-            max-width: 220px;
+            min-width: 160px;
+            max-width: 260px;
             text-align: center;
         }
 
         .qr-box .label, .map-box .label {
-            font-size: 0.5rem;
+            font-size: 0.55rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             color: #465940;
             opacity: 0.30;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             display: block;
             font-weight: 400;
         }
 
+        /* QR Code */
         .qr-box img {
             width: 100%;
-            max-width: 150px;
+            max-width: 160px;
             height: auto;
             border-radius: 12px;
             border: 1px solid rgba(70, 89, 64, 0.04);
             background: white;
-            padding: 6px;
+            padding: 8px;
             transition: transform 0.2s ease;
         }
+        .qr-box img:hover { transform: scale(1.03); }
 
-        .qr-box img:hover {
-            transform: scale(1.02);
-        }
-
-        /* ===== MAP - Interactive with Google & Apple ===== */
-        .map-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
+        /* ===== MAP - VISIBLE IMAGE ===== */
+        .map-wrapper {
             width: 100%;
-        }
-
-        .map-image-wrapper {
-            width: 100%;
-            max-width: 200px;
-            border-radius: 12px;
+            max-width: 240px;
+            margin: 0 auto;
+            border-radius: 14px;
             overflow: hidden;
-            border: 1px solid rgba(70, 89, 64, 0.04);
-            transition: transform 0.2s ease;
+            border: 1px solid rgba(70, 89, 64, 0.06);
+            box-shadow: 0 4px 16px rgba(70, 89, 64, 0.06);
             background: white;
-            padding: 4px;
-            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .map-image-wrapper:hover {
+        .map-wrapper:hover {
             transform: scale(1.02);
-            border-color: rgba(70, 89, 64, 0.12);
+            box-shadow: 0 8px 28px rgba(70, 89, 64, 0.10);
         }
 
-        .map-image-wrapper img {
+        .map-wrapper a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .map-wrapper img {
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 8px;
+            padding: 4px;
+            background: white;
         }
 
         .map-buttons {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             justify-content: center;
-            margin-top: 2px;
+            margin-top: 10px;
+            flex-wrap: wrap;
         }
 
         .map-btn {
@@ -396,48 +341,38 @@
             gap: 6px;
             font-size: 0.55rem;
             font-weight: 500;
-            color: #465940;
-            background: rgba(70, 89, 64, 0.04);
-            padding: 4px 16px;
+            padding: 5px 16px;
             border-radius: 30px;
             text-decoration: none;
-            letter-spacing: 1px;
-            border: 1px solid rgba(70, 89, 64, 0.04);
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(70, 89, 64, 0.06);
             transition: all 0.2s ease;
-            opacity: 0.6;
             font-family: 'Inter', sans-serif;
         }
 
-        .map-btn:hover {
-            background: rgba(70, 89, 64, 0.08);
-            opacity: 1;
-            border-color: rgba(70, 89, 64, 0.12);
-            transform: translateY(-1px);
-        }
-
         .map-btn .icon {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             line-height: 1;
         }
 
         .map-btn.google {
             background: rgba(66, 133, 244, 0.06);
-            border-color: rgba(66, 133, 244, 0.08);
+            border-color: rgba(66, 133, 244, 0.10);
             color: #4285F4;
         }
-
         .map-btn.google:hover {
             background: rgba(66, 133, 244, 0.12);
+            transform: translateY(-1px);
         }
 
         .map-btn.apple {
             background: rgba(0, 0, 0, 0.03);
-            border-color: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.06);
             color: #1a1a1a;
         }
-
         .map-btn.apple:hover {
             background: rgba(0, 0, 0, 0.06);
+            transform: translateY(-1px);
         }
 
         /* ===== FOOTER ===== */
@@ -450,7 +385,6 @@
             align-items: center;
             gap: 4px;
         }
-
         .footer .main-line {
             font-family: 'Cormorant Garamond', serif;
             font-size: 0.9rem;
@@ -459,14 +393,12 @@
             letter-spacing: 3px;
             opacity: 0.25;
         }
-
         .footer .divider-line {
             font-size: 0.6rem;
             color: #465940;
             opacity: 0.06;
             letter-spacing: 6px;
         }
-
         .footer .sub-line {
             font-family: 'Inter', sans-serif;
             font-size: 0.45rem;
@@ -475,10 +407,7 @@
             opacity: 0.15;
             text-transform: uppercase;
         }
-
-        .footer .sub-line span {
-            margin: 0 4px;
-        }
+        .footer .sub-line span { margin: 0 4px; }
 
         /* ===== MUSIC PLAYER ===== */
         .music-player {
@@ -498,13 +427,10 @@
             box-shadow: 0 8px 40px rgba(70, 89, 64, 0.20);
             transition: all 0.3s ease;
         }
-
         .music-player:hover {
             transform: scale(1.04);
             border-color: rgba(253, 251, 240, 0.2);
-            box-shadow: 0 8px 48px rgba(70, 89, 64, 0.25);
         }
-
         .music-player .player-btn {
             background: none;
             border: none;
@@ -517,17 +443,7 @@
             font-family: serif;
             line-height: 1;
         }
-
-        .music-player .player-btn:hover {
-            opacity: 1;
-            color: #FDFBF0;
-        }
-
-        .music-player .player-btn.active {
-            color: #FDFBF0;
-            opacity: 1;
-        }
-
+        .music-player .player-btn:hover { opacity: 1; color: #FDFBF0; }
         .music-player .status-text {
             font-size: 0.65rem;
             color: #d4dccf;
@@ -541,7 +457,6 @@
             border-radius: 40px;
             border: 1px solid rgba(255,255,255,0.02);
         }
-
         .music-player .divider {
             width: 1px;
             height: 22px;
@@ -554,11 +469,7 @@
             transform: translateY(24px);
             transition: opacity 0.8s cubic-bezier(0.20, 0.98, 0.35, 1.00), transform 0.8s cubic-bezier(0.20, 0.98, 0.35, 1.00);
         }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 700px) {
@@ -572,14 +483,13 @@
             .family-box .name { font-size: 1.5rem; }
             .detail-row { font-size: 0.9rem; gap: 6px; }
             .venue-name { font-size: 1.1rem; }
-            .qr-map-container { flex-direction: column; align-items: center; gap: 14px; padding: 14px; }
-            .qr-box, .map-box { max-width: 200px; }
+            .qr-map-container { flex-direction: column; align-items: center; gap: 20px; padding: 14px; }
+            .qr-box, .map-box { max-width: 220px; }
+            .map-wrapper { max-width: 220px; }
             .bg-ornament { display: none; }
             .music-player { bottom: 18px; right: 18px; padding: 8px 14px; gap: 8px; }
             .music-player .status-text { display: none; }
             .footer .main-line { font-size: 0.8rem; }
-            .map-image-wrapper { max-width: 180px; }
-            .map-btn { font-size: 0.5rem; padding: 3px 12px; }
         }
 
         @media (max-width: 400px) {
@@ -596,8 +506,8 @@
             .music-player { bottom: 12px; right: 12px; padding: 6px 10px; gap: 4px; }
             .music-player .player-btn { font-size: 1rem; }
             .detail-row .highlight-date { padding: 2px 12px; font-size: 0.85rem; }
-            .map-image-wrapper { max-width: 150px; }
-            .map-btn { font-size: 0.45rem; padding: 2px 10px; }
+            .map-wrapper { max-width: 180px; }
+            .map-btn { font-size: 0.5rem; padding: 4px 12px; }
         }
     </style>
 </head>
@@ -612,13 +522,11 @@
     <!-- ===== MAIN CARD ===== -->
     <div class="card">
 
-        <!-- ISLAMIC CALLIGRAPHY - SVG -->
+        <!-- ISLAMIC CALLIGRAPHY -->
         <div class="calligraphy-container animate-on-scroll">
             <svg class="calligraphy-svg bismillah" viewBox="0 0 500 110" xmlns="http://www.w3.org/2000/svg">
                 <text x="50%" y="45%" font-size="40" text-anchor="middle" dominant-baseline="central" 
-                      font-family="'Amiri', 'Times New Roman', serif" fill="#465940" opacity="0.50">
-                    ﷽
-                </text>
+                      font-family="'Amiri', 'Times New Roman', serif" fill="#465940" opacity="0.50">﷽</text>
                 <text x="50%" y="80%" font-size="16" text-anchor="middle" dominant-baseline="central" 
                       font-family="'Amiri', 'Times New Roman', serif" fill="#465940" opacity="0.30" letter-spacing="3">
                     بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
@@ -661,9 +569,7 @@
                     Malappuram, Kerala
                 </div>
             </div>
-
             <div class="family-divider"></div>
-
             <div class="family-box">
                 <div class="name">Labeeba Zahrawiyya</div>
                 <div class="address">
@@ -676,7 +582,7 @@
 
         <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-        <!-- INVITATION LETTER IMAGE -->
+        <!-- INVITATION LETTER -->
         <div class="invitation-image animate-on-scroll">
             <img src="https://xenocdn.xenocdn.workers.dev/bcbf2003.jpeg" alt="Invitation Letter" />
         </div>
@@ -699,26 +605,23 @@
                 <span class="label">Date</span>
                 <span class="value highlight-date"><strong>Sunday, 19 July 2026</strong></span>
             </div>
-
             <div class="detail-row">
                 <span class="symbol">◈</span>
                 <span class="label">Time</span>
                 <span class="value"><strong>6:30 PM onwards</strong></span>
             </div>
-
             <div class="detail-row">
                 <span class="symbol">◈</span>
                 <span class="label">Venue</span>
                 <span class="value venue-name">VISTA CONVENTION CENTER</span>
             </div>
-
             <div class="detail-row" style="font-size:0.85rem; color:#5a6a52; padding-top:2px;">
                 <span class="symbol">◈</span>
                 <span>Vengad, Kerala</span>
             </div>
         </div>
 
-        <!-- QR CODE & MAP - Interactive -->
+        <!-- ===== QR CODE & MAP - VISIBLE MAP ===== -->
         <div class="qr-map-container animate-on-scroll">
 
             <!-- QR CODE -->
@@ -727,27 +630,25 @@
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=YourPlaceAddressHere" alt="Place QR Code" />
             </div>
 
-            <!-- MAP - Interactive with Google & Apple -->
+            <!-- MAP - VISIBLE IMAGE WITH BUTTONS -->
             <div class="map-box">
                 <span class="label">◈ Location Map ◈</span>
-                <div class="map-container">
 
-                    <!-- Clickable Map Image - opens Google Maps -->
-                    <a href="https://www.google.com/maps?q=Vista+Convention+Centre+Perinthalmanna" target="_blank" style="display:block; width:100%; text-decoration:none;">
-                        <div class="map-image-wrapper">
-                            <img src="https://maps.googleapis.com/maps/api/staticmap?center=Vista+Convention+Centre+Perinthalmanna&zoom=15&size=300x150&markers=color:green%7CVista+Convention+Centre+Perinthalmanna&key=AIzaSyA1xT4p2B7fN4x5y6z7w8v9u" alt="Location Map" />
-                        </div>
+                <!-- Map Image - Click to open Google Maps -->
+                <div class="map-wrapper">
+                    <a href="https://www.google.com/maps?q=Vista+Convention+Centre+Perinthalmanna" target="_blank">
+                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=Vista+Convention+Centre+Perinthalmanna&zoom=14&size=400x200&markers=color:green%7CVista+Convention+Centre+Perinthalmanna&key=AIzaSyA1xT4p2B7fN4x5y6z7w8v9u" alt="Vista Convention Centre Map" />
                     </a>
+                </div>
 
-                    <!-- Google & Apple Map Buttons -->
-                    <div class="map-buttons">
-                        <a href="https://www.google.com/maps?q=Vista+Convention+Centre+Perinthalmanna" target="_blank" class="map-btn google">
-                            <span class="icon">◈</span> Google Maps
-                        </a>
-                        <a href="https://maps.apple.com/?address=Valanchery%20Karekkad%20Road,%20Perinthalmanna,%20Malappuram%20679338,%20India&q=Vista%20Convention%20Centre" target="_blank" class="map-btn apple">
-                            <span class="icon">◈</span> Apple Maps
-                        </a>
-                    </div>
+                <!-- Google & Apple Map Buttons -->
+                <div class="map-buttons">
+                    <a href="https://www.google.com/maps?q=Vista+Convention+Centre+Perinthalmanna" target="_blank" class="map-btn google">
+                        <span class="icon">◈</span> Google Maps
+                    </a>
+                    <a href="https://maps.apple.com/?address=Valanchery%20Karekkad%20Road,%20Perinthalmanna,%20Malappuram%20679338,%20India&q=Vista%20Convention%20Centre" target="_blank" class="map-btn apple">
+                        <span class="icon">◈</span> Apple Maps
+                    </a>
                 </div>
             </div>
 
@@ -758,9 +659,7 @@
             <div class="main-line">Complements Family &amp; Friends</div>
             <div class="divider-line">❧ ❧ ❧</div>
             <div class="sub-line">
-                <span>✦</span>
-                With Blessings &amp; Prayers
-                <span>✦</span>
+                <span>✦</span> With Blessings &amp; Prayers <span>✦</span>
             </div>
         </div>
 
@@ -809,10 +708,7 @@
 
         playBtn.addEventListener('click', function(e) {
             e.stopPropagation();
-            audio.play().then(() => {
-                isPlaying = true;
-                updateUI();
-            }).catch(() => {});
+            audio.play().then(() => { isPlaying = true; updateUI(); }).catch(() => {});
         });
 
         pauseBtn.addEventListener('click', function(e) {
@@ -831,13 +727,7 @@
         });
 
         function tryAutoPlay() {
-            audio.play().then(() => {
-                isPlaying = true;
-                updateUI();
-            }).catch(() => {
-                isPlaying = false;
-                updateUI();
-            });
+            audio.play().then(() => { isPlaying = true; updateUI(); }).catch(() => { isPlaying = false; updateUI(); });
         }
 
         document.addEventListener('click', function initAudio() {
@@ -845,39 +735,28 @@
             document.removeEventListener('click', initAudio);
         }, { once: true });
 
-        window.addEventListener('load', function() {
-            setTimeout(tryAutoPlay, 600);
-        });
-
+        window.addEventListener('load', function() { setTimeout(tryAutoPlay, 600); });
         updateUI();
 
         // =========================
         // SCROLL ANIMATION
         // =========================
         const animElements = document.querySelectorAll('.animate-on-scroll');
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, {
-            threshold: 0.10,
-            rootMargin: '0px 0px -20px 0px'
-        });
+        }, { threshold: 0.10, rootMargin: '0px 0px -20px 0px' });
 
         animElements.forEach(el => observer.observe(el));
 
         window.addEventListener('load', function() {
             animElements.forEach(el => {
                 const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.85) {
-                    el.classList.add('visible');
-                }
+                if (rect.top < window.innerHeight * 0.85) el.classList.add('visible');
             });
         });
     </script>
 
 </body>
-                    </html>
+    </html>
