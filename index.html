@@ -71,33 +71,28 @@
             margin-bottom: 30px;
         }
 
-        /* ===== ISLAMIC CALLIGRAPHY - ARABIC ONLY ===== */
+        /* ===== ISLAMIC CALLIGRAPHY PNG IMAGES ===== */
         .calligraphy-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
             margin-bottom: 8px;
         }
 
-        .calligraphy-arabic {
-            font-family: 'Times New Roman', 'Amiri', serif;
-            font-size: 2.4rem;
-            font-weight: 400;
-            color: #465940;
-            opacity: 0.55;
-            letter-spacing: 6px;
-            line-height: 1.5;
+        .calligraphy-img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
-        .calligraphy-arabic.bismillah {
-            font-size: 2.6rem;
-            letter-spacing: 8px;
+        .calligraphy-img.bismillah {
+            max-width: 360px;
         }
 
-        .calligraphy-arabic.barakkallahu {
-            font-size: 2.2rem;
-            letter-spacing: 5px;
+        .calligraphy-img.barakkallahu {
+            max-width: 380px;
         }
 
         .divider-symbol {
@@ -360,8 +355,8 @@
             .card { padding: 28px 16px 22px; border-radius: 28px; }
             .groom-name, .bride-name { font-size: 2.4rem; }
             .ampersand { font-size: 1.8rem; margin: 0 6px; }
-            .calligraphy-arabic.bismillah { font-size: 2rem; }
-            .calligraphy-arabic.barakkallahu { font-size: 1.7rem; }
+            .calligraphy-img.bismillah { max-width: 280px; }
+            .calligraphy-img.barakkallahu { max-width: 300px; }
             .detail-row { font-size: 0.88rem; gap: 4px; }
             .venue-name { font-size: 1.1rem; }
             .qr-map-container { flex-direction: column; align-items: center; gap: 12px; padding: 12px; }
@@ -374,8 +369,8 @@
 
         @media (max-width: 400px) {
             .groom-name, .bride-name { font-size: 1.8rem; letter-spacing: 1px; }
-            .calligraphy-arabic.bismillah { font-size: 1.6rem; }
-            .calligraphy-arabic.barakkallahu { font-size: 1.4rem; }
+            .calligraphy-img.bismillah { max-width: 220px; }
+            .calligraphy-img.barakkallahu { max-width: 240px; }
             .invitation-image { max-width: 100%; }
             .card { padding: 20px 12px 18px; }
             .footer p { font-size: 0.7rem; }
@@ -393,10 +388,14 @@
     <!-- ===== MAIN CARD ===== -->
     <div class="card">
 
-        <!-- ISLAMIC CALLIGRAPHY - ARABIC ONLY -->
+        <!-- ISLAMIC CALLIGRAPHY PNG IMAGES -->
         <div class="calligraphy-container">
-            <div class="calligraphy-arabic bismillah">﷽</div>
-            <div class="calligraphy-arabic bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+            <!-- Bismillahir Rahmanir Raheem - PNG -->
+            <img 
+                src="https://xenocdn.xenocdn.workers.dev/79558c6a.jpeg" 
+                alt="Bismillahir Rahmanir Raheem" 
+                class="calligraphy-img bismillah"
+            />
         </div>
 
         <div class="divider-symbol">❧ ❧ ❧</div>
@@ -412,9 +411,13 @@
 
         <div class="divider-symbol">❧ ❧ ❧</div>
 
-        <!-- BARAKALLAHU - ARABIC ONLY -->
+        <!-- BARAKALLAHU - PNG -->
         <div class="calligraphy-container">
-            <div class="calligraphy-arabic barakkallahu">بَارَكَ اللَّهُ لَكُمَا</div>
+            <img 
+                src="https://xenocdn.xenocdn.workers.dev/79558c6a.jpeg" 
+                alt="Barakkallahu Lakuma" 
+                class="calligraphy-img barakkallahu"
+            />
         </div>
 
         <div class="divider-symbol">❧ ❧ ❧</div>
@@ -560,4 +563,4 @@
     </script>
 
 </body>
-        </html>
+    </html>
