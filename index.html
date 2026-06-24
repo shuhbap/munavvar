@@ -252,7 +252,7 @@
             font-weight: 600;
         }
 
-        /* ===== QR & MAP - WITH VISIBLE MAP ===== */
+        /* ===== QR & MAP - GROOM'S VENUE ONLY ===== */
         .qr-map-container {
             display: flex;
             flex-wrap: wrap;
@@ -296,7 +296,7 @@
         }
         .qr-box img:hover { transform: scale(1.03); }
 
-        /* ===== MAP - VISIBLE IMAGE ===== */
+        /* ===== MAP - GROOM'S VENUE ONLY ===== */
         .map-wrapper {
             width: 100%;
             max-width: 240px;
@@ -327,11 +327,21 @@
             background: white;
         }
 
+        .map-venue-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: #465940;
+            font-weight: 600;
+            letter-spacing: 1px;
+            opacity: 0.5;
+            margin-top: 6px;
+        }
+
         .map-buttons {
             display: flex;
             gap: 10px;
             justify-content: center;
-            margin-top: 10px;
+            margin-top: 8px;
             flex-wrap: wrap;
         }
 
@@ -621,7 +631,7 @@
             </div>
         </div>
 
-        <!-- ===== QR CODE & MAP - VISIBLE MAP ===== -->
+        <!-- ===== QR CODE & MAP - GROOM'S VENUE ONLY ===== -->
         <div class="qr-map-container animate-on-scroll">
 
             <!-- QR CODE -->
@@ -630,23 +640,26 @@
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=YourPlaceAddressHere" alt="Place QR Code" />
             </div>
 
-            <!-- MAP - VISIBLE IMAGE WITH BUTTONS -->
+            <!-- MAP - GROOM'S VENUE -->
             <div class="map-box">
                 <span class="label">◈ Location Map ◈</span>
 
                 <!-- Map Image - Click to open Google Maps -->
                 <div class="map-wrapper">
-                    <a href="https://www.google.com/maps?q=Vista+Convention+Centre+Perinthalmanna" target="_blank">
-                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=Vista+Convention+Centre+Perinthalmanna&zoom=14&size=400x200&markers=color:green%7CVista+Convention+Centre+Perinthalmanna&key=AIzaSyA1xT4p2B7fN4x5y6z7w8v9u" alt="Vista Convention Centre Map" />
+                    <a href="https://www.google.com/maps?q=Kunnathodi+Keezhmuri+Vengad+Malappuram" target="_blank">
+                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=Kunnathodi+Keezhmuri+Vengad+Malappuram&zoom=14&size=400x200&markers=color:green%7CKunnathodi+Keezhmuri+Vengad+Malappuram&key=AIzaSyA1xT4p2B7fN4x5y6z7w8v9u" alt="Groom's Venue Map" />
                     </a>
                 </div>
 
+                <!-- Venue Label -->
+                <div class="map-venue-label">✦ Groom's Venue ✦</div>
+
                 <!-- Google & Apple Map Buttons -->
                 <div class="map-buttons">
-                    <a href="https://www.google.com/maps?q=Vista+Convention+Centre+Perinthalmanna" target="_blank" class="map-btn google">
+                    <a href="https://www.google.com/maps?q=Kunnathodi+Keezhmuri+Vengad+Malappuram" target="_blank" class="map-btn google">
                         <span class="icon">◈</span> Google Maps
                     </a>
-                    <a href="https://maps.apple.com/?address=Valanchery%20Karekkad%20Road,%20Perinthalmanna,%20Malappuram%20679338,%20India&q=Vista%20Convention%20Centre" target="_blank" class="map-btn apple">
+                    <a href="https://maps.apple.com/?address=Kunnathodi%20Keezhmuri,%20Vengad,%20Malappuram,%20Kerala&q=Kunnathodi%20Keezhmuri" target="_blank" class="map-btn apple">
                         <span class="icon">◈</span> Apple Maps
                     </a>
                 </div>
