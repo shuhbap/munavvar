@@ -18,17 +18,90 @@
       padding: 30px 20px;
       position: relative;
       overflow-x: hidden;
+      transition: background 0.4s, color 0.3s;
     }
-    body::before {
-      content: '';
+    body.dark {
+      background: #1e1a16;
+      color: #e6ddd0;
+    }
+    body.dark .card {
+      background: rgba(30, 26, 22, 0.92);
+      border-color: rgba(200, 170, 140, 0.15);
+    }
+    body.dark .groom-name, body.dark .bride-name { color: #f0e6d8; }
+    body.dark .family-box .name { color: #f0e6d8; }
+    body.dark .family-box .address { color: #b8a99a; }
+    body.dark .detail-row .value { color: #e6ddd0; }
+    body.dark .detail-row .highlight-date { background: rgba(180, 140, 100, 0.15); border-color: rgba(180, 140, 100, 0.2); color: #f0e6d8; }
+    body.dark .venue-name { color: #c9b094; }
+    body.dark .sub-text { color: #c9b094; border-color: rgba(180, 140, 100, 0.15); }
+    body.dark .footer .main-line { color: #c9b094; }
+    body.dark .footer .sub-line { color: #b8a99a; }
+    body.dark .tab-btn { color: #c9b094; border-color: rgba(180, 140, 100, 0.25); }
+    body.dark .tab-btn.active { background: #9B7B5C; color: #1e1a16; border-color: #9B7B5C; }
+    body.dark .details { background: rgba(180, 140, 100, 0.05); border-color: rgba(180, 140, 100, 0.08); }
+    body.dark .family-details { background: rgba(180, 140, 100, 0.04); border-color: rgba(180, 140, 100, 0.08); }
+    body.dark .qr-map-container { background: rgba(180, 140, 100, 0.02); border-color: rgba(180, 140, 100, 0.06); }
+    body.dark .music-player { background: rgba(30, 26, 22, 0.92); border-color: rgba(180, 140, 100, 0.15); }
+    body.dark .music-player .player-btn { color: #c9b094; }
+    body.dark .music-player .player-btn:hover { color: #f0e6d8; }
+    body.dark .music-player .status-text { color: #c9b094; border-color: rgba(180, 140, 100, 0.08); }
+    body.dark .venue-map-card { background: #2a2520; border-color: rgba(180, 140, 100, 0.1); }
+    body.dark .venue-info h3 { color: #f0e6d8; }
+    body.dark .open-map-btn { color: #c9b094; border-color: #c9b094; background: transparent; }
+    body.dark .open-map-btn:hover { background: #9B7B5C; color: #1e1a16; }
+    body.dark .bg-ornament { color: rgba(180, 140, 100, 0.12); }
+    body.dark .calligraphy-svg text { fill: #c9b094 !important; }
+    body.dark .divider-symbol { color: #c9b094; }
+
+    /* loading screen */
+    .loading-screen {
       position: fixed;
       inset: 0;
-      background:
-        radial-gradient(ellipse at 20% 30%, rgba(180, 140, 100, 0.06) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 70%, rgba(180, 140, 100, 0.07) 0%, transparent 60%);
-      z-index: 0;
+      z-index: 9999;
+      background: #FAF7F0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+    body.dark .loading-screen {
+      background: #1e1a16;
+    }
+    .loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
       pointer-events: none;
     }
+    .loading-screen .initials {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: #3D2C1B;
+      letter-spacing: 12px;
+      margin-bottom: 20px;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    body.dark .loading-screen .initials { color: #f0e6d8; }
+    .loading-screen .loader-ring {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(180, 140, 100, 0.08);
+      border-top-color: #9B7B5C;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    body.dark .loading-screen .loader-ring {
+      border-color: rgba(180, 140, 100, 0.15);
+      border-top-color: #c9b094;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+
     .bg-ornament {
       position: fixed;
       font-size: 1.8rem;
@@ -36,6 +109,7 @@
       z-index: 0;
       pointer-events: none;
       font-family: serif;
+      transition: color 0.4s;
     }
     .bg-ornament.tl { top: 30px; left: 30px; }
     .bg-ornament.tr { top: 30px; right: 30px; }
@@ -56,7 +130,7 @@
       border: 1px solid rgba(200, 170, 140, 0.12);
       box-shadow: 0 30px 80px rgba(140, 110, 80, 0.06), 0 0 0 1px rgba(200, 170, 140, 0.05);
       margin-bottom: 30px;
-      transition: box-shadow 0.3s ease;
+      transition: background 0.4s, border-color 0.4s, box-shadow 0.3s;
     }
 
     /* ===== TAB BUTTONS ===== */
@@ -104,35 +178,35 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* ===== existing styles ===== */
     .calligraphy-container { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 6px; }
     .calligraphy-svg { max-width: 500px; width: 100%; height: auto; display: block; }
     .calligraphy-svg.bismillah { max-width: 420px; }
     .calligraphy-svg.barakkallahu { max-width: 520px; }
-    .divider-symbol { font-size: 1.2rem; color: #B28B6A; opacity: 0.15; letter-spacing: 14px; margin: 10px 0 16px; }
+    .calligraphy-svg text { transition: fill 0.4s; }
+    .divider-symbol { font-size: 1.2rem; color: #B28B6A; opacity: 0.15; letter-spacing: 14px; margin: 10px 0 16px; transition: color 0.4s; }
     .names-container { margin: 8px 0 4px; }
-    .groom-name, .bride-name { font-family: 'Cormorant Garamond', 'Playfair Display', serif; font-size: 3.8rem; font-weight: 700; color: #3D2C1B; letter-spacing: 6px; line-height: 1.1; }
+    .groom-name, .bride-name { font-family: 'Cormorant Garamond', 'Playfair Display', serif; font-size: 3.8rem; font-weight: 700; color: #3D2C1B; letter-spacing: 6px; line-height: 1.1; transition: color 0.4s; }
     .ampersand { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: #9B7B5C; opacity: 0.40; margin: 2px 18px; display: inline-block; font-weight: 300; letter-spacing: 4px; }
-    .sub-text { font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #9B7B5C; font-weight: 400; letter-spacing: 8px; text-transform: uppercase; margin: 8px 0 12px; border-top: 1px solid rgba(180, 140, 100, 0.08); border-bottom: 1px solid rgba(180, 140, 100, 0.08); padding: 10px 0; display: inline-block; }
-    .family-details { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 18px 0 12px; padding: 22px 24px; background: rgba(180, 140, 100, 0.03); border-radius: 24px; border: 1px solid rgba(180, 140, 100, 0.06); }
+    .sub-text { font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #9B7B5C; font-weight: 400; letter-spacing: 8px; text-transform: uppercase; margin: 8px 0 12px; border-top: 1px solid rgba(180, 140, 100, 0.08); border-bottom: 1px solid rgba(180, 140, 100, 0.08); padding: 10px 0; display: inline-block; transition: color 0.4s, border-color 0.4s; }
+    .family-details { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 18px 0 12px; padding: 22px 24px; background: rgba(180, 140, 100, 0.03); border-radius: 24px; border: 1px solid rgba(180, 140, 100, 0.06); transition: background 0.4s, border-color 0.4s; }
     .family-box { flex: 1; min-width: 160px; text-align: center; }
-    .family-box .name { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 600; color: #3D2C1B; letter-spacing: 1px; }
-    .family-box .address { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #7A5F3A; opacity: 0.7; line-height: 1.7; margin-top: 4px; letter-spacing: 0.5px; }
+    .family-box .name { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 600; color: #3D2C1B; letter-spacing: 1px; transition: color 0.4s; }
+    .family-box .address { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #7A5F3A; opacity: 0.7; line-height: 1.7; margin-top: 4px; letter-spacing: 0.5px; transition: color 0.4s; }
     .family-divider { width: 1px; background: rgba(180, 140, 100, 0.08); flex-shrink: 0; }
     .invitation-image { width: 100%; max-width: 540px; margin: 10px auto 18px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(180, 140, 100, 0.08); box-shadow: 0 8px 32px rgba(140, 110, 80, 0.06); }
     .invitation-image img { width: 100%; height: auto; display: block; }
     .video-container { width: 100%; max-width: 540px; margin: 12px auto 18px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(180, 140, 100, 0.08); box-shadow: 0 8px 32px rgba(140, 110, 80, 0.06); background: rgba(180, 140, 100, 0.02); }
     .video-container video { width: 100%; height: auto; display: block; }
     .video-label { font-family: 'Inter', sans-serif; font-size: 0.6rem; color: #9B7B5C; opacity: 0.35; letter-spacing: 4px; text-transform: uppercase; padding: 10px 0 6px; display: block; }
-    .details { background: rgba(180, 140, 100, 0.03); border-radius: 24px; padding: 24px 20px; margin: 16px 0 18px; border: 1px solid rgba(180, 140, 100, 0.06); }
+    .details { background: rgba(180, 140, 100, 0.03); border-radius: 24px; padding: 24px 20px; margin: 16px 0 18px; border: 1px solid rgba(180, 140, 100, 0.06); transition: background 0.4s, border-color 0.4s; }
     .detail-row { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 6px 0; font-size: 1rem; color: #3D2C1B; flex-wrap: wrap; }
     .detail-row .symbol { font-size: 0.9rem; min-width: 22px; color: #B28B6A; opacity: 0.25; font-weight: 300; }
     .detail-row .label { font-weight: 500; color: #9B7B5C; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2.5px; background: rgba(180, 140, 100, 0.05); padding: 2px 16px; border-radius: 30px; opacity: 0.7; }
-    .detail-row .value { font-weight: 500; color: #2A1F14; }
-    .detail-row .highlight-date { background: rgba(180, 140, 100, 0.08); padding: 2px 24px; border-radius: 60px; font-weight: 600; color: #3D2C1B; letter-spacing: 1px; border: 1px solid rgba(180, 140, 100, 0.06); box-shadow: 0 2px 12px rgba(140, 110, 80, 0.04); }
-    .venue-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #9B7B5C; font-weight: 600; letter-spacing: 1px; }
+    .detail-row .value { font-weight: 500; color: #2A1F14; transition: color 0.4s; }
+    .detail-row .highlight-date { background: rgba(180, 140, 100, 0.08); padding: 2px 24px; border-radius: 60px; font-weight: 600; color: #3D2C1B; letter-spacing: 1px; border: 1px solid rgba(180, 140, 100, 0.06); box-shadow: 0 2px 12px rgba(140, 110, 80, 0.04); transition: background 0.4s, border-color 0.4s, color 0.4s; }
+    .venue-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #9B7B5C; font-weight: 600; letter-spacing: 1px; transition: color 0.4s; }
 
-    /* ===== QR & MAP (compact) ===== */
+    /* ===== QR & MAP ===== */
     .qr-map-container {
       display: flex;
       flex-wrap: wrap;
@@ -143,13 +217,13 @@
       background: rgba(180, 140, 100, 0.02);
       border-radius: 24px;
       border: 1px solid rgba(180, 140, 100, 0.04);
+      transition: background 0.4s, border-color 0.4s;
     }
     .qr-box, .map-box { flex: 1; min-width: 120px; max-width: 180px; text-align: center; }
     .qr-box .label, .map-box .label { font-size: 0.5rem; text-transform: uppercase; letter-spacing: 2px; color: #9B7B5C; opacity: 0.30; margin-bottom: 6px; display: block; }
     .qr-box img { width: 100%; max-width: 120px; height: auto; border-radius: 16px; border: 1px solid rgba(180, 140, 100, 0.06); background: white; padding: 6px; transition: transform 0.3s ease; box-shadow: 0 4px 12px rgba(140, 110, 80, 0.02); }
     .qr-box img:hover { transform: scale(1.05); }
 
-    /* ===== COMPACT VENUE MAP CARDS ===== */
     .venue-map-card {
       width: 100%;
       max-width: 540px;
@@ -159,33 +233,13 @@
       overflow: hidden;
       border: 1px solid rgba(180, 140, 100, 0.10);
       box-shadow: 0 8px 28px rgba(140, 110, 80, 0.05);
-      transition: box-shadow 0.3s ease;
+      transition: background 0.4s, border-color 0.4s, box-shadow 0.3s;
     }
     .venue-map-card:hover { box-shadow: 0 12px 36px rgba(140, 110, 80, 0.08); }
-    .venue-map-card iframe {
-      width: 100%;
-      height: 200px;
-      border: none;
-    }
-    .venue-info {
-      padding: 18px 16px;
-      text-align: center;
-    }
-    .venue-title {
-      display: block;
-      font-size: 0.6rem;
-      letter-spacing: 5px;
-      color: #B28B6A;
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-    .venue-info h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #3D2C1B;
-      margin-bottom: 12px;
-    }
+    .venue-map-card iframe { width: 100%; height: 200px; border: none; }
+    .venue-info { padding: 18px 16px; text-align: center; }
+    .venue-title { display: block; font-size: 0.6rem; letter-spacing: 5px; color: #B28B6A; font-weight: 500; margin-bottom: 4px; }
+    .venue-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: #3D2C1B; margin-bottom: 12px; transition: color 0.4s; }
     .open-map-btn {
       display: inline-flex;
       align-items: center;
@@ -203,84 +257,102 @@
       background: white;
       transition: .3s ease;
     }
-    .open-map-btn:hover {
-      background: #9B7B5C;
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(155, 123, 92, 0.15);
-    }
-    @media(max-width:700px){
-      .venue-map-card iframe { height: 160px; }
-      .venue-info h3 { font-size: 1.2rem; }
-      .open-map-btn { padding: 10px 14px; font-size: 0.7rem; max-width: 220px; }
-    }
+    .open-map-btn:hover { background: #9B7B5C; color: white; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(155, 123, 92, 0.15); }
 
     .footer { margin-top: 16px; padding-top: 20px; border-top: 1px solid rgba(180, 140, 100, 0.06); display: flex; flex-direction: column; align-items: center; gap: 6px; }
-    .footer .main-line { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; color: #9B7B5C; font-weight: 400; letter-spacing: 4px; opacity: 0.30; }
+    .footer .main-line { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; color: #9B7B5C; font-weight: 400; letter-spacing: 4px; opacity: 0.30; transition: color 0.4s; }
     .footer .divider-line { font-size: 0.6rem; color: #B28B6A; opacity: 0.08; letter-spacing: 8px; }
-    .footer .sub-line { font-family: 'Inter', sans-serif; font-size: 0.45rem; color: #B28B6A; letter-spacing: 3px; opacity: 0.20; text-transform: uppercase; }
+    .footer .sub-line { font-family: 'Inter', sans-serif; font-size: 0.45rem; color: #B28B6A; letter-spacing: 3px; opacity: 0.20; text-transform: uppercase; transition: color 0.4s; }
     .footer .sub-line span { margin: 0 6px; }
 
-    /* ===== FLOATING MUSIC PLAYER – refined, symbol only ===== */
-    .music-player {
+    /* ===== FLOATING CONTROL PANEL ===== */
+    .control-panel {
       position: fixed;
       bottom: 32px;
       right: 32px;
       z-index: 200;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+    .control-toggle {
       background: rgba(255, 252, 245, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(180, 140, 100, 0.12);
+      border-radius: 60px;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 12px 48px rgba(140, 110, 80, 0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .control-toggle:hover { transform: scale(1.02); border-color: rgba(180, 140, 100, 0.25); }
+    .control-toggle .toggle-icon {
+      font-size: 1.3rem;
+      color: #7A5F3A;
+      opacity: 0.7;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      transition: opacity 0.2s;
+    }
+    .control-toggle .toggle-icon:hover { opacity: 1; }
+    body.dark .control-toggle { background: rgba(30, 26, 22, 0.92); border-color: rgba(180, 140, 100, 0.15); }
+    body.dark .control-toggle .toggle-icon { color: #c9b094; }
+
+    .control-menu {
+      background: rgba(255, 252, 245, 0.94);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(180, 140, 100, 0.12);
-      border-radius: 60px;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 12px 48px rgba(140, 110, 80, 0.08);
+      border-radius: 28px;
+      padding: 18px 22px;
+      display: none;
+      flex-direction: column;
+      gap: 14px;
+      min-width: 200px;
+      box-shadow: 0 16px 56px rgba(140, 110, 80, 0.10);
       transition: all 0.3s ease;
     }
-    .music-player:hover {
-      transform: scale(1.02);
-      border-color: rgba(180, 140, 100, 0.25);
-      box-shadow: 0 16px 56px rgba(140, 110, 80, 0.12);
+    .control-menu.open { display: flex; }
+    body.dark .control-menu { background: rgba(30, 26, 22, 0.94); border-color: rgba(180, 140, 100, 0.15); }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #3D2C1B;
+      letter-spacing: 0.5px;
+      padding: 4px 0;
     }
-    .music-player .player-btn {
+    body.dark .menu-item { color: #e6ddd0; }
+    .menu-item .label { opacity: 0.6; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; }
+    .menu-item .controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .menu-item .controls button {
       background: none;
       border: none;
-      color: #7A5F3A;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       cursor: pointer;
-      padding: 4px 6px;
+      color: #7A5F3A;
+      padding: 2px 6px;
+      border-radius: 30px;
       transition: 0.2s;
+      font-family: 'Inter', sans-serif;
       opacity: 0.6;
-      font-family: 'Inter', sans-serif;
-      line-height: 1;
-      font-weight: 300;
-      letter-spacing: 0;
     }
-    .music-player .player-btn:hover {
-      opacity: 1;
-      color: #3D2C1B;
-    }
-    .music-player .status-text {
-      font-size: 0.8rem;
-      color: #9B7B5C;
-      font-weight: 300;
-      letter-spacing: 2px;
-      opacity: 0.5;
-      min-width: 32px;
-      text-align: center;
-      background: rgba(180, 140, 100, 0.04);
-      padding: 2px 10px;
-      border-radius: 40px;
-      border: 1px solid rgba(180, 140, 100, 0.04);
-      font-family: 'Inter', sans-serif;
-    }
-    .music-player .divider {
-      width: 1px;
-      height: 24px;
-      background: rgba(180, 140, 100, 0.08);
-    }
+    .menu-item .controls button:hover { opacity: 1; background: rgba(180, 140, 100, 0.06); }
+    body.dark .menu-item .controls button { color: #c9b094; }
+    .menu-divider { height: 1px; background: rgba(180, 140, 100, 0.06); margin: 2px 0; }
 
     .animate-on-scroll { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(0.20, 0.98, 0.35, 1.00), transform 0.9s cubic-bezier(0.20, 0.98, 0.35, 1.00); }
     .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
@@ -296,9 +368,11 @@
       .family-box .name { font-size: 1.6rem; }
       .qr-map-container { flex-direction: column; align-items: center; }
       .qr-box, .map-box { max-width: 160px; }
-      .music-player { bottom: 20px; right: 20px; padding: 8px 16px; gap: 8px; }
-      .music-player .status-text { display: none; }
+      .control-panel { bottom: 20px; right: 20px; }
+      .control-toggle { padding: 8px 14px; gap: 10px; }
+      .control-menu { min-width: 170px; padding: 14px 16px; }
       .tab-btn { padding: 10px 24px; font-size: 0.75rem; }
+      .venue-map-card iframe { height: 160px; }
     }
     @media (max-width: 400px) {
       .groom-name, .bride-name { font-size: 2.2rem; }
@@ -306,12 +380,16 @@
       .calligraphy-svg.bismillah { max-width: 250px; }
       .calligraphy-svg.barakkallahu { max-width: 280px; }
       .card { padding: 20px 12px 16px; border-radius: 28px; }
-      .venue-map-card iframe { height: 140px; }
-      .open-map-btn { font-size: 0.6rem; padding: 8px 12px; }
     }
   </style>
 </head>
 <body>
+  <!-- LOADING SCREEN -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="initials">M & L</div>
+    <div class="loader-ring"></div>
+  </div>
+
   <div class="bg-ornament tl">❧</div>
   <div class="bg-ornament tr">❧</div>
   <div class="bg-ornament bl">❧</div>
@@ -384,7 +462,7 @@
 
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- details -->
+    <!-- details — date localized to standard format -->
     <div class="details animate-on-scroll">
       <div class="detail-row">
         <span class="symbol">◈</span>
@@ -407,27 +485,18 @@
       </div>
     </div>
 
-    <!-- QR + compact maps -->
+    <!-- QR + map -->
     <div class="qr-map-container animate-on-scroll">
       <div class="qr-box">
         <span class="label">◈ Place QR ◈</span>
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=YourPlaceAddressHere" alt="Place QR" />
       </div>
-      <!-- Wedding Hall -->
       <div class="venue-map-card animate-on-scroll" style="max-width: 300px; margin: 0;">
-        <iframe
-          src="https://www.google.com/maps?q=Vista+Convention+Center&output=embed"
-          loading="lazy"
-          allowfullscreen>
-        </iframe>
+        <iframe src="https://www.google.com/maps?q=Vista+Convention+Center&output=embed" loading="lazy" allowfullscreen></iframe>
         <div class="venue-info" style="padding: 12px 10px;">
           <span class="venue-title">WEDDING VENUE</span>
           <h3 style="font-size: 1.1rem;">VISTA CONVENTION CENTER</h3>
-          <a href="https://maps.apple/p/_Mj7._fIunbWe4"
-             target="_blank"
-             class="open-map-btn" style="max-width: 180px; padding: 8px 12px; font-size: 0.7rem;">
-            📍 Open in Maps
-          </a>
+          <a href="https://maps.apple/p/_Mj7._fIunbWe4" target="_blank" class="open-map-btn" style="max-width: 180px; padding: 8px 12px; font-size: 0.7rem;">📍 Open in Maps</a>
         </div>
       </div>
     </div>
@@ -440,14 +509,43 @@
     </div>
   </div>
 
-  <!-- ===== MUSIC PLAYER — symbol only, no emoji ===== -->
-  <div class="music-player" id="musicPlayer">
-    <button class="player-btn" id="playBtn" title="Play">▶</button>
-    <button class="player-btn" id="pauseBtn" title="Pause">⏸</button>
-    <div class="divider"></div>
-    <button class="player-btn" id="downloadBtn" title="Download">⬇</button>
-    <div class="divider"></div>
-    <span class="status-text" id="musicStatus">♫</span>
+  <!-- ===== FLOATING CONTROL PANEL ===== -->
+  <div class="control-panel" id="controlPanel">
+    <div class="control-toggle" id="toggleMenu">
+      <span class="toggle-icon">✕</span>
+      <span class="toggle-icon" style="font-size:0.8rem; opacity:0.4;">⚙</span>
+    </div>
+    <div class="control-menu" id="controlMenu">
+      <!-- Music -->
+      <div class="menu-item">
+        <span class="label">♫ Music</span>
+        <div class="controls">
+          <button id="playBtn" title="Play">▶</button>
+          <button id="pauseBtn" title="Pause">⏸</button>
+          <button id="downloadBtn" title="Download">⬇</button>
+          <span id="musicStatus" style="font-size:0.7rem; opacity:0.5; min-width:24px;">♩</span>
+        </div>
+      </div>
+      <div class="menu-divider"></div>
+      <!-- Dark / Light -->
+      <div class="menu-item">
+        <span class="label">☯ Theme</span>
+        <div class="controls">
+          <button id="lightThemeBtn" title="Light">☀</button>
+          <button id="darkThemeBtn" title="Dark">☽</button>
+        </div>
+      </div>
+      <div class="menu-divider"></div>
+      <!-- Language (placeholder) -->
+      <div class="menu-item">
+        <span class="label">🌐 Language</span>
+        <div class="controls">
+          <button id="langEn" style="font-size:0.7rem;">EN</button>
+          <button id="langAr" style="font-size:0.7rem;">AR</button>
+          <button id="langMl" style="font-size:0.7rem;">ML</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <audio id="bgMusic" loop preload="auto">
@@ -456,13 +554,19 @@
   </audio>
 
   <script>
+    // ===== LOADING SCREEN =====
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loadingScreen').classList.add('hidden');
+      }, 1200);
+    });
+
     // ===== TAB SWITCH =====
     const tabs = document.querySelectorAll('.tab-btn');
     const contents = {
       letter: document.getElementById('tab-letter'),
       reel: document.getElementById('tab-reel')
     };
-
     tabs.forEach(btn => {
       btn.addEventListener('click', function() {
         tabs.forEach(b => b.classList.remove('active'));
@@ -474,7 +578,7 @@
       });
     });
 
-    // ===== MUSIC PLAYER (symbol only) =====
+    // ===== MUSIC PLAYER (from panel) =====
     const audio = document.getElementById('bgMusic');
     const playBtn = document.getElementById('playBtn');
     const pauseBtn = document.getElementById('pauseBtn');
@@ -513,8 +617,34 @@
       tryAutoPlay();
       document.removeEventListener('click', initAudio);
     }, { once: true });
-    window.addEventListener('load', () => setTimeout(tryAutoPlay, 600));
+    window.addEventListener('load', () => setTimeout(tryAutoPlay, 800));
     updateUI();
+
+    // ===== CONTROL PANEL TOGGLE =====
+    const toggleBtn = document.getElementById('toggleMenu');
+    const menu = document.getElementById('controlMenu');
+    let menuOpen = false;
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menuOpen = !menuOpen;
+      menu.classList.toggle('open', menuOpen);
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.control-panel')) {
+        menu.classList.remove('open');
+        menuOpen = false;
+      }
+    });
+
+    // ===== THEME TOGGLE =====
+    const body = document.body;
+    document.getElementById('lightThemeBtn').addEventListener('click', () => body.classList.remove('dark'));
+    document.getElementById('darkThemeBtn').addEventListener('click', () => body.classList.add('dark'));
+
+    // ===== LANGUAGE (placeholder) =====
+    document.getElementById('langEn').addEventListener('click', () => alert('English selected (demo)'));
+    document.getElementById('langAr').addEventListener('click', () => alert('العربية selected (demo)'));
+    document.getElementById('langMl').addEventListener('click', () => alert('മലയാളം selected (demo)'));
 
     // ===== SCROLL ANIMATION =====
     const animElements = document.querySelectorAll('.animate-on-scroll');
@@ -529,4 +659,4 @@
     });
   </script>
 </body>
-        </html>
+  </html>
