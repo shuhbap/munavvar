@@ -122,7 +122,6 @@
       transition: background 0.4s, border-color 0.4s, box-shadow 0.3s;
     }
 
-    /* ===== TAB BUTTONS ===== */
     .tab-bar {
       display: flex;
       justify-content: center;
@@ -229,9 +228,9 @@
     }
     .control-toggle:hover { transform: scale(1.04); border-color: rgba(180, 140, 100, 0.30); box-shadow: 0 16px 56px rgba(140, 110, 80, 0.12); }
     .control-toggle .toggle-icon {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       color: #7A5F3A;
-      opacity: 0.8;
+      opacity: 0.85;
       font-family: 'Inter', sans-serif;
       font-weight: 300;
       transition: opacity 0.2s;
@@ -271,7 +270,7 @@
     .menu-item .controls button {
       background: none;
       border: none;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       cursor: pointer;
       color: #7A5F3A;
       padding: 4px 8px;
@@ -283,6 +282,33 @@
     .menu-item .controls button:hover { opacity: 1; background: rgba(180,140,100,0.06); }
     .menu-item .controls .active-lang { opacity: 1; background: rgba(180,140,100,0.10); font-weight: 600; }
     .menu-divider { height: 1px; background: rgba(180,140,100,0.06); margin: 2px 0; }
+
+    /* ===== MUSIC PLAYER SYMBOLS (ELEGANT) ===== */
+    .music-symbols {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .music-symbols .sym-btn {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #7A5F3A;
+      padding: 2px 6px;
+      transition: 0.2s;
+      font-family: 'Georgia', serif;
+      opacity: 0.5;
+      line-height: 1;
+    }
+    .music-symbols .sym-btn:hover { opacity: 1; transform: scale(1.1); }
+    .music-symbols .sym-btn.active { opacity: 1; }
+    .music-symbols .status-dot {
+      font-size: 0.9rem;
+      opacity: 0.4;
+      min-width: 20px;
+      text-align: center;
+    }
 
     .animate-on-scroll { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(0.20,0.98,0.35,1.00), transform 0.9s cubic-bezier(0.20,0.98,0.35,1.00); }
     .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
@@ -300,7 +326,7 @@
       .qr-box, .map-box { max-width: 160px; }
       .control-panel { bottom: 20px; right: 20px; }
       .control-toggle { padding: 12px 16px; min-width: 48px; min-height: 48px; }
-      .control-toggle .toggle-icon { font-size: 1.4rem; }
+      .control-toggle .toggle-icon { font-size: 1.5rem; }
       .control-menu { min-width: 180px; padding: 16px 18px; }
       .tab-btn { padding: 10px 24px; font-size: 0.75rem; }
       .venue-map-card iframe { height: 160px; }
@@ -369,8 +395,8 @@
 
     <!-- TAB BUTTONS -->
     <div class="tab-bar animate-on-scroll">
-      <button class="tab-btn active" data-tab="letter" data-i18n="tabLetter">📄 Letter</button>
-      <button class="tab-btn" data-tab="reel" data-i18n="tabReel">🎬 Reel</button>
+      <button class="tab-btn active" data-tab="letter" data-i18n="tabLetter">Letter</button>
+      <button class="tab-btn" data-tab="reel" data-i18n="tabReel">Reel</button>
     </div>
 
     <!-- TAB CONTENT: LETTER -->
@@ -383,7 +409,7 @@
     <!-- TAB CONTENT: REEL -->
     <div id="tab-reel" class="tab-content">
       <div class="video-container animate-on-scroll">
-        <span class="video-label" data-i18n="saveDate">◈ Save The Date ◈</span>
+        <span class="video-label" data-i18n="saveDate">Save The Date</span>
         <video controls preload="metadata">
           <source src="https://xenocdn.xenocdn.workers.dev/e983ffe9.mp4" type="video/mp4" />
           Your browser does not support video.
@@ -419,7 +445,7 @@
     <!-- QR + map -->
     <div class="qr-map-container animate-on-scroll">
       <div class="qr-box">
-        <span class="label" data-i18n="qrLabel">◈ Place QR ◈</span>
+        <span class="label" data-i18n="qrLabel">Place QR</span>
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=YourPlaceAddressHere" alt="Place QR" />
       </div>
       <div class="venue-map-card animate-on-scroll" style="max-width: 300px; margin: 0;">
@@ -427,7 +453,7 @@
         <div class="venue-info" style="padding: 12px 10px;">
           <span class="venue-title" data-i18n="venueLabel">WEDDING VENUE</span>
           <h3 style="font-size:1.1rem;" data-i18n="venueShort">VISTA CONVENTION CENTER</h3>
-          <a href="https://maps.apple/p/_Mj7._fIunbWe4" target="_blank" class="open-map-btn" style="max-width:180px; padding:8px 12px; font-size:0.7rem;" data-i18n="openMap">📍 Open in Maps</a>
+          <a href="https://maps.apple/p/_Mj7._fIunbWe4" target="_blank" class="open-map-btn" style="max-width:180px; padding:8px 12px; font-size:0.7rem;" data-i18n="openMap">Open in Maps</a>
         </div>
       </div>
     </div>
@@ -448,18 +474,18 @@
     <div class="control-menu" id="controlMenu">
       <!-- Music -->
       <div class="menu-item">
-        <span class="label" data-i18n="musicLabel">♫ Music</span>
-        <div class="controls">
-          <button id="playBtn" title="Play">▶</button>
-          <button id="pauseBtn" title="Pause">⏸</button>
-          <button id="downloadBtn" title="Download">⬇</button>
-          <span id="musicStatus" style="font-size:0.7rem; opacity:0.5; min-width:24px;">♩</span>
+        <span class="label" data-i18n="musicLabel">Music</span>
+        <div class="controls music-symbols">
+          <button class="sym-btn" id="playBtn" title="Play">♩</button>
+          <button class="sym-btn" id="pauseBtn" title="Pause">♫</button>
+          <button class="sym-btn" id="downloadBtn" title="Download">⬇</button>
+          <span class="status-dot" id="musicStatus">◉</span>
         </div>
       </div>
       <div class="menu-divider"></div>
       <!-- Theme -->
       <div class="menu-item">
-        <span class="label" data-i18n="themeLabel">☯ Theme</span>
+        <span class="label" data-i18n="themeLabel">Theme</span>
         <div class="controls">
           <button id="lightThemeBtn" title="Light">☀</button>
           <button id="darkThemeBtn" title="Dark">☽</button>
@@ -468,7 +494,7 @@
       <div class="menu-divider"></div>
       <!-- Language -->
       <div class="menu-item">
-        <span class="label" data-i18n="langLabel">🌐 Language</span>
+        <span class="label" data-i18n="langLabel">Language</span>
         <div class="controls">
           <button id="langEn" class="active-lang" style="font-size:0.7rem;">EN</button>
           <button id="langAr" style="font-size:0.7rem;">AR</button>
@@ -507,13 +533,23 @@
     const downloadBtn = document.getElementById('downloadBtn');
     const statusEl = document.getElementById('musicStatus');
     let isPlaying = false;
+    
     function updateUI() {
-      statusEl.textContent = isPlaying ? '♫' : '♩';
-      playBtn.style.opacity = isPlaying ? '0.4' : '1';
-      pauseBtn.style.opacity = isPlaying ? '1' : '0.4';
+      statusEl.textContent = isPlaying ? '◉' : '○';
+      playBtn.style.opacity = isPlaying ? '0.3' : '1';
+      pauseBtn.style.opacity = isPlaying ? '1' : '0.3';
     }
-    playBtn.addEventListener('click', (e) => { e.stopPropagation(); audio.play().then(() => { isPlaying = true; updateUI(); }).catch(() => {}); });
-    pauseBtn.addEventListener('click', (e) => { e.stopPropagation(); audio.pause(); isPlaying = false; updateUI(); });
+    
+    playBtn.addEventListener('click', (e) => { 
+      e.stopPropagation(); 
+      audio.play().then(() => { isPlaying = true; updateUI(); }).catch(() => {}); 
+    });
+    pauseBtn.addEventListener('click', (e) => { 
+      e.stopPropagation(); 
+      audio.pause(); 
+      isPlaying = false; 
+      updateUI(); 
+    });
     downloadBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       const link = document.createElement('a');
@@ -521,8 +557,14 @@
       link.download = 'nasheed.mp3';
       link.click();
     });
-    function tryAutoPlay() { audio.play().then(() => { isPlaying = true; updateUI(); }).catch(() => { isPlaying = false; updateUI(); }); }
-    document.addEventListener('click', function initAudio() { tryAutoPlay(); document.removeEventListener('click', initAudio); }, { once: true });
+    
+    function tryAutoPlay() { 
+      audio.play().then(() => { isPlaying = true; updateUI(); }).catch(() => { isPlaying = false; updateUI(); }); 
+    }
+    document.addEventListener('click', function initAudio() { 
+      tryAutoPlay(); 
+      document.removeEventListener('click', initAudio); 
+    }, { once: true });
     window.addEventListener('load', () => setTimeout(tryAutoPlay, 800));
     updateUI();
 
@@ -544,7 +586,7 @@
     document.getElementById('lightThemeBtn').addEventListener('click', () => body.classList.remove('dark'));
     document.getElementById('darkThemeBtn').addEventListener('click', () => body.classList.add('dark'));
 
-    // ===== LANGUAGE (FULLY WORKING) =====
+    // ===== LANGUAGE =====
     const translations = {
       en: {
         groom: 'MUNAWIR', bride: 'LABEEBA',
@@ -553,19 +595,19 @@
         groomAddr: 'S/o Musthafa Kt & Jameela<br />Kunnathodi (H) Keezhmuri, Po, Vengad<br />Malappuram, Kerala',
         brideFull: 'Labeeba Zahrawiyya',
         brideAddr: 'D/o Mujeeb & Fousiya Mujeeb<br />Valayath Pulakkal, Kondoorkkara<br />Po, Kizhayur, Pattambi, Palakkad',
-        tabLetter: '📄 Letter', tabReel: '🎬 Reel',
-        saveDate: '◈ Save The Date ◈',
+        tabLetter: 'Letter', tabReel: 'Reel',
+        saveDate: 'Save The Date',
         labelDate: 'Date', date: 'Sunday, 19 July 2026',
         labelTime: 'Time', time: '6:30 PM onwards',
         labelVenue: 'Venue', venue: 'VISTA CONVENTION CENTER',
         venueLoc: 'Vengad, Kerala',
-        qrLabel: '◈ Place QR ◈',
+        qrLabel: 'Place QR',
         venueLabel: 'WEDDING VENUE',
         venueShort: 'VISTA CONVENTION CENTER',
-        openMap: '📍 Open in Maps',
+        openMap: 'Open in Maps',
         footerMain: 'Complements Family & Friends',
         footerSub: 'With Blessings & Prayers',
-        musicLabel: '♫ Music', themeLabel: '☯ Theme', langLabel: '🌐 Language'
+        musicLabel: 'Music', themeLabel: 'Theme', langLabel: 'Language'
       },
       ar: {
         groom: 'مُنَوِّر', bride: 'لَبِيْبَة',
@@ -574,19 +616,19 @@
         groomAddr: 'ابن مصطفى ك ت و جميلة<br />كوناثودي (ح) كيزحموري، بو، فينجاد<br />مالابورام، كيرلا',
         brideFull: 'لبيبة زهراوية',
         brideAddr: 'ابنة مجيب و فوزية مجيب<br />ولاياة بولاكال، كوندوركارا<br />بو، كيزهايور، باتامبي، بالاكاد',
-        tabLetter: '📄 رسالة', tabReel: '🎬 فيلم',
-        saveDate: '◈ احفظ التاريخ ◈',
+        tabLetter: 'رسالة', tabReel: 'فيلم',
+        saveDate: 'احفظ التاريخ',
         labelDate: 'التاريخ', date: 'الأحد، 19 يوليو 2026',
         labelTime: 'الوقت', time: '6:30 مساءً فصاعدًا',
         labelVenue: 'المكان', venue: 'مركز فيستا للمؤتمرات',
         venueLoc: 'فينجاد، كيرلا',
-        qrLabel: '◈ رمز المكان ◈',
+        qrLabel: 'رمز المكان',
         venueLabel: 'مكان الزفاف',
         venueShort: 'مركز فيستا للمؤتمرات',
-        openMap: '📍 فتح في الخرائط',
+        openMap: 'فتح في الخرائط',
         footerMain: 'تحيات العائلة والأصدقاء',
         footerSub: 'بالبركات والدعوات',
-        musicLabel: '♫ موسيقى', themeLabel: '☯ المظهر', langLabel: '🌐 اللغة'
+        musicLabel: 'موسيقى', themeLabel: 'المظهر', langLabel: 'اللغة'
       },
       ml: {
         groom: 'മുനവ്വിർ', bride: 'ലബീബ',
@@ -595,24 +637,23 @@
         groomAddr: 'മുസ്തഫ കെ.ടി & ജമീലയുടെ മകൻ<br />കുന്നത്തൊടി (എച്ച്) കീഴ്മുറി, പോ, വേങ്ങാട്<br />മലപ്പുറം, കേരളം',
         brideFull: 'ലബീബ സഹറവിയ്യ',
         brideAddr: 'മുജീബ് & ഫൗസിയ മുജീബിൻ്റെ മകൾ<br />വലയത്ത് പുലക്കൽ, കൊണ്ടൂർക്കര<br />പോ, കിഴയൂർ, പട്ടാമ്പി, പാലക്കാട്',
-        tabLetter: '📄 കത്ത്', tabReel: '🎬 റീൽ',
-        saveDate: '◈ തീയതി സൂക്ഷിക്കുക ◈',
+        tabLetter: 'കത്ത്', tabReel: 'റീൽ',
+        saveDate: 'തീയതി സൂക്ഷിക്കുക',
         labelDate: 'തീയതി', date: 'ഞായർ, 19 ജൂലൈ 2026',
         labelTime: 'സമയം', time: 'വൈകുന്നേരം 6:30 മുതൽ',
         labelVenue: 'വേദി', venue: 'വിസ്റ്റ കൺവെൻഷൻ സെന്റർ',
         venueLoc: 'വേങ്ങാട്, കേരളം',
-        qrLabel: '◈ സ്ഥല QR ◈',
+        qrLabel: 'സ്ഥല QR',
         venueLabel: 'വിവാഹ വേദി',
         venueShort: 'വിസ്റ്റ കൺവെൻഷൻ സെന്റർ',
-        openMap: '📍 മാപ്പിൽ തുറക്കുക',
+        openMap: 'മാപ്പിൽ തുറക്കുക',
         footerMain: 'കുടുംബത്തിന്റെയും സുഹൃത്തുക്കളുടെയും ആശംസകൾ',
         footerSub: 'അനുഗ്രഹങ്ങളോടും പ്രാർത്ഥനകളോടും',
-        musicLabel: '♫ സംഗീതം', themeLabel: '☯ തീം', langLabel: '🌐 ഭാഷ'
+        musicLabel: 'സംഗീതം', themeLabel: 'തീം', langLabel: 'ഭാഷ'
       }
     };
 
     let currentLang = 'en';
-
     function applyLanguage(lang) {
       currentLang = lang;
       const t = translations[lang];
@@ -623,7 +664,6 @@
           else el.innerHTML = t[key];
         }
       });
-      // update active lang button
       document.querySelectorAll('#langEn, #langAr, #langMl').forEach(btn => btn.classList.remove('active-lang'));
       if (lang === 'en') document.getElementById('langEn').classList.add('active-lang');
       else if (lang === 'ar') document.getElementById('langAr').classList.add('active-lang');
