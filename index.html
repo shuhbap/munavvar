@@ -42,10 +42,6 @@
     body.dark .details { background: rgba(180, 140, 100, 0.05); border-color: rgba(180, 140, 100, 0.08); }
     body.dark .family-details { background: rgba(180, 140, 100, 0.04); border-color: rgba(180, 140, 100, 0.08); }
     body.dark .qr-map-container { background: rgba(180, 140, 100, 0.02); border-color: rgba(180, 140, 100, 0.06); }
-    body.dark .music-player { background: rgba(30, 26, 22, 0.92); border-color: rgba(180, 140, 100, 0.15); }
-    body.dark .music-player .player-btn { color: #c9b094; }
-    body.dark .music-player .player-btn:hover { color: #f0e6d8; }
-    body.dark .music-player .status-text { color: #c9b094; border-color: rgba(180, 140, 100, 0.08); }
     body.dark .venue-map-card { background: #2a2520; border-color: rgba(180, 140, 100, 0.1); }
     body.dark .venue-info h3 { color: #f0e6d8; }
     body.dark .open-map-btn { color: #c9b094; border-color: #c9b094; background: transparent; }
@@ -53,6 +49,11 @@
     body.dark .bg-ornament { color: rgba(180, 140, 100, 0.12); }
     body.dark .calligraphy-svg text { fill: #c9b094 !important; }
     body.dark .divider-symbol { color: #c9b094; }
+    body.dark .control-toggle { background: rgba(30, 26, 22, 0.92); border-color: rgba(180, 140, 100, 0.15); }
+    body.dark .control-toggle .toggle-icon { color: #c9b094; }
+    body.dark .control-menu { background: rgba(30, 26, 22, 0.94); border-color: rgba(180, 140, 100, 0.15); }
+    body.dark .menu-item { color: #e6ddd0; }
+    body.dark .menu-item .controls button { color: #c9b094; }
 
     /* loading screen */
     .loading-screen {
@@ -66,14 +67,8 @@
       justify-content: center;
       transition: opacity 0.8s ease, visibility 0.8s ease;
     }
-    body.dark .loading-screen {
-      background: #1e1a16;
-    }
-    .loading-screen.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
+    body.dark .loading-screen { background: #1e1a16; }
+    .loading-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
     .loading-screen .initials {
       font-family: 'Cormorant Garamond', serif;
       font-size: 4.5rem;
@@ -92,15 +87,9 @@
       border-radius: 50%;
       animation: spin 0.9s linear infinite;
     }
-    body.dark .loading-screen .loader-ring {
-      border-color: rgba(180, 140, 100, 0.15);
-      border-top-color: #c9b094;
-    }
+    body.dark .loading-screen .loader-ring { border-color: rgba(180, 140, 100, 0.15); border-top-color: #c9b094; }
     @keyframes spin { to { transform: rotate(360deg); } }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.6; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.02); }
-    }
+    @keyframes pulse { 0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.02)} }
 
     .bg-ornament {
       position: fixed;
@@ -119,13 +108,13 @@
     .card {
       position: relative;
       z-index: 1;
-      max-width: 820px;
+      max-width: 860px;
       width: 100%;
       background: rgba(255, 252, 245, 0.88);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border-radius: 48px;
-      padding: 44px 38px 32px;
+      padding: 48px 40px 36px;
       text-align: center;
       border: 1px solid rgba(200, 170, 140, 0.12);
       box-shadow: 0 30px 80px rgba(140, 110, 80, 0.06), 0 0 0 1px rgba(200, 170, 140, 0.05);
@@ -155,28 +144,11 @@
       background: rgba(180, 140, 100, 0.02);
       box-shadow: 0 2px 10px rgba(140, 110, 80, 0.02);
     }
-    .tab-btn.active {
-      background: #9B7B5C;
-      color: #FAF7F0;
-      border-color: #9B7B5C;
-      box-shadow: 0 8px 24px rgba(155, 123, 92, 0.20);
-    }
-    .tab-btn:hover:not(.active) {
-      background: rgba(180, 140, 100, 0.06);
-      border-color: rgba(180, 140, 100, 0.35);
-      transform: translateY(-1px);
-    }
-    .tab-content {
-      display: none;
-      animation: fadeUp 0.5s ease;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    @keyframes fadeUp {
-      0% { opacity: 0.4; transform: translateY(12px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+    .tab-btn.active { background: #9B7B5C; color: #FAF7F0; border-color: #9B7B5C; box-shadow: 0 8px 24px rgba(155,123,92,0.20); }
+    .tab-btn:hover:not(.active) { background: rgba(180,140,100,0.06); border-color: rgba(180,140,100,0.35); transform: translateY(-1px); }
+    .tab-content { display: none; animation: fadeUp 0.5s ease; }
+    .tab-content.active { display: block; }
+    @keyframes fadeUp { 0%{opacity:.4;transform:translateY(12px)}100%{opacity:1;transform:translateY(0)} }
 
     .calligraphy-container { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 6px; }
     .calligraphy-svg { max-width: 500px; width: 100%; height: auto; display: block; }
@@ -185,84 +157,46 @@
     .calligraphy-svg text { transition: fill 0.4s; }
     .divider-symbol { font-size: 1.2rem; color: #B28B6A; opacity: 0.15; letter-spacing: 14px; margin: 10px 0 16px; transition: color 0.4s; }
     .names-container { margin: 8px 0 4px; }
-    .groom-name, .bride-name { font-family: 'Cormorant Garamond', 'Playfair Display', serif; font-size: 3.8rem; font-weight: 700; color: #3D2C1B; letter-spacing: 6px; line-height: 1.1; transition: color 0.4s; }
-    .ampersand { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: #9B7B5C; opacity: 0.40; margin: 2px 18px; display: inline-block; font-weight: 300; letter-spacing: 4px; }
-    .sub-text { font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #9B7B5C; font-weight: 400; letter-spacing: 8px; text-transform: uppercase; margin: 8px 0 12px; border-top: 1px solid rgba(180, 140, 100, 0.08); border-bottom: 1px solid rgba(180, 140, 100, 0.08); padding: 10px 0; display: inline-block; transition: color 0.4s, border-color 0.4s; }
-    .family-details { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 18px 0 12px; padding: 22px 24px; background: rgba(180, 140, 100, 0.03); border-radius: 24px; border: 1px solid rgba(180, 140, 100, 0.06); transition: background 0.4s, border-color 0.4s; }
+    .groom-name, .bride-name { font-family: 'Cormorant Garamond','Playfair Display',serif; font-size: 3.8rem; font-weight: 700; color: #3D2C1B; letter-spacing: 6px; line-height: 1.1; transition: color 0.4s; }
+    .ampersand { font-family: 'Cormorant Garamond',serif; font-size: 2.8rem; color: #9B7B5C; opacity: 0.40; margin: 2px 18px; display: inline-block; font-weight: 300; letter-spacing: 4px; }
+    .sub-text { font-family: 'Inter',sans-serif; font-size: 0.7rem; color: #9B7B5C; font-weight: 400; letter-spacing: 8px; text-transform: uppercase; margin: 8px 0 12px; border-top: 1px solid rgba(180,140,100,0.08); border-bottom: 1px solid rgba(180,140,100,0.08); padding: 10px 0; display: inline-block; transition: color 0.4s,border-color 0.4s; }
+    .family-details { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 18px 0 12px; padding: 22px 24px; background: rgba(180,140,100,0.03); border-radius: 24px; border: 1px solid rgba(180,140,100,0.06); transition: background 0.4s,border-color 0.4s; }
     .family-box { flex: 1; min-width: 160px; text-align: center; }
-    .family-box .name { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 600; color: #3D2C1B; letter-spacing: 1px; transition: color 0.4s; }
-    .family-box .address { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #7A5F3A; opacity: 0.7; line-height: 1.7; margin-top: 4px; letter-spacing: 0.5px; transition: color 0.4s; }
-    .family-divider { width: 1px; background: rgba(180, 140, 100, 0.08); flex-shrink: 0; }
-    .invitation-image { width: 100%; max-width: 540px; margin: 10px auto 18px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(180, 140, 100, 0.08); box-shadow: 0 8px 32px rgba(140, 110, 80, 0.06); }
+    .family-box .name { font-family: 'Cormorant Garamond',serif; font-size: 1.9rem; font-weight: 600; color: #3D2C1B; letter-spacing: 1px; transition: color 0.4s; }
+    .family-box .address { font-family: 'Inter',sans-serif; font-size: 0.8rem; color: #7A5F3A; opacity: 0.7; line-height: 1.7; margin-top: 4px; letter-spacing: 0.5px; transition: color 0.4s; }
+    .family-divider { width: 1px; background: rgba(180,140,100,0.08); flex-shrink: 0; }
+    .invitation-image { width: 100%; max-width: 540px; margin: 10px auto 18px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(180,140,100,0.08); box-shadow: 0 8px 32px rgba(140,110,80,0.06); }
     .invitation-image img { width: 100%; height: auto; display: block; }
-    .video-container { width: 100%; max-width: 540px; margin: 12px auto 18px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(180, 140, 100, 0.08); box-shadow: 0 8px 32px rgba(140, 110, 80, 0.06); background: rgba(180, 140, 100, 0.02); }
+    .video-container { width: 100%; max-width: 540px; margin: 12px auto 18px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(180,140,100,0.08); box-shadow: 0 8px 32px rgba(140,110,80,0.06); background: rgba(180,140,100,0.02); }
     .video-container video { width: 100%; height: auto; display: block; }
-    .video-label { font-family: 'Inter', sans-serif; font-size: 0.6rem; color: #9B7B5C; opacity: 0.35; letter-spacing: 4px; text-transform: uppercase; padding: 10px 0 6px; display: block; }
-    .details { background: rgba(180, 140, 100, 0.03); border-radius: 24px; padding: 24px 20px; margin: 16px 0 18px; border: 1px solid rgba(180, 140, 100, 0.06); transition: background 0.4s, border-color 0.4s; }
+    .video-label { font-family: 'Inter',sans-serif; font-size: 0.6rem; color: #9B7B5C; opacity: 0.35; letter-spacing: 4px; text-transform: uppercase; padding: 10px 0 6px; display: block; }
+    .details { background: rgba(180,140,100,0.03); border-radius: 24px; padding: 24px 20px; margin: 16px 0 18px; border: 1px solid rgba(180,140,100,0.06); transition: background 0.4s,border-color 0.4s; }
     .detail-row { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 6px 0; font-size: 1rem; color: #3D2C1B; flex-wrap: wrap; }
     .detail-row .symbol { font-size: 0.9rem; min-width: 22px; color: #B28B6A; opacity: 0.25; font-weight: 300; }
-    .detail-row .label { font-weight: 500; color: #9B7B5C; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2.5px; background: rgba(180, 140, 100, 0.05); padding: 2px 16px; border-radius: 30px; opacity: 0.7; }
+    .detail-row .label { font-weight: 500; color: #9B7B5C; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2.5px; background: rgba(180,140,100,0.05); padding: 2px 16px; border-radius: 30px; opacity: 0.7; }
     .detail-row .value { font-weight: 500; color: #2A1F14; transition: color 0.4s; }
-    .detail-row .highlight-date { background: rgba(180, 140, 100, 0.08); padding: 2px 24px; border-radius: 60px; font-weight: 600; color: #3D2C1B; letter-spacing: 1px; border: 1px solid rgba(180, 140, 100, 0.06); box-shadow: 0 2px 12px rgba(140, 110, 80, 0.04); transition: background 0.4s, border-color 0.4s, color 0.4s; }
-    .venue-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #9B7B5C; font-weight: 600; letter-spacing: 1px; transition: color 0.4s; }
+    .detail-row .highlight-date { background: rgba(180,140,100,0.08); padding: 2px 24px; border-radius: 60px; font-weight: 600; color: #3D2C1B; letter-spacing: 1px; border: 1px solid rgba(180,140,100,0.06); box-shadow: 0 2px 12px rgba(140,110,80,0.04); transition: background 0.4s,border-color 0.4s,color 0.4s; }
+    .venue-name { font-family: 'Cormorant Garamond',serif; font-size: 1.5rem; color: #9B7B5C; font-weight: 600; letter-spacing: 1px; transition: color 0.4s; }
 
-    /* ===== QR & MAP ===== */
-    .qr-map-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      justify-content: center;
-      margin: 14px 0 8px;
-      padding: 16px 12px;
-      background: rgba(180, 140, 100, 0.02);
-      border-radius: 24px;
-      border: 1px solid rgba(180, 140, 100, 0.04);
-      transition: background 0.4s, border-color 0.4s;
-    }
+    .qr-map-container { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin: 14px 0 8px; padding: 16px 12px; background: rgba(180,140,100,0.02); border-radius: 24px; border: 1px solid rgba(180,140,100,0.04); transition: background 0.4s,border-color 0.4s; }
     .qr-box, .map-box { flex: 1; min-width: 120px; max-width: 180px; text-align: center; }
     .qr-box .label, .map-box .label { font-size: 0.5rem; text-transform: uppercase; letter-spacing: 2px; color: #9B7B5C; opacity: 0.30; margin-bottom: 6px; display: block; }
-    .qr-box img { width: 100%; max-width: 120px; height: auto; border-radius: 16px; border: 1px solid rgba(180, 140, 100, 0.06); background: white; padding: 6px; transition: transform 0.3s ease; box-shadow: 0 4px 12px rgba(140, 110, 80, 0.02); }
+    .qr-box img { width: 100%; max-width: 120px; height: auto; border-radius: 16px; border: 1px solid rgba(180,140,100,0.06); background: white; padding: 6px; transition: transform 0.3s; box-shadow: 0 4px 12px rgba(140,110,80,0.02); }
     .qr-box img:hover { transform: scale(1.05); }
 
-    .venue-map-card {
-      width: 100%;
-      max-width: 540px;
-      margin: 18px auto 12px;
-      background: #fff;
-      border-radius: 28px;
-      overflow: hidden;
-      border: 1px solid rgba(180, 140, 100, 0.10);
-      box-shadow: 0 8px 28px rgba(140, 110, 80, 0.05);
-      transition: background 0.4s, border-color 0.4s, box-shadow 0.3s;
-    }
-    .venue-map-card:hover { box-shadow: 0 12px 36px rgba(140, 110, 80, 0.08); }
+    .venue-map-card { width: 100%; max-width: 540px; margin: 18px auto 12px; background: #fff; border-radius: 28px; overflow: hidden; border: 1px solid rgba(180,140,100,0.10); box-shadow: 0 8px 28px rgba(140,110,80,0.05); transition: background 0.4s,border-color 0.4s,box-shadow 0.3s; }
+    .venue-map-card:hover { box-shadow: 0 12px 36px rgba(140,110,80,0.08); }
     .venue-map-card iframe { width: 100%; height: 200px; border: none; }
     .venue-info { padding: 18px 16px; text-align: center; }
     .venue-title { display: block; font-size: 0.6rem; letter-spacing: 5px; color: #B28B6A; font-weight: 500; margin-bottom: 4px; }
-    .venue-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: #3D2C1B; margin-bottom: 12px; transition: color 0.4s; }
-    .open-map-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      max-width: 280px;
-      padding: 12px 18px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #9B7B5C;
-      border: 1.5px solid #9B7B5C;
-      background: white;
-      transition: .3s ease;
-    }
-    .open-map-btn:hover { background: #9B7B5C; color: white; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(155, 123, 92, 0.15); }
+    .venue-info h3 { font-family: 'Cormorant Garamond',serif; font-size: 1.5rem; font-weight: 600; color: #3D2C1B; margin-bottom: 12px; transition: color 0.4s; }
+    .open-map-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; max-width: 280px; padding: 12px 18px; border-radius: 40px; text-decoration: none; font-size: 0.8rem; font-weight: 500; color: #9B7B5C; border: 1.5px solid #9B7B5C; background: white; transition: .3s; }
+    .open-map-btn:hover { background: #9B7B5C; color: white; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(155,123,92,0.15); }
 
-    .footer { margin-top: 16px; padding-top: 20px; border-top: 1px solid rgba(180, 140, 100, 0.06); display: flex; flex-direction: column; align-items: center; gap: 6px; }
-    .footer .main-line { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; color: #9B7B5C; font-weight: 400; letter-spacing: 4px; opacity: 0.30; transition: color 0.4s; }
+    .footer { margin-top: 20px; padding-top: 24px; border-top: 1px solid rgba(180,140,100,0.06); display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .footer .main-line { font-family: 'Cormorant Garamond',serif; font-size: 1rem; color: #9B7B5C; font-weight: 400; letter-spacing: 5px; opacity: 0.35; }
     .footer .divider-line { font-size: 0.6rem; color: #B28B6A; opacity: 0.08; letter-spacing: 8px; }
-    .footer .sub-line { font-family: 'Inter', sans-serif; font-size: 0.45rem; color: #B28B6A; letter-spacing: 3px; opacity: 0.20; text-transform: uppercase; transition: color 0.4s; }
+    .footer .sub-line { font-family: 'Inter',sans-serif; font-size: 0.5rem; color: #B28B6A; letter-spacing: 4px; opacity: 0.20; text-transform: uppercase; }
     .footer .sub-line span { margin: 0 6px; }
 
     /* ===== FLOATING CONTROL PANEL ===== */
@@ -274,90 +208,86 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 12px;
+      gap: 14px;
     }
     .control-toggle {
-      background: rgba(255, 252, 245, 0.92);
+      background: rgba(255, 252, 245, 0.95);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(180, 140, 100, 0.12);
+      border: 1px solid rgba(180, 140, 100, 0.15);
       border-radius: 60px;
-      padding: 10px 18px;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
-      gap: 14px;
-      box-shadow: 0 12px 48px rgba(140, 110, 80, 0.08);
+      justify-content: center;
+      gap: 6px;
+      box-shadow: 0 12px 48px rgba(140, 110, 80, 0.10);
       transition: all 0.3s ease;
       cursor: pointer;
+      min-width: 56px;
+      min-height: 56px;
     }
-    .control-toggle:hover { transform: scale(1.02); border-color: rgba(180, 140, 100, 0.25); }
+    .control-toggle:hover { transform: scale(1.04); border-color: rgba(180, 140, 100, 0.30); box-shadow: 0 16px 56px rgba(140, 110, 80, 0.12); }
     .control-toggle .toggle-icon {
-      font-size: 1.3rem;
+      font-size: 1.6rem;
       color: #7A5F3A;
-      opacity: 0.7;
+      opacity: 0.8;
       font-family: 'Inter', sans-serif;
       font-weight: 300;
       transition: opacity 0.2s;
+      line-height: 1;
     }
     .control-toggle .toggle-icon:hover { opacity: 1; }
-    body.dark .control-toggle { background: rgba(30, 26, 22, 0.92); border-color: rgba(180, 140, 100, 0.15); }
-    body.dark .control-toggle .toggle-icon { color: #c9b094; }
 
     .control-menu {
-      background: rgba(255, 252, 245, 0.94);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(255, 252, 245, 0.96);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       border: 1px solid rgba(180, 140, 100, 0.12);
-      border-radius: 28px;
-      padding: 18px 22px;
+      border-radius: 32px;
+      padding: 22px 26px;
       display: none;
       flex-direction: column;
-      gap: 14px;
-      min-width: 200px;
-      box-shadow: 0 16px 56px rgba(140, 110, 80, 0.10);
+      gap: 16px;
+      min-width: 220px;
+      box-shadow: 0 20px 64px rgba(140, 110, 80, 0.10);
       transition: all 0.3s ease;
     }
     .control-menu.open { display: flex; }
-    body.dark .control-menu { background: rgba(30, 26, 22, 0.94); border-color: rgba(180, 140, 100, 0.15); }
 
     .menu-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 400;
       color: #3D2C1B;
       letter-spacing: 0.5px;
       padding: 4px 0;
     }
-    body.dark .menu-item { color: #e6ddd0; }
-    .menu-item .label { opacity: 0.6; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; }
-    .menu-item .controls {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
+    .menu-item .label { opacity: 0.5; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; }
+    .menu-item .controls { display: flex; gap: 12px; align-items: center; }
     .menu-item .controls button {
       background: none;
       border: none;
       font-size: 1.1rem;
       cursor: pointer;
       color: #7A5F3A;
-      padding: 2px 6px;
+      padding: 4px 8px;
       border-radius: 30px;
       transition: 0.2s;
       font-family: 'Inter', sans-serif;
       opacity: 0.6;
     }
-    .menu-item .controls button:hover { opacity: 1; background: rgba(180, 140, 100, 0.06); }
-    body.dark .menu-item .controls button { color: #c9b094; }
-    .menu-divider { height: 1px; background: rgba(180, 140, 100, 0.06); margin: 2px 0; }
+    .menu-item .controls button:hover { opacity: 1; background: rgba(180,140,100,0.06); }
+    .menu-item .controls .active-lang { opacity: 1; background: rgba(180,140,100,0.10); font-weight: 600; }
+    .menu-divider { height: 1px; background: rgba(180,140,100,0.06); margin: 2px 0; }
 
-    .animate-on-scroll { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(0.20, 0.98, 0.35, 1.00), transform 0.9s cubic-bezier(0.20, 0.98, 0.35, 1.00); }
+    .animate-on-scroll { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(0.20,0.98,0.35,1.00), transform 0.9s cubic-bezier(0.20,0.98,0.35,1.00); }
     .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 700px) {
+    @media (max-width:700px) {
       .card { padding: 28px 18px 22px; border-radius: 36px; }
       .groom-name, .bride-name { font-size: 2.8rem; letter-spacing: 3px; }
       .ampersand { font-size: 2.2rem; margin: 0 8px; }
@@ -369,12 +299,13 @@
       .qr-map-container { flex-direction: column; align-items: center; }
       .qr-box, .map-box { max-width: 160px; }
       .control-panel { bottom: 20px; right: 20px; }
-      .control-toggle { padding: 8px 14px; gap: 10px; }
-      .control-menu { min-width: 170px; padding: 14px 16px; }
+      .control-toggle { padding: 12px 16px; min-width: 48px; min-height: 48px; }
+      .control-toggle .toggle-icon { font-size: 1.4rem; }
+      .control-menu { min-width: 180px; padding: 16px 18px; }
       .tab-btn { padding: 10px 24px; font-size: 0.75rem; }
       .venue-map-card iframe { height: 160px; }
     }
-    @media (max-width: 400px) {
+    @media (max-width:400px) {
       .groom-name, .bride-name { font-size: 2.2rem; }
       .ampersand { font-size: 1.6rem; margin: 0 4px; }
       .calligraphy-svg.bismillah { max-width: 250px; }
@@ -395,29 +326,29 @@
   <div class="bg-ornament bl">❧</div>
   <div class="bg-ornament br">❧</div>
 
-  <div class="card">
+  <div class="card" id="mainCard">
     <!-- calligraphy -->
     <div class="calligraphy-container animate-on-scroll">
       <svg class="calligraphy-svg bismillah" viewBox="0 0 500 110" xmlns="http://www.w3.org/2000/svg">
-        <text x="50%" y="45%" font-size="40" text-anchor="middle" dominant-baseline="central" font-family="'Amiri', 'Times New Roman', serif" fill="#9B7B5C" opacity="0.45">﷽</text>
-        <text x="50%" y="80%" font-size="16" text-anchor="middle" dominant-baseline="central" font-family="'Amiri', 'Times New Roman', serif" fill="#9B7B5C" opacity="0.25" letter-spacing="3">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</text>
+        <text x="50%" y="45%" font-size="40" text-anchor="middle" dominant-baseline="central" font-family="'Amiri','Times New Roman',serif" fill="#9B7B5C" opacity="0.45">﷽</text>
+        <text x="50%" y="80%" font-size="16" text-anchor="middle" dominant-baseline="central" font-family="'Amiri','Times New Roman',serif" fill="#9B7B5C" opacity="0.25" letter-spacing="3">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</text>
       </svg>
     </div>
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
     <!-- names -->
     <div class="names-container animate-on-scroll">
-      <div class="groom-name">MUNAWIR</div>
+      <div class="groom-name" data-i18n="groom">MUNAWIR</div>
       <div class="ampersand">&amp;</div>
-      <div class="bride-name">LABEEBA</div>
+      <div class="bride-name" data-i18n="bride">LABEEBA</div>
     </div>
-    <div class="sub-text animate-on-scroll">— Invite You to Celebrate —</div>
+    <div class="sub-text animate-on-scroll" data-i18n="invite">— Invite You to Celebrate —</div>
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
     <!-- barakkallahu -->
     <div class="calligraphy-container animate-on-scroll">
       <svg class="calligraphy-svg barakkallahu" viewBox="0 0 580 90" xmlns="http://www.w3.org/2000/svg">
-        <text x="50%" y="50%" font-size="28" text-anchor="middle" dominant-baseline="central" font-family="'Amiri', 'Times New Roman', serif" fill="#9B7B5C" opacity="0.40" letter-spacing="2">بَارَكَ اللهُ لَكُماَ وَبَارَكَ عَلَيْكُماَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</text>
+        <text x="50%" y="50%" font-size="28" text-anchor="middle" dominant-baseline="central" font-family="'Amiri','Times New Roman',serif" fill="#9B7B5C" opacity="0.40" letter-spacing="2">بَارَكَ اللهُ لَكُماَ وَبَارَكَ عَلَيْكُماَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</text>
       </svg>
     </div>
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
@@ -425,34 +356,34 @@
     <!-- family details -->
     <div class="family-details animate-on-scroll">
       <div class="family-box">
-        <div class="name">Munawir Baqavi</div>
-        <div class="address">S/o Musthafa Kt &amp; Jameela<br />Kunnathodi (H) Keezhmuri, Po, Vengad<br />Malappuram, Kerala</div>
+        <div class="name" data-i18n="groomFull">Munawir Baqavi</div>
+        <div class="address" data-i18n="groomAddr">S/o Musthafa Kt &amp; Jameela<br />Kunnathodi (H) Keezhmuri, Po, Vengad<br />Malappuram, Kerala</div>
       </div>
       <div class="family-divider"></div>
       <div class="family-box">
-        <div class="name">Labeeba Zahrawiyya</div>
-        <div class="address">D/o Mujeeb &amp; Fousiya Mujeeb<br />Valayath Pulakkal, Kondoorkkara<br />Po, Kizhayur, Pattambi, Palakkad</div>
+        <div class="name" data-i18n="brideFull">Labeeba Zahrawiyya</div>
+        <div class="address" data-i18n="brideAddr">D/o Mujeeb &amp; Fousiya Mujeeb<br />Valayath Pulakkal, Kondoorkkara<br />Po, Kizhayur, Pattambi, Palakkad</div>
       </div>
     </div>
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- ===== TAB BUTTONS ===== -->
+    <!-- TAB BUTTONS -->
     <div class="tab-bar animate-on-scroll">
-      <button class="tab-btn active" data-tab="letter">📄 Letter</button>
-      <button class="tab-btn" data-tab="reel">🎬 Reel</button>
+      <button class="tab-btn active" data-tab="letter" data-i18n="tabLetter">📄 Letter</button>
+      <button class="tab-btn" data-tab="reel" data-i18n="tabReel">🎬 Reel</button>
     </div>
 
-    <!-- ===== TAB CONTENT: LETTER ===== -->
+    <!-- TAB CONTENT: LETTER -->
     <div id="tab-letter" class="tab-content active">
       <div class="invitation-image animate-on-scroll">
         <img src="https://xenocdn.xenocdn.workers.dev/bcbf2003.jpeg" alt="Invitation Letter" />
       </div>
     </div>
 
-    <!-- ===== TAB CONTENT: REEL (VIDEO) ===== -->
+    <!-- TAB CONTENT: REEL -->
     <div id="tab-reel" class="tab-content">
       <div class="video-container animate-on-scroll">
-        <span class="video-label">◈ Save The Date ◈</span>
+        <span class="video-label" data-i18n="saveDate">◈ Save The Date ◈</span>
         <video controls preload="metadata">
           <source src="https://xenocdn.xenocdn.workers.dev/e983ffe9.mp4" type="video/mp4" />
           Your browser does not support video.
@@ -462,63 +393,62 @@
 
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- details — date localized to standard format -->
+    <!-- details -->
     <div class="details animate-on-scroll">
       <div class="detail-row">
         <span class="symbol">◈</span>
-        <span class="label">Date</span>
-        <span class="value highlight-date"><strong>Sunday, 19 July 2026</strong></span>
+        <span class="label" data-i18n="labelDate">Date</span>
+        <span class="value highlight-date" data-i18n="date"><strong>Sunday, 19 July 2026</strong></span>
       </div>
       <div class="detail-row">
         <span class="symbol">◈</span>
-        <span class="label">Time</span>
-        <span class="value"><strong>6:30 PM onwards</strong></span>
+        <span class="label" data-i18n="labelTime">Time</span>
+        <span class="value" data-i18n="time"><strong>6:30 PM onwards</strong></span>
       </div>
       <div class="detail-row">
         <span class="symbol">◈</span>
-        <span class="label">Venue</span>
-        <span class="value venue-name">VISTA CONVENTION CENTER</span>
+        <span class="label" data-i18n="labelVenue">Venue</span>
+        <span class="value venue-name" data-i18n="venue">VISTA CONVENTION CENTER</span>
       </div>
       <div class="detail-row" style="font-size:0.85rem; color:#7A5F3A; padding-top:2px;">
         <span class="symbol">◈</span>
-        <span>Vengad, Kerala</span>
+        <span data-i18n="venueLoc">Vengad, Kerala</span>
       </div>
     </div>
 
     <!-- QR + map -->
     <div class="qr-map-container animate-on-scroll">
       <div class="qr-box">
-        <span class="label">◈ Place QR ◈</span>
+        <span class="label" data-i18n="qrLabel">◈ Place QR ◈</span>
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=YourPlaceAddressHere" alt="Place QR" />
       </div>
       <div class="venue-map-card animate-on-scroll" style="max-width: 300px; margin: 0;">
         <iframe src="https://www.google.com/maps?q=Vista+Convention+Center&output=embed" loading="lazy" allowfullscreen></iframe>
         <div class="venue-info" style="padding: 12px 10px;">
-          <span class="venue-title">WEDDING VENUE</span>
-          <h3 style="font-size: 1.1rem;">VISTA CONVENTION CENTER</h3>
-          <a href="https://maps.apple/p/_Mj7._fIunbWe4" target="_blank" class="open-map-btn" style="max-width: 180px; padding: 8px 12px; font-size: 0.7rem;">📍 Open in Maps</a>
+          <span class="venue-title" data-i18n="venueLabel">WEDDING VENUE</span>
+          <h3 style="font-size:1.1rem;" data-i18n="venueShort">VISTA CONVENTION CENTER</h3>
+          <a href="https://maps.apple/p/_Mj7._fIunbWe4" target="_blank" class="open-map-btn" style="max-width:180px; padding:8px 12px; font-size:0.7rem;" data-i18n="openMap">📍 Open in Maps</a>
         </div>
       </div>
     </div>
 
     <!-- footer -->
     <div class="footer animate-on-scroll">
-      <div class="main-line">Complements Family &amp; Friends</div>
+      <div class="main-line" data-i18n="footerMain">Complements Family &amp; Friends</div>
       <div class="divider-line">❧ ❧ ❧</div>
-      <div class="sub-line"><span>✦</span> With Blessings &amp; Prayers <span>✦</span></div>
+      <div class="sub-line"><span>✦</span> <span data-i18n="footerSub">With Blessings &amp; Prayers</span> <span>✦</span></div>
     </div>
   </div>
 
   <!-- ===== FLOATING CONTROL PANEL ===== -->
   <div class="control-panel" id="controlPanel">
     <div class="control-toggle" id="toggleMenu">
-      <span class="toggle-icon">✕</span>
-      <span class="toggle-icon" style="font-size:0.8rem; opacity:0.4;">⚙</span>
+      <span class="toggle-icon">+</span>
     </div>
     <div class="control-menu" id="controlMenu">
       <!-- Music -->
       <div class="menu-item">
-        <span class="label">♫ Music</span>
+        <span class="label" data-i18n="musicLabel">♫ Music</span>
         <div class="controls">
           <button id="playBtn" title="Play">▶</button>
           <button id="pauseBtn" title="Pause">⏸</button>
@@ -527,20 +457,20 @@
         </div>
       </div>
       <div class="menu-divider"></div>
-      <!-- Dark / Light -->
+      <!-- Theme -->
       <div class="menu-item">
-        <span class="label">☯ Theme</span>
+        <span class="label" data-i18n="themeLabel">☯ Theme</span>
         <div class="controls">
           <button id="lightThemeBtn" title="Light">☀</button>
           <button id="darkThemeBtn" title="Dark">☽</button>
         </div>
       </div>
       <div class="menu-divider"></div>
-      <!-- Language (placeholder) -->
+      <!-- Language -->
       <div class="menu-item">
-        <span class="label">🌐 Language</span>
+        <span class="label" data-i18n="langLabel">🌐 Language</span>
         <div class="controls">
-          <button id="langEn" style="font-size:0.7rem;">EN</button>
+          <button id="langEn" class="active-lang" style="font-size:0.7rem;">EN</button>
           <button id="langAr" style="font-size:0.7rem;">AR</button>
           <button id="langMl" style="font-size:0.7rem;">ML</button>
         </div>
@@ -554,54 +484,36 @@
   </audio>
 
   <script>
-    // ===== LOADING SCREEN =====
+    // ===== LOADING =====
     window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('loadingScreen').classList.add('hidden');
-      }, 1200);
+      setTimeout(() => document.getElementById('loadingScreen').classList.add('hidden'), 1200);
     });
 
-    // ===== TAB SWITCH =====
+    // ===== TABS =====
     const tabs = document.querySelectorAll('.tab-btn');
-    const contents = {
-      letter: document.getElementById('tab-letter'),
-      reel: document.getElementById('tab-reel')
-    };
+    const contents = { letter: document.getElementById('tab-letter'), reel: document.getElementById('tab-reel') };
     tabs.forEach(btn => {
       btn.addEventListener('click', function() {
         tabs.forEach(b => b.classList.remove('active'));
         this.classList.add('active');
-        const target = this.dataset.tab;
-        Object.keys(contents).forEach(key => {
-          contents[key].classList.toggle('active', key === target);
-        });
+        Object.keys(contents).forEach(key => contents[key].classList.toggle('active', key === this.dataset.tab));
       });
     });
 
-    // ===== MUSIC PLAYER (from panel) =====
+    // ===== MUSIC =====
     const audio = document.getElementById('bgMusic');
     const playBtn = document.getElementById('playBtn');
     const pauseBtn = document.getElementById('pauseBtn');
     const downloadBtn = document.getElementById('downloadBtn');
     const statusEl = document.getElementById('musicStatus');
     let isPlaying = false;
-
     function updateUI() {
       statusEl.textContent = isPlaying ? '♫' : '♩';
       playBtn.style.opacity = isPlaying ? '0.4' : '1';
       pauseBtn.style.opacity = isPlaying ? '1' : '0.4';
     }
-
-    playBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      audio.play().then(() => { isPlaying = true; updateUI(); }).catch(() => {});
-    });
-    pauseBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      audio.pause();
-      isPlaying = false;
-      updateUI();
-    });
+    playBtn.addEventListener('click', (e) => { e.stopPropagation(); audio.play().then(() => { isPlaying = true; updateUI(); }).catch(() => {}); });
+    pauseBtn.addEventListener('click', (e) => { e.stopPropagation(); audio.pause(); isPlaying = false; updateUI(); });
     downloadBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       const link = document.createElement('a');
@@ -609,14 +521,8 @@
       link.download = 'nasheed.mp3';
       link.click();
     });
-
-    function tryAutoPlay() {
-      audio.play().then(() => { isPlaying = true; updateUI(); }).catch(() => { isPlaying = false; updateUI(); });
-    }
-    document.addEventListener('click', function initAudio() {
-      tryAutoPlay();
-      document.removeEventListener('click', initAudio);
-    }, { once: true });
+    function tryAutoPlay() { audio.play().then(() => { isPlaying = true; updateUI(); }).catch(() => { isPlaying = false; updateUI(); }); }
+    document.addEventListener('click', function initAudio() { tryAutoPlay(); document.removeEventListener('click', initAudio); }, { once: true });
     window.addEventListener('load', () => setTimeout(tryAutoPlay, 800));
     updateUI();
 
@@ -630,21 +536,103 @@
       menu.classList.toggle('open', menuOpen);
     });
     document.addEventListener('click', (e) => {
-      if (!e.target.closest('.control-panel')) {
-        menu.classList.remove('open');
-        menuOpen = false;
-      }
+      if (!e.target.closest('.control-panel')) { menu.classList.remove('open'); menuOpen = false; }
     });
 
-    // ===== THEME TOGGLE =====
+    // ===== THEME =====
     const body = document.body;
     document.getElementById('lightThemeBtn').addEventListener('click', () => body.classList.remove('dark'));
     document.getElementById('darkThemeBtn').addEventListener('click', () => body.classList.add('dark'));
 
-    // ===== LANGUAGE (placeholder) =====
-    document.getElementById('langEn').addEventListener('click', () => alert('English selected (demo)'));
-    document.getElementById('langAr').addEventListener('click', () => alert('العربية selected (demo)'));
-    document.getElementById('langMl').addEventListener('click', () => alert('മലയാളം selected (demo)'));
+    // ===== LANGUAGE (FULLY WORKING) =====
+    const translations = {
+      en: {
+        groom: 'MUNAWIR', bride: 'LABEEBA',
+        invite: '— Invite You to Celebrate —',
+        groomFull: 'Munawir Baqavi',
+        groomAddr: 'S/o Musthafa Kt & Jameela<br />Kunnathodi (H) Keezhmuri, Po, Vengad<br />Malappuram, Kerala',
+        brideFull: 'Labeeba Zahrawiyya',
+        brideAddr: 'D/o Mujeeb & Fousiya Mujeeb<br />Valayath Pulakkal, Kondoorkkara<br />Po, Kizhayur, Pattambi, Palakkad',
+        tabLetter: '📄 Letter', tabReel: '🎬 Reel',
+        saveDate: '◈ Save The Date ◈',
+        labelDate: 'Date', date: 'Sunday, 19 July 2026',
+        labelTime: 'Time', time: '6:30 PM onwards',
+        labelVenue: 'Venue', venue: 'VISTA CONVENTION CENTER',
+        venueLoc: 'Vengad, Kerala',
+        qrLabel: '◈ Place QR ◈',
+        venueLabel: 'WEDDING VENUE',
+        venueShort: 'VISTA CONVENTION CENTER',
+        openMap: '📍 Open in Maps',
+        footerMain: 'Complements Family & Friends',
+        footerSub: 'With Blessings & Prayers',
+        musicLabel: '♫ Music', themeLabel: '☯ Theme', langLabel: '🌐 Language'
+      },
+      ar: {
+        groom: 'مُنَوِّر', bride: 'لَبِيْبَة',
+        invite: '— يدعوكم للاحتفال —',
+        groomFull: 'منور بقوي',
+        groomAddr: 'ابن مصطفى ك ت و جميلة<br />كوناثودي (ح) كيزحموري، بو، فينجاد<br />مالابورام، كيرلا',
+        brideFull: 'لبيبة زهراوية',
+        brideAddr: 'ابنة مجيب و فوزية مجيب<br />ولاياة بولاكال، كوندوركارا<br />بو، كيزهايور، باتامبي، بالاكاد',
+        tabLetter: '📄 رسالة', tabReel: '🎬 فيلم',
+        saveDate: '◈ احفظ التاريخ ◈',
+        labelDate: 'التاريخ', date: 'الأحد، 19 يوليو 2026',
+        labelTime: 'الوقت', time: '6:30 مساءً فصاعدًا',
+        labelVenue: 'المكان', venue: 'مركز فيستا للمؤتمرات',
+        venueLoc: 'فينجاد، كيرلا',
+        qrLabel: '◈ رمز المكان ◈',
+        venueLabel: 'مكان الزفاف',
+        venueShort: 'مركز فيستا للمؤتمرات',
+        openMap: '📍 فتح في الخرائط',
+        footerMain: 'تحيات العائلة والأصدقاء',
+        footerSub: 'بالبركات والدعوات',
+        musicLabel: '♫ موسيقى', themeLabel: '☯ المظهر', langLabel: '🌐 اللغة'
+      },
+      ml: {
+        groom: 'മുനവ്വിർ', bride: 'ലബീബ',
+        invite: '— ആഘോഷിക്കാൻ ക്ഷണിക്കുന്നു —',
+        groomFull: 'മുനവ്വിർ ബഖവി',
+        groomAddr: 'മുസ്തഫ കെ.ടി & ജമീലയുടെ മകൻ<br />കുന്നത്തൊടി (എച്ച്) കീഴ്മുറി, പോ, വേങ്ങാട്<br />മലപ്പുറം, കേരളം',
+        brideFull: 'ലബീബ സഹറവിയ്യ',
+        brideAddr: 'മുജീബ് & ഫൗസിയ മുജീബിൻ്റെ മകൾ<br />വലയത്ത് പുലക്കൽ, കൊണ്ടൂർക്കര<br />പോ, കിഴയൂർ, പട്ടാമ്പി, പാലക്കാട്',
+        tabLetter: '📄 കത്ത്', tabReel: '🎬 റീൽ',
+        saveDate: '◈ തീയതി സൂക്ഷിക്കുക ◈',
+        labelDate: 'തീയതി', date: 'ഞായർ, 19 ജൂലൈ 2026',
+        labelTime: 'സമയം', time: 'വൈകുന്നേരം 6:30 മുതൽ',
+        labelVenue: 'വേദി', venue: 'വിസ്റ്റ കൺവെൻഷൻ സെന്റർ',
+        venueLoc: 'വേങ്ങാട്, കേരളം',
+        qrLabel: '◈ സ്ഥല QR ◈',
+        venueLabel: 'വിവാഹ വേദി',
+        venueShort: 'വിസ്റ്റ കൺവെൻഷൻ സെന്റർ',
+        openMap: '📍 മാപ്പിൽ തുറക്കുക',
+        footerMain: 'കുടുംബത്തിന്റെയും സുഹൃത്തുക്കളുടെയും ആശംസകൾ',
+        footerSub: 'അനുഗ്രഹങ്ങളോടും പ്രാർത്ഥനകളോടും',
+        musicLabel: '♫ സംഗീതം', themeLabel: '☯ തീം', langLabel: '🌐 ഭാഷ'
+      }
+    };
+
+    let currentLang = 'en';
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      const t = translations[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key] !== undefined) {
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.value = t[key];
+          else el.innerHTML = t[key];
+        }
+      });
+      // update active lang button
+      document.querySelectorAll('#langEn, #langAr, #langMl').forEach(btn => btn.classList.remove('active-lang'));
+      if (lang === 'en') document.getElementById('langEn').classList.add('active-lang');
+      else if (lang === 'ar') document.getElementById('langAr').classList.add('active-lang');
+      else if (lang === 'ml') document.getElementById('langMl').classList.add('active-lang');
+    }
+
+    document.getElementById('langEn').addEventListener('click', () => applyLanguage('en'));
+    document.getElementById('langAr').addEventListener('click', () => applyLanguage('ar'));
+    document.getElementById('langMl').addEventListener('click', () => applyLanguage('ml'));
 
     // ===== SCROLL ANIMATION =====
     const animElements = document.querySelectorAll('.animate-on-scroll');
