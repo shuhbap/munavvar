@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Munawir & Labeeba · Eternal Union</title>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -59,7 +58,6 @@
     body.dark .rsvp-form .submit-btn { background: #9B7B5C; color: #1e1a16; }
     body.dark .rsvp-form .submit-btn:hover { background: #c9b094; }
 
-    /* loading screen */
     .loading-screen {
       position: fixed;
       inset: 0;
@@ -175,7 +173,6 @@
     .video-container video { width: 100%; height: auto; display: block; }
     .video-label { font-family: 'Inter',sans-serif; font-size: 0.6rem; color: #9B7B5C; opacity: 0.35; letter-spacing: 4px; text-transform: uppercase; padding: 10px 0 6px; display: block; }
 
-    /* Details */
     .details { background: rgba(180,140,100,0.03); border-radius: 24px; padding: 24px 20px; margin: 16px 0 18px; border: 1px solid rgba(180,140,100,0.06); transition: background 0.4s,border-color 0.4s; }
     .detail-row { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 6px 0; font-size: 1rem; color: #3D2C1B; flex-wrap: wrap; }
     .detail-row .symbol { font-size: 0.9rem; min-width: 22px; color: #B28B6A; opacity: 0.25; font-weight: 300; }
@@ -184,7 +181,7 @@
     .detail-row .highlight-date { background: rgba(180,140,100,0.08); padding: 2px 24px; border-radius: 60px; font-weight: 600; color: #3D2C1B; letter-spacing: 1px; border: 1px solid rgba(180,140,100,0.06); box-shadow: 0 2px 12px rgba(140,110,80,0.04); transition: background 0.4s,border-color 0.4s,color 0.4s; }
     .venue-name { font-family: 'Cormorant Garamond',serif; font-size: 1.5rem; color: #9B7B5C; font-weight: 600; letter-spacing: 1px; transition: color 0.4s; }
 
-    /* RSVP Section - Now positioned below Details and above QR/Map */
+    /* RSVP Section */
     .rsvp-section {
       margin: 20px 0 10px;
       padding: 24px 20px 20px;
@@ -278,7 +275,6 @@
     body.dark .rsvp-success { color: #e6ddd0; }
     .rsvp-success.show { display: block; }
 
-    /* QR + Map */
     .qr-map-container { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin: 14px 0 8px; padding: 16px 12px; background: rgba(180,140,100,0.02); border-radius: 24px; border: 1px solid rgba(180,140,100,0.04); transition: background 0.4s,border-color 0.4s; }
     .qr-box, .map-box { flex: 1; min-width: 120px; max-width: 180px; text-align: center; }
     .qr-box .label, .map-box .label { font-size: 0.5rem; text-transform: uppercase; letter-spacing: 2px; color: #9B7B5C; opacity: 0.30; margin-bottom: 6px; display: block; }
@@ -300,7 +296,6 @@
     .footer .sub-line { font-family: 'Inter',sans-serif; font-size: 0.5rem; color: #B28B6A; letter-spacing: 4px; opacity: 0.20; text-transform: uppercase; }
     .footer .sub-line span { margin: 0 6px; }
 
-    /* ===== FLOATING CONTROL PANEL ===== */
     .control-panel {
       position: fixed;
       bottom: 32px;
@@ -455,7 +450,7 @@
   <div class="bg-ornament br">❧</div>
 
   <div class="card" id="mainCard">
-    <!-- calligraphy -->
+    <!-- Calligraphy -->
     <div class="calligraphy-container animate-on-scroll">
       <svg class="calligraphy-svg bismillah" viewBox="0 0 500 110" xmlns="http://www.w3.org/2000/svg">
         <text x="50%" y="45%" font-size="40" text-anchor="middle" dominant-baseline="central" font-family="'Amiri','Times New Roman',serif" fill="#9B7B5C" opacity="0.45">﷽</text>
@@ -464,7 +459,7 @@
     </div>
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- names -->
+    <!-- Names -->
     <div class="names-container animate-on-scroll">
       <div class="groom-name" data-i18n="groom">MUNAWIR</div>
       <div class="ampersand">&amp;</div>
@@ -473,7 +468,7 @@
     <div class="sub-text animate-on-scroll" data-i18n="invite">— Invite You to Celebrate —</div>
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- barakkallahu -->
+    <!-- Barakkallahu -->
     <div class="calligraphy-container animate-on-scroll">
       <svg class="calligraphy-svg barakkallahu" viewBox="0 0 580 90" xmlns="http://www.w3.org/2000/svg">
         <text x="50%" y="50%" font-size="28" text-anchor="middle" dominant-baseline="central" font-family="'Amiri','Times New Roman',serif" fill="#9B7B5C" opacity="0.40" letter-spacing="2">بَارَكَ اللهُ لَكُماَ وَبَارَكَ عَلَيْكُماَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</text>
@@ -481,7 +476,7 @@
     </div>
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- family details -->
+    <!-- Family details -->
     <div class="family-details animate-on-scroll">
       <div class="family-box">
         <div class="name" data-i18n="groomFull">Munawir Baqavi</div>
@@ -495,7 +490,7 @@
     </div>
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- TAB BUTTONS (Letter & Reel only - RSVP is separate below) -->
+    <!-- TAB BUTTONS (Letter & Reel only) -->
     <div class="tab-bar animate-on-scroll">
       <button class="tab-btn active" data-tab="letter" data-i18n="tabLetter">Letter</button>
       <button class="tab-btn" data-tab="reel" data-i18n="tabReel">Reel</button>
@@ -521,7 +516,7 @@
 
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- DETAILS (Date, Time, Venue) -->
+    <!-- DETAILS -->
     <div class="details animate-on-scroll">
       <div class="detail-row">
         <span class="symbol">◈</span>
@@ -544,18 +539,22 @@
       </div>
     </div>
 
-    <!-- ===== RSVP SECTION (Below Details, Above QR/Map) ===== -->
+    <!-- ===== RSVP SECTION (Below Details, Above Map) ===== -->
     <div class="rsvp-section animate-on-scroll" id="rsvpSection">
       <div class="rsvp-title" data-i18n="rsvpTitle">Kindly Respond</div>
       <div class="rsvp-subtitle" data-i18n="rsvpSub">— We await your presence —</div>
-      <form class="rsvp-form" id="rsvpForm">
+      
+      <!-- Hidden iframe for form submission -->
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+      
+      <form class="rsvp-form" id="rsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdx0aJ-DDerwrzuMysM9Lc9Z9qOrdM8HNDiEanADLPDwfnZgw/formResponse" method="POST" target="hidden_iframe">
         <div class="form-group">
           <label for="rsvpName" data-i18n="rsvpNameLabel">Full Name</label>
-          <input type="text" id="rsvpName" placeholder="Your full name" required />
+          <input type="text" id="rsvpName" name="entry.791318341" placeholder="Your full name" required />
         </div>
         <div class="form-group">
           <label for="rsvpAttend" data-i18n="rsvpAttendLabel">Will you attend?</label>
-          <select id="rsvpAttend" required>
+          <select id="rsvpAttend" name="entry.508351047" required>
             <option value="">— Select —</option>
             <option value="Yes, Insha Allah" data-i18n="rsvpYes">Yes, Insha Allah</option>
             <option value="No" data-i18n="rsvpNo">Sorry, can't make it</option>
@@ -563,11 +562,11 @@
         </div>
         <div class="form-group">
           <label for="rsvpGuests" data-i18n="rsvpGuestsLabel">Number of Guests</label>
-          <input type="number" id="rsvpGuests" min="1" max="20" placeholder="1" />
+          <input type="number" id="rsvpGuests" name="entry.1929482426" min="1" max="20" placeholder="1" />
         </div>
         <div class="form-group">
           <label for="rsvpMessage" data-i18n="rsvpMessageLabel">Message (optional)</label>
-          <textarea id="rsvpMessage" placeholder="Any special requests or blessings..."></textarea>
+          <textarea id="rsvpMessage" name="entry.1344700246" placeholder="Any special requests or blessings..."></textarea>
         </div>
         <button type="submit" class="submit-btn" data-i18n="rsvpSubmit">Send RSVP</button>
         <div class="rsvp-success" id="rsvpSuccess">✅ Your response has been recorded. Thank you!</div>
@@ -576,7 +575,7 @@
 
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- QR + MAP (Below RSVP) -->
+    <!-- QR + MAP -->
     <div class="qr-map-container animate-on-scroll">
       <div class="qr-box">
         <span class="label" data-i18n="qrLabel">Place QR</span>
@@ -592,7 +591,7 @@
       </div>
     </div>
 
-    <!-- footer -->
+    <!-- Footer -->
     <div class="footer animate-on-scroll">
       <div class="main-line" data-i18n="footerMain">Complements Family &amp; Friends</div>
       <div class="divider-line">❧ ❧ ❧</div>
@@ -606,7 +605,6 @@
       <span class="toggle-icon">+</span>
     </div>
     <div class="control-menu" id="controlMenu">
-      <!-- Music -->
       <div class="menu-item">
         <span class="label" data-i18n="musicLabel">Music</span>
         <div class="controls music-symbols">
@@ -617,7 +615,6 @@
         </div>
       </div>
       <div class="menu-divider"></div>
-      <!-- Theme -->
       <div class="menu-item">
         <span class="label" data-i18n="themeLabel">Theme</span>
         <div class="controls">
@@ -626,7 +623,6 @@
         </div>
       </div>
       <div class="menu-divider"></div>
-      <!-- Language -->
       <div class="menu-item">
         <span class="label" data-i18n="langLabel">Language</span>
         <div class="controls">
@@ -829,13 +825,12 @@
         if (t[key] !== undefined) {
           if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = t[key];
           else if (el.tagName === 'SELECT') {
-            // handled separately for options
+            // handled separately
           } else {
             el.innerHTML = t[key];
           }
         }
       });
-      // Handle select options
       document.querySelectorAll('#rsvpAttend option[data-i18n]').forEach(opt => {
         const key = opt.dataset.i18n;
         if (t[key] !== undefined) opt.textContent = t[key];
@@ -850,53 +845,34 @@
     document.getElementById('langAr').addEventListener('click', () => applyLanguage('ar'));
     document.getElementById('langMl').addEventListener('click', () => applyLanguage('ml'));
 
-    // ===== RSVP FORM (Direct Submit to Google Forms - No Redirect) =====
+    // ===== RSVP FORM (Using iframe - Most Reliable) =====
     const rsvpForm = document.getElementById('rsvpForm');
     const rsvpSuccess = document.getElementById('rsvpSuccess');
 
-    // Google Form configuration
-    const FORM_ID = '1FAIpQLSdx0aJ-DDerwrzuMysM9Lc9Z9qOrdM8HNDiEanADLPDwfnZgw';
-    const ENTRY_NAME = 'entry.791318341';
-    const ENTRY_ATTEND = 'entry.508351047';
-    const ENTRY_GUESTS = 'entry.1929482426';
-    const ENTRY_MESSAGE = 'entry.1344700246';
-
     rsvpForm.addEventListener('submit', function(e) {
+      // Validate before submit
+      const name = document.getElementById('rsvpName').value.trim();
+      const attend = document.getElementById('rsvpAttend').value;
+      
+      if (!name || !attend) {
         e.preventDefault();
-        
-        const name = document.getElementById('rsvpName').value.trim();
-        const attend = document.getElementById('rsvpAttend').value;
-        const guests = document.getElementById('rsvpGuests').value || '1';
-        const message = document.getElementById('rsvpMessage').value.trim();
-
-        if (!name || !attend) {
-            alert('Please fill in all required fields.');
-            return;
-        }
-
-        // Prepare form data
-        const formData = new FormData();
-        formData.append(ENTRY_NAME, name);
-        formData.append(ENTRY_ATTEND, attend);
-        formData.append(ENTRY_GUESTS, guests);
-        formData.append(ENTRY_MESSAGE, message);
-
-        // Send data directly to Google Forms
-        fetch(`https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`, {
-            method: 'POST',
-            mode: 'no-cors',
-            body: formData
-        })
-        .then(() => {
-            // Success - data submitted
-            rsvpSuccess.classList.add('show');
-            rsvpForm.reset();
-            setTimeout(() => rsvpSuccess.classList.remove('show'), 8000);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-            alert('Something went wrong. Please try again.');
-        });
+        alert('Please fill in all required fields.');
+        return false;
+      }
+      
+      // Show success message immediately (data will be saved)
+      rsvpSuccess.classList.add('show');
+      
+      // Reset form after a short delay
+      setTimeout(() => {
+        rsvpForm.reset();
+      }, 500);
+      
+      // Hide success after 8 seconds
+      setTimeout(() => rsvpSuccess.classList.remove('show'), 8000);
+      
+      // Allow form to submit
+      return true;
     });
 
     // ===== SCROLL ANIMATION =====
@@ -912,4 +888,4 @@
     });
   </script>
 </body>
-</html>
+</html>        
