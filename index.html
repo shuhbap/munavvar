@@ -702,10 +702,70 @@
   </div>
 
   <script>
+    // ===== VOICE WELCOME =====
+    let welcomeSpoken = false;
+    
+    function speakWelcome() {
+      if (welcomeSpoken) return;
+      welcomeSpoken = true;
+      
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        
+        const message = "Assalamu Alaikkum, welcome to my invitation";
+        const utterance = new SpeechSynthesisUtterance(message);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.9;
+        utterance.pitch = 1.1;
+        utterance.volume = 1;
+        
+        // Try to get voices (they load asynchronously)
+        const speak = () => {
+          const voices = window.speechSynthesis.getVoices();
+          const preferredVoice = voices.find(voice => 
+            voice.name.includes('Google UK') || 
+            voice.name.includes('Samantha') || 
+            voice.name.includes('Female') ||
+            voice.name.includes('Microsoft Zira') ||
+            voice.lang.startsWith('en')
+          );
+          if (preferredVoice) {
+            utterance.voice = preferredVoice;
+          }
+          window.speechSynthesis.speak(utterance);
+        };
+        
+        // Voices may not be loaded yet
+        if (window.speechSynthesis.getVoices().length > 0) {
+          speak();
+        } else {
+          window.speechSynthesis.onvoiceschanged = speak;
+        }
+      }
+    }
+
     // ===== LOADING =====
     window.addEventListener('load', () => {
-      setTimeout(() => document.getElementById('loadingScreen').classList.add('hidden'), 1000);
+      setTimeout(() => {
+        document.getElementById('loadingScreen').classList.add('hidden');
+        // Try to speak after loading
+        setTimeout(speakWelcome, 1000);
+      }, 1000);
     });
+
+    // Also speak on first click (ensures it works in all browsers)
+    document.addEventListener('click', () => {
+      if (!welcomeSpoken) {
+        speakWelcome();
+      }
+    }, { once: true });
+
+    // Also on touch for mobile
+    document.addEventListener('touchstart', () => {
+      if (!welcomeSpoken) {
+        speakWelcome();
+      }
+    }, { once: true });
 
     // ===== TABS (Reel active first) =====
     const tabs = document.querySelectorAll('.tab-btn');
