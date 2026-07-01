@@ -69,6 +69,12 @@
     body.dark .reminder-toast .message { color: #b8a99a; }
     body.dark .reminder-toast .btn-close { background: #9B7B5C; color: #1e1a16; }
     body.dark .reminder-toast .btn-close:hover { background: #c9b094; }
+    body.dark .dua-section { background: rgba(180,140,100,0.04); border-color: rgba(180,140,100,0.08); }
+    body.dark .dua-section .dua-text { color: #f0e6d8; }
+    body.dark .dua-section .dua-arabic { color: #c9b094; }
+    body.dark .copy-address-btn { background: rgba(180,140,100,0.08); color: #c9b094; border-color: rgba(180,140,100,0.15); }
+    body.dark .copy-address-btn:hover { background: #9B7B5C; color: #1e1a16; }
+    body.dark .venue-preview img { border-color: rgba(180,140,100,0.1); }
 
     /* ===== PREMIUM CURSOR ===== */
     .custom-cursor {
@@ -159,7 +165,7 @@
       pointer-events: none;
     }
 
-    /* ===== LOADING SCREEN - MARRIAGE THEMED ===== */
+    /* ===== LOADING SCREEN ===== */
     .loading-screen {
       position: fixed;
       inset: 0;
@@ -180,7 +186,6 @@
       align-items: center;
       gap: 28px;
     }
-    /* Wedding ring animation */
     .loading-screen .rings {
       position: relative;
       width: 100px;
@@ -459,6 +464,109 @@
     .calendar-btn:hover { background: #9B7B5C; color: #FAF7F0; border-color: #9B7B5C; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(155,123,92,0.08); }
     .calendar-btn .icon { font-size: 0.9rem; line-height: 1; }
 
+    /* ===== VENUE PREVIEW IMAGE ===== */
+    .venue-preview {
+      width: 100%;
+      max-width: 540px;
+      margin: 16px auto 12px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(180,140,100,0.06);
+      box-shadow: 0 8px 32px rgba(140,110,80,0.04);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+    .venue-preview:hover { transform: scale(1.01); box-shadow: 0 12px 40px rgba(140,110,80,0.06); }
+    .venue-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .venue-preview:hover img { transform: scale(1.02); }
+    .venue-preview .preview-label {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,252,245,0.85);
+      backdrop-filter: blur(8px);
+      padding: 6px 20px;
+      border-radius: 30px;
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #9B7B5C;
+      font-weight: 500;
+      border: 1px solid rgba(180,140,100,0.08);
+    }
+    body.dark .venue-preview .preview-label { background: rgba(30,26,22,0.85); color: #c9b094; border-color: rgba(180,140,100,0.1); }
+
+    /* ===== COPY ADDRESS BUTTON ===== */
+    .address-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 6px 0 4px;
+      flex-wrap: wrap;
+    }
+    .copy-address-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 18px; border-radius: 40px;
+      font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 500;
+      color: #7A5F3A; border: 1.5px solid rgba(180,140,100,0.12);
+      background: rgba(255,255,255,0.15); backdrop-filter: blur(4px);
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: none;
+    }
+    .copy-address-btn:hover { background: #9B7B5C; color: #FAF7F0; border-color: #9B7B5C; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(155,123,92,0.08); }
+    .copy-address-btn .icon { font-size: 0.8rem; line-height: 1; }
+    .copy-feedback {
+      font-size: 0.6rem;
+      color: #9B7B5C;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      margin-left: 4px;
+    }
+    .copy-feedback.show { opacity: 0.7; }
+
+    /* ===== DUA SECTION ===== */
+    .dua-section {
+      margin: 16px 0 10px;
+      padding: 24px 20px 20px;
+      background: rgba(180, 140, 100, 0.02);
+      border-radius: 24px;
+      border: 1px solid rgba(180, 140, 100, 0.04);
+      transition: background 0.4s, border-color 0.4s;
+    }
+    .dua-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: #3D2C1B;
+      letter-spacing: 2px;
+      transition: color 0.4s;
+      margin-bottom: 8px;
+    }
+    body.dark .dua-title { color: #f0e6d8; }
+    .dua-arabic {
+      font-family: 'Amiri', 'Times New Roman', serif;
+      font-size: 1.6rem;
+      color: #9B7B5C;
+      line-height: 2;
+      opacity: 0.8;
+      transition: color 0.4s;
+    }
+    .dua-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: #3D2C1B;
+      opacity: 0.6;
+      margin-top: 6px;
+      letter-spacing: 0.5px;
+      line-height: 1.6;
+      transition: color 0.4s;
+    }
+
     .rsvp-section {
       margin: 20px 0 10px;
       padding: 24px 20px 20px;
@@ -608,6 +716,39 @@
     }
     .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
+    /* ===== ONE-TAP NAVIGATION ===== */
+    .nav-dots {
+      position: fixed;
+      right: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 150;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+    }
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(155, 123, 92, 0.2);
+      background: transparent;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: none;
+      padding: 0;
+    }
+    .nav-dot.active {
+      background: #9B7B5C;
+      border-color: #9B7B5C;
+      transform: scale(1.3);
+      box-shadow: 0 0 20px rgba(155,123,92,0.15);
+    }
+    .nav-dot:hover { border-color: #9B7B5C; transform: scale(1.2); }
+    body.dark .nav-dot { border-color: rgba(201, 176, 148, 0.2); }
+    body.dark .nav-dot.active { background: #c9b094; border-color: #c9b094; }
+    body.dark .nav-dot:hover { border-color: #c9b094; }
+
     @media (max-width:700px) {
       .card { padding: 28px 18px 22px; border-radius: 36px; }
       .groom-name, .bride-name { font-size: 2.6rem; letter-spacing: 3px; }
@@ -638,7 +779,10 @@
       .calendar-btn { padding: 8px 14px; font-size: 0.6rem; }
       .custom-cursor, .mouse-glow { display: none !important; }
       body { cursor: auto; }
-      .tab-btn, .calendar-btn, .rsvp-form .submit-btn, .open-map-btn, .control-toggle, .countdown-item { cursor: pointer; }
+      .tab-btn, .calendar-btn, .rsvp-form .submit-btn, .open-map-btn, .control-toggle, .countdown-item, .copy-address-btn, .nav-dot { cursor: pointer; }
+      .nav-dots { right: 12px; gap: 10px; }
+      .nav-dot { width: 8px; height: 8px; }
+      .dua-arabic { font-size: 1.2rem; }
     }
     @media (max-width:400px) {
       .groom-name, .bride-name { font-size: 2rem; }
@@ -653,6 +797,8 @@
       .loading-screen .rings .ring:nth-child(2) { width: 44px; height: 44px; }
       .loading-screen .rings .ring:nth-child(3) { width: 28px; height: 28px; }
       .loading-screen .rings .diamond { font-size: 1.4rem; }
+      .nav-dots { right: 8px; gap: 8px; }
+      .nav-dot { width: 6px; height: 6px; }
     }
   </style>
 </head>
@@ -660,6 +806,15 @@
   <!-- ===== PREMIUM CURSOR ===== -->
   <div class="custom-cursor" id="customCursor"><div class="dot"></div></div>
   <div class="mouse-glow" id="mouseGlow"></div>
+
+  <!-- ===== ONE-TAP NAVIGATION ===== -->
+  <nav class="nav-dots" id="navDots">
+    <button class="nav-dot active" data-target="top" title="Top"></button>
+    <button class="nav-dot" data-target="details" title="Details"></button>
+    <button class="nav-dot" data-target="dua" title="Dua"></button>
+    <button class="nav-dot" data-target="rsvp" title="RSVP"></button>
+    <button class="nav-dot" data-target="map" title="Map"></button>
+  </nav>
 
   <!-- ===== ISLAMIC GEOMETRIC BACKGROUND ===== -->
   <div class="geometric-bg">
@@ -680,7 +835,7 @@
   <!-- ===== PARTICLES CANVAS ===== -->
   <canvas id="particles-canvas"></canvas>
 
-  <!-- ===== LOADING SCREEN - MARRIAGE THEMED ===== -->
+  <!-- ===== LOADING SCREEN ===== -->
   <div class="loading-screen" id="loadingScreen">
     <div class="loader-wrapper">
       <div class="rings">
@@ -770,8 +925,8 @@
 
     <div class="divider-symbol animate-on-scroll">✦ ✦ ✦</div>
 
-    <!-- DETAILS -->
-    <div class="details animate-on-scroll">
+    <!-- DETAILS with VENUE PREVIEW -->
+    <div class="details animate-on-scroll" id="details">
       <div class="detail-row">
         <span class="symbol">◈</span>
         <span class="label" data-i18n="labelDate">Date</span>
@@ -797,6 +952,20 @@
         <span data-i18n="venueLoc">Vengad, Kerala</span>
       </div>
       
+      <!-- VENUE PREVIEW IMAGE -->
+      <div class="venue-preview">
+        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&h=400&fit=crop&crop=center" alt="Vista Convention Center" loading="lazy" />
+        <span class="preview-label">✦ Wedding Venue</span>
+      </div>
+
+      <!-- COPY ADDRESS -->
+      <div class="address-actions">
+        <button class="copy-address-btn" id="copyAddress">
+          <span class="icon">◈</span> Copy Address
+          <span class="copy-feedback" id="copyFeedback">✓ Copied!</span>
+        </button>
+      </div>
+      
       <div class="countdown-container" id="countdownContainer">
         <div class="countdown-item"><div class="number" id="countDays">00</div><div class="label">Days</div></div>
         <div class="countdown-item"><div class="number" id="countHours">00</div><div class="label">Hours</div></div>
@@ -804,7 +973,7 @@
         <div class="countdown-item"><div class="number" id="countSeconds">00</div><div class="label">Seconds</div></div>
       </div>
 
-      <!-- CALENDAR ACTIONS - Symbols only, no emojis -->
+      <!-- CALENDAR ACTIONS -->
       <div class="calendar-actions">
         <button class="calendar-btn" id="addGoogleCal"><span class="icon">◈</span> Google</button>
         <button class="calendar-btn" id="addAppleCal"><span class="icon">◈</span> Apple</button>
@@ -812,8 +981,17 @@
       </div>
     </div>
 
+    <!-- DUA SECTION -->
+    <div class="dua-section animate-on-scroll" id="dua">
+      <div class="dua-title">— Dua for the Couple —</div>
+      <div class="dua-arabic">بَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</div>
+      <div class="dua-text">"May Allah bless you both, shower His blessings upon you, and unite you in goodness."</div>
+    </div>
+
+    <div class="divider-symbol animate-on-scroll">✦ ✦ ✦</div>
+
     <!-- RSVP -->
-    <div class="rsvp-section animate-on-scroll" id="rsvpSection">
+    <div class="rsvp-section animate-on-scroll" id="rsvp">
       <div class="rsvp-title" data-i18n="rsvpTitle">Kindly Respond</div>
       <div class="rsvp-subtitle" data-i18n="rsvpSub">— We await your presence —</div>
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
@@ -830,7 +1008,7 @@
     <div class="divider-symbol animate-on-scroll">✦ ✦ ✦</div>
 
     <!-- QR + MAP -->
-    <div class="qr-map-container animate-on-scroll">
+    <div class="qr-map-container animate-on-scroll" id="map">
       <div class="qr-box"><span class="label" data-i18n="qrLabel">Place QR</span><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=YourPlaceAddressHere" alt="Place QR" /></div>
       <div class="venue-map-card animate-on-scroll" style="max-width:300px;margin:0;">
         <iframe src="https://www.google.com/maps?q=Vista+Convention+Center&output=embed" loading="lazy" allowfullscreen></iframe>
@@ -873,7 +1051,7 @@
       glow.style.top = e.clientY + 'px';
       glow.classList.add('visible');
     });
-    document.querySelectorAll('button, a, .tab-btn, .calendar-btn, .submit-btn, .open-map-btn, .control-toggle, .countdown-item, .qr-box img, .groom-name, .bride-name').forEach(el => {
+    document.querySelectorAll('button, a, .tab-btn, .calendar-btn, .submit-btn, .open-map-btn, .control-toggle, .countdown-item, .qr-box img, .groom-name, .bride-name, .copy-address-btn, .nav-dot').forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
@@ -962,6 +1140,8 @@
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
           if (el.getBoundingClientRect().top < window.innerHeight * 0.85) el.classList.add('visible');
         });
+        // Update nav dots
+        updateNavDots();
       }, 1500);
     });
 
@@ -993,7 +1173,80 @@
     }
 
     // ============================================================
-    // 6. TABS
+    // 6. ONE-TAP NAVIGATION
+    // ============================================================
+    const navDots = document.querySelectorAll('.nav-dot');
+    const sections = {
+      top: document.getElementById('mainCard'),
+      details: document.getElementById('details'),
+      dua: document.getElementById('dua'),
+      rsvp: document.getElementById('rsvp'),
+      map: document.getElementById('map')
+    };
+
+    navDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const target = dot.dataset.target;
+        if (target === 'top') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else if (sections[target]) {
+          sections[target].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        navDots.forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+      });
+    });
+
+    function updateNavDots() {
+      const scrollY = window.scrollY + window.innerHeight / 2;
+      const targets = ['top', 'details', 'dua', 'rsvp', 'map'];
+      let active = 'top';
+      for (const key of targets) {
+        if (key === 'top') {
+          if (scrollY < 200) { active = 'top'; break; }
+          continue;
+        }
+        const el = sections[key];
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          const elCenter = rect.top + rect.height / 2;
+          if (elCenter < window.innerHeight / 2) {
+            active = key;
+          }
+        }
+      }
+      navDots.forEach(d => {
+        d.classList.toggle('active', d.dataset.target === active);
+      });
+    }
+
+    window.addEventListener('scroll', updateNavDots);
+
+    // ============================================================
+    // 7. COPY ADDRESS
+    // ============================================================
+    document.getElementById('copyAddress').addEventListener('click', function() {
+      const address = 'Vista Convention Center, Vengad, Kerala, India';
+      navigator.clipboard.writeText(address).then(() => {
+        const feedback = document.getElementById('copyFeedback');
+        feedback.classList.add('show');
+        setTimeout(() => feedback.classList.remove('show'), 2500);
+      }).catch(() => {
+        // Fallback
+        const textarea = document.createElement('textarea');
+        textarea.value = address;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        const feedback = document.getElementById('copyFeedback');
+        feedback.classList.add('show');
+        setTimeout(() => feedback.classList.remove('show'), 2500);
+      });
+    });
+
+    // ============================================================
+    // 8. TABS
     // ============================================================
     const tabs = document.querySelectorAll('.tab-btn');
     const tabContents = { letter: document.getElementById('tab-letter'), reel: document.getElementById('tab-reel') };
@@ -1010,7 +1263,7 @@
     });
 
     // ============================================================
-    // 7. VIDEO AUTOPLAY
+    // 9. VIDEO AUTOPLAY
     // ============================================================
     document.addEventListener('DOMContentLoaded', () => {
       const v = document.querySelector('#tab-reel video');
@@ -1018,7 +1271,7 @@
     });
 
     // ============================================================
-    // 8. COUNTDOWN
+    // 10. COUNTDOWN
     // ============================================================
     const TARGET = new Date('2026-07-19T17:30:00+05:30').getTime();
     function updateCountdown() {
@@ -1036,7 +1289,7 @@
     setInterval(updateCountdown, 1000);
 
     // ============================================================
-    // 9. REMINDER
+    // 11. REMINDER
     // ============================================================
     function checkReminder() {
       const diff = TARGET - Date.now();
@@ -1050,7 +1303,7 @@
     });
 
     // ============================================================
-    // 10. CALENDAR
+    // 12. CALENDAR
     // ============================================================
     function getEvent() {
       const s = new Date('2026-07-19T17:30:00+05:30');
@@ -1093,7 +1346,7 @@
     });
 
     // ============================================================
-    // 11. CONTROL PANEL
+    // 13. CONTROL PANEL
     // ============================================================
     const toggleBtn = document.getElementById('toggleMenu');
     const menu = document.getElementById('controlMenu');
@@ -1102,14 +1355,14 @@
     document.addEventListener('click', (e) => { if (!e.target.closest('.control-panel')) { menu.classList.remove('open'); menuOpen = false; } });
 
     // ============================================================
-    // 12. THEME
+    // 14. THEME
     // ============================================================
     const body = document.body;
     document.getElementById('lightThemeBtn').addEventListener('click', () => body.classList.remove('dark'));
     document.getElementById('darkThemeBtn').addEventListener('click', () => body.classList.add('dark'));
 
     // ============================================================
-    // 13. LANGUAGE
+    // 15. LANGUAGE
     // ============================================================
     const translations = {
       en: { groom:'MUNAWIR', bride:'LABEEBA', invite:'— Invite You to Celebrate —', groomFull:'Munawir Baqavi', groomAddr:'S/o Musthafa Kt & Jameela<br />Kunnathodi (H) Keezhmuri, Po, Vengad<br />Malappuram, Kerala', brideFull:'Labeeba Zahrawiyya', brideAddr:'D/o Mujeeb & Fousiya Mujeeb<br />Valayath Pulakkal, Kondoorkkara<br />Po, Kizhayur, Pattambi, Palakkad', tabLetter:'Letter', tabReel:'Reel', saveDate:'Save The Date', labelDate:'Date', dateMonth:'July 2026', dateDay:'Sunday', timeShort:'5:30 PM', labelVenue:'Venue', venue:'VISTA CONVENTION CENTER', venueLoc:'Vengad, Kerala', qrLabel:'Place QR', venueLabel:'WEDDING VENUE', venueShort:'VISTA CONVENTION CENTER', openMap:'Open in Maps', footerMain:'Complements Family & Friends', footerSub:'With Blessings & Prayers', themeLabel:'Theme', langLabel:'Language', rsvpTitle:'Kindly Respond', rsvpSub:'— We await your presence —', rsvpNameLabel:'Full Name', rsvpAttendLabel:'Will you attend?', rsvpYes:'Yes, Insha Allah', rsvpNo:'Sorry, can\'t make it', rsvpGuestsLabel:'Number of Guests', rsvpMessageLabel:'Message (optional)', rsvpSubmit:'Send RSVP', rsvpSuccessMsg:'✓ Your response has been recorded. Thank you!' },
@@ -1139,7 +1392,7 @@
     document.getElementById('langMl').addEventListener('click', () => applyLanguage('ml'));
 
     // ============================================================
-    // 14. RSVP FORM
+    // 16. RSVP FORM
     // ============================================================
     const rsvpForm = document.getElementById('rsvpForm');
     const rsvpSuccess = document.getElementById('rsvpSuccess');
@@ -1154,7 +1407,7 @@
     });
 
     // ============================================================
-    // 15. SCROLL OBSERVER
+    // 17. SCROLL OBSERVER
     // ============================================================
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -1162,7 +1415,7 @@
     document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
     // ============================================================
-    // 16. SPEAK ON FIRST INTERACTION
+    // 18. SPEAK ON FIRST INTERACTION
     // ============================================================
     document.addEventListener('click', () => { if (!welcomeSpoken) speakWelcome(); }, { once: true });
     document.addEventListener('touchstart', () => { if (!welcomeSpoken) speakWelcome(); }, { once: true });
