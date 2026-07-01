@@ -178,7 +178,21 @@
     .detail-row .symbol { font-size: 0.9rem; min-width: 22px; color: #B28B6A; opacity: 0.25; font-weight: 300; }
     .detail-row .label { font-weight: 500; color: #9B7B5C; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2.5px; background: rgba(180,140,100,0.05); padding: 2px 16px; border-radius: 30px; opacity: 0.7; }
     .detail-row .value { font-weight: 500; color: #2A1F14; transition: color 0.4s; }
-    .detail-row .highlight-date { background: rgba(180,140,100,0.08); padding: 2px 24px; border-radius: 60px; font-weight: 600; color: #3D2C1B; letter-spacing: 1px; border: 1px solid rgba(180,140,100,0.06); box-shadow: 0 2px 12px rgba(140,110,80,0.04); transition: background 0.4s,border-color 0.4s,color 0.4s; }
+    .detail-row .highlight-date { 
+      background: rgba(180,140,100,0.08); 
+      padding: 6px 28px; 
+      border-radius: 60px; 
+      font-weight: 600; 
+      color: #3D2C1B; 
+      letter-spacing: 1px; 
+      border: 1px solid rgba(180,140,100,0.06); 
+      box-shadow: 0 2px 12px rgba(140,110,80,0.04); 
+      transition: background 0.4s,border-color 0.4s,color 0.4s;
+      display: inline-block;
+      font-size: 1.05rem;
+    }
+    .detail-row .highlight-date .day { font-weight: 300; opacity: 0.7; }
+    .detail-row .highlight-date .month { font-weight: 400; }
     .venue-name { font-family: 'Cormorant Garamond',serif; font-size: 1.5rem; color: #9B7B5C; font-weight: 600; letter-spacing: 1px; transition: color 0.4s; }
 
     /* RSVP Section */
@@ -380,32 +394,6 @@
     .menu-item .controls .active-lang { opacity: 1; background: rgba(180,140,100,0.10); font-weight: 600; }
     .menu-divider { height: 1px; background: rgba(180,140,100,0.06); margin: 2px 0; }
 
-    .music-symbols {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .music-symbols .sym-btn {
-      background: none;
-      border: none;
-      font-size: 1.4rem;
-      cursor: pointer;
-      color: #7A5F3A;
-      padding: 2px 6px;
-      transition: 0.2s;
-      font-family: 'Georgia', serif;
-      opacity: 0.5;
-      line-height: 1;
-    }
-    .music-symbols .sym-btn:hover { opacity: 1; transform: scale(1.1); }
-    .music-symbols .sym-btn.active { opacity: 1; }
-    .music-symbols .status-dot {
-      font-size: 0.9rem;
-      opacity: 0.4;
-      min-width: 20px;
-      text-align: center;
-    }
-
     .animate-on-scroll { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(0.20,0.98,0.35,1.00), transform 0.9s cubic-bezier(0.20,0.98,0.35,1.00); }
     .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
@@ -490,7 +478,7 @@
     </div>
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- TAB BUTTONS (Letter & Reel only) -->
+    <!-- TAB BUTTONS (Letter & Reel) -->
     <div class="tab-bar animate-on-scroll">
       <button class="tab-btn active" data-tab="letter" data-i18n="tabLetter">Letter</button>
       <button class="tab-btn" data-tab="reel" data-i18n="tabReel">Reel</button>
@@ -516,12 +504,15 @@
 
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- DETAILS -->
+    <!-- DETAILS (Standard Date & Time) -->
     <div class="details animate-on-scroll">
       <div class="detail-row">
         <span class="symbol">◈</span>
         <span class="label" data-i18n="labelDate">Date</span>
-        <span class="value highlight-date" data-i18n="date"><strong>Sunday, 19 July 2026</strong></span>
+        <span class="value highlight-date" data-i18n="date">
+          <span class="day">Sunday</span>, 
+          <span class="month">19 July 2026</span>
+        </span>
       </div>
       <div class="detail-row">
         <span class="symbol">◈</span>
@@ -539,7 +530,7 @@
       </div>
     </div>
 
-    <!-- ===== RSVP SECTION (Below Details, Above Map) ===== -->
+    <!-- ===== RSVP SECTION ===== -->
     <div class="rsvp-section animate-on-scroll" id="rsvpSection">
       <div class="rsvp-title" data-i18n="rsvpTitle">Kindly Respond</div>
       <div class="rsvp-subtitle" data-i18n="rsvpSub">— We await your presence —</div>
@@ -605,16 +596,7 @@
       <span class="toggle-icon">+</span>
     </div>
     <div class="control-menu" id="controlMenu">
-      <div class="menu-item">
-        <span class="label" data-i18n="musicLabel">Music</span>
-        <div class="controls music-symbols">
-          <button class="sym-btn" id="playBtn" title="Play">♩</button>
-          <button class="sym-btn" id="pauseBtn" title="Pause">♫</button>
-          <button class="sym-btn" id="downloadBtn" title="Download">⬇</button>
-          <span class="status-dot" id="musicStatus">◉</span>
-        </div>
-      </div>
-      <div class="menu-divider"></div>
+      <!-- Music section removed completely -->
       <div class="menu-item">
         <span class="label" data-i18n="themeLabel">Theme</span>
         <div class="controls">
@@ -634,10 +616,7 @@
     </div>
   </div>
 
-  <audio id="bgMusic" loop preload="auto">
-    <source src="https://xenocdn.xenocdn.workers.dev/36a65906.mp4" type="audio/mpeg">
-    <source src="https://archive.org/download/nasheedcollection/07%20Qamaran.mp3" type="audio/mpeg">
-  </audio>
+  <!-- No audio element (music removed) -->
 
   <script>
     // ===== LOADING =====
@@ -658,48 +637,6 @@
         Object.keys(contents).forEach(key => contents[key].classList.toggle('active', key === this.dataset.tab));
       });
     });
-
-    // ===== MUSIC =====
-    const audio = document.getElementById('bgMusic');
-    const playBtn = document.getElementById('playBtn');
-    const pauseBtn = document.getElementById('pauseBtn');
-    const downloadBtn = document.getElementById('downloadBtn');
-    const statusEl = document.getElementById('musicStatus');
-    let isPlaying = false;
-    
-    function updateUI() {
-      statusEl.textContent = isPlaying ? '◉' : '○';
-      playBtn.style.opacity = isPlaying ? '0.3' : '1';
-      pauseBtn.style.opacity = isPlaying ? '1' : '0.3';
-    }
-    
-    playBtn.addEventListener('click', (e) => { 
-      e.stopPropagation(); 
-      audio.play().then(() => { isPlaying = true; updateUI(); }).catch(() => {}); 
-    });
-    pauseBtn.addEventListener('click', (e) => { 
-      e.stopPropagation(); 
-      audio.pause(); 
-      isPlaying = false; 
-      updateUI(); 
-    });
-    downloadBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const link = document.createElement('a');
-      link.href = audio.querySelector('source').src;
-      link.download = 'nasheed.mp3';
-      link.click();
-    });
-    
-    function tryAutoPlay() { 
-      audio.play().then(() => { isPlaying = true; updateUI(); }).catch(() => { isPlaying = false; updateUI(); }); 
-    }
-    document.addEventListener('click', function initAudio() { 
-      tryAutoPlay(); 
-      document.removeEventListener('click', initAudio); 
-    }, { once: true });
-    window.addEventListener('load', () => setTimeout(tryAutoPlay, 800));
-    updateUI();
 
     // ===== CONTROL PANEL TOGGLE =====
     const toggleBtn = document.getElementById('toggleMenu');
@@ -740,7 +677,7 @@
         openMap: 'Open in Maps',
         footerMain: 'Complements Family & Friends',
         footerSub: 'With Blessings & Prayers',
-        musicLabel: 'Music', themeLabel: 'Theme', langLabel: 'Language',
+        themeLabel: 'Theme', langLabel: 'Language',
         rsvpTitle: 'Kindly Respond',
         rsvpSub: '— We await your presence —',
         rsvpNameLabel: 'Full Name',
@@ -771,7 +708,7 @@
         openMap: 'فتح في الخرائط',
         footerMain: 'تحيات العائلة والأصدقاء',
         footerSub: 'بالبركات والدعوات',
-        musicLabel: 'موسيقى', themeLabel: 'المظهر', langLabel: 'اللغة',
+        themeLabel: 'المظهر', langLabel: 'اللغة',
         rsvpTitle: 'تفضل بالرد',
         rsvpSub: '— ننتظر حضوركم —',
         rsvpNameLabel: 'الاسم الكامل',
@@ -802,7 +739,7 @@
         openMap: 'മാപ്പിൽ തുറക്കുക',
         footerMain: 'കുടുംബത്തിന്റെയും സുഹൃത്തുക്കളുടെയും ആശംസകൾ',
         footerSub: 'അനുഗ്രഹങ്ങളോടും പ്രാർത്ഥനകളോടും',
-        musicLabel: 'സംഗീതം', themeLabel: 'തീം', langLabel: 'ഭാഷ',
+        themeLabel: 'തീം', langLabel: 'ഭാഷ',
         rsvpTitle: 'ദയവായി മറുപടി നൽകുക',
         rsvpSub: '— നിങ്ങളുടെ സാന്നിധ്യം ഞങ്ങൾ പ്രതീക്ഷിക്കുന്നു —',
         rsvpNameLabel: 'പൂർണ്ണ നാമം',
@@ -845,12 +782,11 @@
     document.getElementById('langAr').addEventListener('click', () => applyLanguage('ar'));
     document.getElementById('langMl').addEventListener('click', () => applyLanguage('ml'));
 
-    // ===== RSVP FORM (Using iframe - Most Reliable) =====
+    // ===== RSVP FORM (Using iframe) =====
     const rsvpForm = document.getElementById('rsvpForm');
     const rsvpSuccess = document.getElementById('rsvpSuccess');
 
     rsvpForm.addEventListener('submit', function(e) {
-      // Validate before submit
       const name = document.getElementById('rsvpName').value.trim();
       const attend = document.getElementById('rsvpAttend').value;
       
@@ -860,18 +796,9 @@
         return false;
       }
       
-      // Show success message immediately (data will be saved)
       rsvpSuccess.classList.add('show');
-      
-      // Reset form after a short delay
-      setTimeout(() => {
-        rsvpForm.reset();
-      }, 500);
-      
-      // Hide success after 8 seconds
+      setTimeout(() => { rsvpForm.reset(); }, 500);
       setTimeout(() => rsvpSuccess.classList.remove('show'), 8000);
-      
-      // Allow form to submit
       return true;
     });
 
@@ -888,4 +815,4 @@
     });
   </script>
 </body>
-</html>        
+</html>
