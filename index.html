@@ -62,6 +62,8 @@
     body.dark .rsvp-form input:focus, body.dark .rsvp-form select:focus, body.dark .rsvp-form textarea:focus { border-color: #c9b094; outline: none; }
     body.dark .rsvp-form .submit-btn { background: #9B7B5C; color: #1e1a16; }
     body.dark .rsvp-form .submit-btn:hover { background: #c9b094; }
+    body.dark .calendar-btn { background: rgba(180,140,100,0.08); border-color: rgba(180,140,100,0.15); color: #c9b094; }
+    body.dark .calendar-btn:hover { background: #9B7B5C; color: #1e1a16; }
 
     /* ===== PARTICLES BACKGROUND ===== */
     #particles-canvas {
@@ -461,6 +463,44 @@
       opacity: 0.5;
     }
 
+    /* ===== CALENDAR BUTTONS ===== */
+    .calendar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 14px 0 4px;
+    }
+    .calendar-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-decoration: none;
+      color: #7A5F3A;
+      border: 1.5px solid rgba(180,140,100,0.2);
+      background: rgba(255,255,255,0.3);
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .calendar-btn:hover {
+      background: #9B7B5C;
+      color: #FAF7F0;
+      border-color: #9B7B5C;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(155,123,92,0.15);
+    }
+    .calendar-btn .icon {
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
     .rsvp-section {
       margin: 20px 0 10px;
       padding: 24px 20px 20px;
@@ -688,6 +728,57 @@
     }
     .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
+    /* ===== REMINDER TOAST ===== */
+    .reminder-toast {
+      position: fixed;
+      bottom: 100px;
+      right: 32px;
+      z-index: 300;
+      background: rgba(255, 252, 245, 0.96);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(180, 140, 100, 0.15);
+      border-radius: 24px;
+      padding: 20px 24px;
+      max-width: 340px;
+      box-shadow: 0 20px 60px rgba(140, 110, 80, 0.12);
+      display: none;
+      animation: slideUp 0.5s cubic-bezier(0.20, 0.98, 0.35, 1.00);
+      font-family: 'Inter', sans-serif;
+    }
+    .reminder-toast.show { display: block; }
+    @keyframes slideUp {
+      0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .reminder-toast .title {
+      font-weight: 600;
+      color: #3D2C1B;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+    .reminder-toast .message {
+      font-size: 0.8rem;
+      color: #7A5F3A;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .reminder-toast .btn-close {
+      background: #9B7B5C;
+      color: white;
+      border: none;
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+      letter-spacing: 1px;
+    }
+    .reminder-toast .btn-close:hover { background: #7A5F3A; }
+    body.dark .reminder-toast { background: #2a2520; border-color: rgba(180, 140, 100, 0.15); }
+    body.dark .reminder-toast .title { color: #f0e6d8; }
+    body.dark .reminder-toast .message { color: #b8a99a; }
+
     @media (max-width:700px) {
       .card { padding: 28px 18px 22px; border-radius: 36px; }
       .groom-name, .bride-name { font-size: 2.8rem; letter-spacing: 3px; }
@@ -713,6 +804,9 @@
       .date-badge .day-number { font-size: 1.8rem; }
       .date-badge .date-details .month-year { font-size: 0.65rem; }
       .date-badge .divider-line { height: 24px; }
+      .reminder-toast { right: 16px; left: 16px; max-width: none; bottom: 90px; }
+      .calendar-actions { gap: 8px; }
+      .calendar-btn { padding: 8px 14px; font-size: 0.65rem; }
     }
     @media (max-width:400px) {
       .groom-name, .bride-name { font-size: 2.2rem; }
@@ -760,6 +854,13 @@
       </div>
       <div class="loader-text">Eternal Union</div>
     </div>
+  </div>
+
+  <!-- ===== REMINDER TOAST ===== -->
+  <div class="reminder-toast" id="reminderToast">
+    <div class="title">⏰ Reminder</div>
+    <div class="message">Don't forget! The wedding is in <strong>24 hours</strong>.<br/>We look forward to seeing you.</div>
+    <button class="btn-close" id="closeToast">Got it</button>
   </div>
 
   <div class="bg-ornament tl">❧</div>
@@ -893,6 +994,19 @@
           <div class="number" id="countSeconds">00</div>
           <div class="label">Seconds</div>
         </div>
+      </div>
+
+      <!-- ===== CALENDAR ACTIONS ===== -->
+      <div class="calendar-actions">
+        <button class="calendar-btn" id="addGoogleCal">
+          <span class="icon">📅</span> Google
+        </button>
+        <button class="calendar-btn" id="addAppleCal">
+          <span class="icon">📅</span> Apple
+        </button>
+        <button class="calendar-btn" id="setReminder">
+          <span class="icon">⏰</span> Remind me
+        </button>
       </div>
     </div>
 
@@ -1085,6 +1199,8 @@
         setTimeout(speakWelcome, 500);
         // Trigger text reveal
         triggerTextReveal();
+        // Check for 24-hour reminder
+        checkReminder();
       }, 1500);
     });
 
@@ -1094,7 +1210,6 @@
       names.forEach((el, index) => {
         const text = el.getAttribute('data-i18n') === 'groom' ? 'MUNAWIR' : 'LABEEBA';
         el.innerHTML = '';
-        // Add gradient background for reveal but keep text visible
         el.style.background = 'linear-gradient(135deg, #3D2C1B 0%, #9B7B5C 50%, #3D2C1B 100%)';
         el.style.backgroundSize = '200% 200%';
         el.style.webkitBackgroundClip = 'text';
@@ -1107,7 +1222,6 @@
           span.className = 'reveal-text';
           span.textContent = char;
           span.style.animationDelay = `${(index * 0.15) + (i * 0.05)}s`;
-          // Ensure each letter inherits the gradient
           span.style.background = 'inherit';
           span.style.webkitBackgroundClip = 'text';
           span.style.webkitTextFillColor = 'transparent';
@@ -1158,10 +1272,11 @@
     });
 
     // ===== COUNTDOWN =====
+    const TARGET_DATE = new Date('2026-07-19T17:30:00+05:30').getTime();
+    
     function updateCountdown() {
-      const target = new Date('2026-07-19T17:30:00+05:30').getTime();
       const now = Date.now();
-      let diff = Math.max(0, target - now);
+      let diff = Math.max(0, TARGET_DATE - now);
       
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -1172,9 +1287,137 @@
       document.getElementById('countHours').textContent = String(hours).padStart(2, '0');
       document.getElementById('countMinutes').textContent = String(minutes).padStart(2, '0');
       document.getElementById('countSeconds').textContent = String(seconds).padStart(2, '0');
+
+      // Check if 24 hours remaining
+      if (diff > 0 && diff <= 24 * 60 * 60 * 1000 && !document.getElementById('reminderToast').classList.contains('show')) {
+        // Show reminder only once
+        if (!localStorage.getItem('reminderShown')) {
+          document.getElementById('reminderToast').classList.add('show');
+          localStorage.setItem('reminderShown', 'true');
+        }
+      }
     }
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    // ===== REMINDER CHECK =====
+    function checkReminder() {
+      const now = Date.now();
+      const diff = TARGET_DATE - now;
+      if (diff > 0 && diff <= 24 * 60 * 60 * 1000 && !localStorage.getItem('reminderShown')) {
+        document.getElementById('reminderToast').classList.add('show');
+        localStorage.setItem('reminderShown', 'true');
+      }
+    }
+
+    // ===== CLOSE REMINDER TOAST =====
+    document.getElementById('closeToast').addEventListener('click', () => {
+      document.getElementById('reminderToast').classList.remove('show');
+    });
+
+    // ===== CALENDAR FUNCTIONS =====
+    function getEventDetails() {
+      const start = new Date('2026-07-19T17:30:00+05:30');
+      const end = new Date(start.getTime() + 3 * 60 * 60 * 1000); // 3 hours duration
+      const formatDate = (d) => d.toISOString().replace(/-|:|\.\d+/g, '');
+      return {
+        title: 'Munawir & Labeeba Wedding',
+        description: 'Wedding ceremony of Munawir Baqavi and Labeeba Zahrawiyya. Venue: Vista Convention Center, Vengad, Kerala.',
+        location: 'Vista Convention Center, Vengad, Kerala',
+        start: formatDate(start),
+        end: formatDate(end)
+      };
+    }
+
+    // Google Calendar
+    document.getElementById('addGoogleCal').addEventListener('click', () => {
+      const e = getEventDetails();
+      const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(e.title)}&details=${encodeURIComponent(e.description)}&location=${encodeURIComponent(e.location)}&dates=${e.start}/${e.end}`;
+      window.open(url, '_blank');
+    });
+
+    // Apple Calendar (iCal download)
+    document.getElementById('addAppleCal').addEventListener('click', () => {
+      const e = getEventDetails();
+      const ical = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Eternal Union//Wedding//EN',
+        'BEGIN:VEVENT',
+        `UID:${Date.now()}@eternalunion`,
+        `DTSTAMP:${new Date().toISOString().replace(/-|:|\.\d+/g, '')}`,
+        `DTSTART:${e.start}`,
+        `DTEND:${e.end}`,
+        `SUMMARY:${e.title}`,
+        `DESCRIPTION:${e.description}`,
+        `LOCATION:${e.location}`,
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\n');
+      
+      const blob = new Blob([ical], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'Munawir_Labeeba_Wedding.ics';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+    });
+
+    // ===== REMINDER SET (24 hours before) =====
+    document.getElementById('setReminder').addEventListener('click', () => {
+      // Check if we need to schedule a reminder
+      const now = Date.now();
+      const diff = TARGET_DATE - now;
+      
+      if (diff <= 0) {
+        alert('The wedding date has passed. But you can still celebrate in spirit! 🎉');
+        return;
+      }
+      
+      if (diff <= 24 * 60 * 60 * 1000) {
+        // Less than 24 hours, show immediately
+        document.getElementById('reminderToast').classList.add('show');
+        localStorage.setItem('reminderShown', 'true');
+      } else {
+        // Schedule for 24 hours before
+        const remindTime = TARGET_DATE - 24 * 60 * 60 * 1000;
+        const waitTime = remindTime - now;
+        
+        // Use localStorage to persist reminder setting
+        localStorage.setItem('reminderScheduled', 'true');
+        localStorage.setItem('reminderTime', remindTime);
+        
+        alert(`✅ Reminder set! You will be notified 24 hours before the wedding (July 18, 5:30 PM).`);
+        
+        // If the page is open at that time, we'll show it via the countdown check
+        // Otherwise, we'll check on next load
+        setTimeout(() => {
+          document.getElementById('reminderToast').classList.add('show');
+          localStorage.setItem('reminderShown', 'true');
+        }, waitTime);
+      }
+    });
+
+    // Check if reminder was scheduled from previous visit
+    (function checkScheduledReminder() {
+      const scheduled = localStorage.getItem('reminderScheduled');
+      const remindTime = localStorage.getItem('reminderTime');
+      if (scheduled && remindTime) {
+        const now = Date.now();
+        const diff = remindTime - now;
+        if (diff > 0 && diff <= 24 * 60 * 60 * 1000) {
+          // It's time to show the reminder
+          if (!localStorage.getItem('reminderShown')) {
+            setTimeout(() => {
+              document.getElementById('reminderToast').classList.add('show');
+              localStorage.setItem('reminderShown', 'true');
+            }, 2000);
+          }
+        }
+      }
+    })();
 
     // ===== CONTROL PANEL TOGGLE =====
     const toggleBtn = document.getElementById('toggleMenu');
