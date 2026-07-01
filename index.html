@@ -27,7 +27,12 @@
       background: rgba(30, 26, 22, 0.92);
       border-color: rgba(200, 170, 140, 0.15);
     }
-    body.dark .groom-name, body.dark .bride-name { color: #f0e6d8; }
+    body.dark .groom-name, body.dark .bride-name { 
+      background: linear-gradient(135deg, #c9b094 0%, #f0e6d8 50%, #c9b094 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     body.dark .family-box .name { color: #f0e6d8; }
     body.dark .family-box .address { color: #b8a99a; }
     body.dark .detail-row .value { color: #e6ddd0; }
@@ -58,6 +63,17 @@
     body.dark .rsvp-form .submit-btn { background: #9B7B5C; color: #1e1a16; }
     body.dark .rsvp-form .submit-btn:hover { background: #c9b094; }
 
+    /* ===== PARTICLES BACKGROUND ===== */
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
     /* ===== PREMIUM LOADING SCREEN ===== */
     .loading-screen {
       position: fixed;
@@ -81,54 +97,56 @@
       gap: 30px;
     }
     
-    .loading-screen .initials {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 4.5rem;
-      font-weight: 700;
-      color: #3D2C1B;
-      letter-spacing: 20px;
-      animation: premiumPulse 1.8s ease-in-out infinite;
-      background: linear-gradient(135deg, #9B7B5C 0%, #3D2C1B 50%, #9B7B5C 100%);
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradientShift 2.5s ease-in-out infinite;
+    /* Gold Monogram Morph Animation */
+    .loading-screen .monogram {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    body.dark .loading-screen .initials { 
-      background: linear-gradient(135deg, #c9b094 0%, #f0e6d8 50%, #c9b094 100%);
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradientShift 2.5s ease-in-out infinite;
+    .loading-screen .monogram svg {
+      width: 100%;
+      height: 100%;
+      animation: morphGold 1.5s ease-in-out infinite;
+    }
+    .loading-screen .monogram svg .letter {
+      fill: none;
+      stroke: #9B7B5C;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    body.dark .loading-screen .monogram svg .letter {
+      stroke: #c9b094;
+    }
+    .loading-screen .monogram svg .gold-fill {
+      fill: #9B7B5C;
+      opacity: 0.15;
+    }
+    body.dark .loading-screen .monogram svg .gold-fill {
+      fill: #c9b094;
     }
     
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    @keyframes premiumPulse {
-      0%, 100% { opacity: 0.7; transform: scale(0.98); letter-spacing: 20px; }
-      50% { opacity: 1; transform: scale(1.02); letter-spacing: 24px; }
+    @keyframes morphGold {
+      0% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+      50% { transform: scale(1.08) rotate(8deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
     }
     
     .loading-screen .loader-ring-premium {
-      position: relative;
-      width: 70px;
-      height: 70px;
+      position: absolute;
+      width: 140px;
+      height: 140px;
     }
-    
     .loading-screen .loader-ring-premium .ring {
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      border: 3px solid transparent;
+      border: 2px solid transparent;
       animation: ringSpin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     }
-    
     .loading-screen .loader-ring-premium .ring:nth-child(1) {
       border-top-color: #9B7B5C;
       animation-duration: 1.2s;
@@ -207,6 +225,17 @@
       transition: background 0.4s, border-color 0.4s, box-shadow 0.3s;
     }
 
+    /* ===== TEXT REVEAL ANIMATION ===== */
+    .reveal-text {
+      display: inline-block;
+      opacity: 0;
+      animation: revealLetter 0.05s ease forwards;
+    }
+    @keyframes revealLetter {
+      0% { opacity: 0; transform: translateY(8px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
     .tab-bar {
       display: flex;
       justify-content: center;
@@ -241,9 +270,38 @@
     .calligraphy-svg.barakkallahu { max-width: 520px; }
     .calligraphy-svg text { transition: fill 0.4s; }
     .divider-symbol { font-size: 1.2rem; color: #B28B6A; opacity: 0.15; letter-spacing: 14px; margin: 10px 0 16px; transition: color 0.4s; }
+    
     .names-container { margin: 8px 0 4px; }
-    .groom-name, .bride-name { font-family: 'Cormorant Garamond','Playfair Display',serif; font-size: 3.8rem; font-weight: 700; color: #3D2C1B; letter-spacing: 6px; line-height: 1.1; transition: color 0.4s; }
-    .ampersand { font-family: 'Cormorant Garamond',serif; font-size: 2.8rem; color: #9B7B5C; opacity: 0.40; margin: 2px 18px; display: inline-block; font-weight: 300; letter-spacing: 4px; }
+    .groom-name, .bride-name { 
+      font-family: 'Cormorant Garamond','Playfair Display',serif; 
+      font-size: 3.8rem; 
+      font-weight: 700; 
+      letter-spacing: 6px; 
+      line-height: 1.1; 
+      background: linear-gradient(135deg, #3D2C1B 0%, #9B7B5C 50%, #3D2C1B 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: all 0.4s ease;
+      display: inline-block;
+      cursor: default;
+    }
+    .groom-name:hover, .bride-name:hover {
+      filter: drop-shadow(0 0 20px rgba(155, 123, 92, 0.3));
+      transform: scale(1.02);
+      background-position: 100% 50%;
+    }
+    .ampersand { 
+      font-family: 'Cormorant Garamond',serif; 
+      font-size: 2.8rem; 
+      color: #9B7B5C; 
+      opacity: 0.40; 
+      margin: 2px 18px; 
+      display: inline-block; 
+      font-weight: 300; 
+      letter-spacing: 4px; 
+    }
     .sub-text { font-family: 'Inter',sans-serif; font-size: 0.7rem; color: #9B7B5C; font-weight: 400; letter-spacing: 8px; text-transform: uppercase; margin: 8px 0 12px; border-top: 1px solid rgba(180,140,100,0.08); border-bottom: 1px solid rgba(180,140,100,0.08); padding: 10px 0; display: inline-block; transition: color 0.4s,border-color 0.4s; }
     .family-details { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 18px 0 12px; padding: 22px 24px; background: rgba(180,140,100,0.03); border-radius: 24px; border: 1px solid rgba(180,140,100,0.06); transition: background 0.4s,border-color 0.4s; }
     .family-box { flex: 1; min-width: 160px; text-align: center; }
@@ -299,7 +357,6 @@
       transition: color 0.4s;
     }
     
-    /* Premium Date Badge */
     .date-badge {
       display: inline-flex;
       align-items: center;
@@ -364,7 +421,6 @@
 
     .venue-name { font-family: 'Cormorant Garamond',serif; font-size: 1.5rem; color: #9B7B5C; font-weight: 600; letter-spacing: 1px; transition: color 0.4s; }
 
-    /* Countdown */
     .countdown-container {
       display: flex;
       justify-content: center;
@@ -402,7 +458,6 @@
       opacity: 0.5;
     }
 
-    /* RSVP Section */
     .rsvp-section {
       margin: 20px 0 10px;
       padding: 24px 20px 20px;
@@ -664,18 +719,43 @@
       .card { padding: 20px 12px 16px; border-radius: 28px; }
       .date-badge { padding: 6px 14px; }
       .date-badge .day-number { font-size: 1.5rem; }
+      .loading-screen .monogram { width: 80px; height: 80px; }
+      .loading-screen .loader-ring-premium { width: 100px; height: 100px; }
     }
   </style>
 </head>
 <body>
-  <!-- ===== PREMIUM LOADING SCREEN (3 SECONDS) ===== -->
+  <!-- ===== PARTICLES CANVAS ===== -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ===== PREMIUM LOADING SCREEN (1.5 SECONDS) ===== -->
   <div class="loading-screen" id="loadingScreen">
     <div class="loader-wrapper">
-      <div class="initials">M & L</div>
-      <div class="loader-ring-premium">
-        <div class="ring"></div>
-        <div class="ring"></div>
-        <div class="ring"></div>
+      <div class="monogram">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#9B7B5C"/>
+              <stop offset="50%" stop-color="#D4C4B0"/>
+              <stop offset="100%" stop-color="#9B7B5C"/>
+            </linearGradient>
+          </defs>
+          <!-- Morphing gold monogram -->
+          <path class="gold-fill" d="M30,60 Q30,25 60,25 Q90,25 90,60 Q90,95 60,95 Q30,95 30,60 Z" />
+          <path class="letter" d="M35,50 L55,50 L55,35 L65,35 L65,50 L85,50 L85,60 L65,60 L65,75 L55,75 L55,60 L35,60 Z" />
+          <path class="letter" d="M35,40 C35,30 50,25 60,25 C70,25 85,30 85,40" />
+          <path class="letter" d="M35,80 C35,90 50,95 60,95 C70,95 85,90 85,80" />
+          <!-- Decorative dots -->
+          <circle cx="60" cy="10" r="3" fill="#9B7B5C" opacity="0.3"/>
+          <circle cx="60" cy="110" r="3" fill="#9B7B5C" opacity="0.3"/>
+          <circle cx="10" cy="60" r="3" fill="#9B7B5C" opacity="0.3"/>
+          <circle cx="110" cy="60" r="3" fill="#9B7B5C" opacity="0.3"/>
+        </svg>
+        <div class="loader-ring-premium">
+          <div class="ring"></div>
+          <div class="ring"></div>
+          <div class="ring"></div>
+        </div>
       </div>
       <div class="loader-text">Eternal Union</div>
     </div>
@@ -690,25 +770,39 @@
     <!-- Calligraphy -->
     <div class="calligraphy-container animate-on-scroll">
       <svg class="calligraphy-svg bismillah" viewBox="0 0 500 110" xmlns="http://www.w3.org/2000/svg">
-        <text x="50%" y="45%" font-size="40" text-anchor="middle" dominant-baseline="central" font-family="'Amiri','Times New Roman',serif" fill="#9B7B5C" opacity="0.45">﷽</text>
-        <text x="50%" y="80%" font-size="16" text-anchor="middle" dominant-baseline="central" font-family="'Amiri','Times New Roman',serif" fill="#9B7B5C" opacity="0.25" letter-spacing="3">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</text>
+        <defs>
+          <linearGradient id="goldCalligraphy" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#9B7B5C" stop-opacity="0.45"/>
+            <stop offset="50%" stop-color="#D4C4B0" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#9B7B5C" stop-opacity="0.45"/>
+          </linearGradient>
+        </defs>
+        <text x="50%" y="45%" font-size="42" text-anchor="middle" dominant-baseline="central" font-family="'Amiri','Times New Roman',serif" fill="url(#goldCalligraphy)">﷽</text>
+        <text x="50%" y="80%" font-size="17" text-anchor="middle" dominant-baseline="central" font-family="'Amiri','Times New Roman',serif" fill="url(#goldCalligraphy)" letter-spacing="3" opacity="0.3">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</text>
       </svg>
     </div>
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- Names -->
-    <div class="names-container animate-on-scroll">
-      <div class="groom-name" data-i18n="groom">MUNAWIR</div>
-      <div class="ampersand">&amp;</div>
-      <div class="bride-name" data-i18n="bride">LABEEBA</div>
+    <!-- Names with reveal animation -->
+    <div class="names-container animate-on-scroll" id="namesContainer">
+      <span class="groom-name" data-i18n="groom">MUNAWIR</span>
+      <span class="ampersand">&amp;</span>
+      <span class="bride-name" data-i18n="bride">LABEEBA</span>
     </div>
     <div class="sub-text animate-on-scroll" data-i18n="invite">— Invite You to Celebrate —</div>
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- Barakkallahu -->
+    <!-- Improved Arabic Calligraphy -->
     <div class="calligraphy-container animate-on-scroll">
       <svg class="calligraphy-svg barakkallahu" viewBox="0 0 580 90" xmlns="http://www.w3.org/2000/svg">
-        <text x="50%" y="50%" font-size="28" text-anchor="middle" dominant-baseline="central" font-family="'Amiri','Times New Roman',serif" fill="#9B7B5C" opacity="0.40" letter-spacing="2">بَارَكَ اللهُ لَكُماَ وَبَارَكَ عَلَيْكُماَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</text>
+        <defs>
+          <linearGradient id="goldCalligraphy2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#9B7B5C" stop-opacity="0.35"/>
+            <stop offset="50%" stop-color="#D4C4B0" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#9B7B5C" stop-opacity="0.35"/>
+          </linearGradient>
+        </defs>
+        <text x="50%" y="50%" font-size="30" text-anchor="middle" dominant-baseline="central" font-family="'Amiri','Times New Roman',serif" fill="url(#goldCalligraphy2)" letter-spacing="2">بَارَكَ اللهُ لَكُماَ وَبَارَكَ عَلَيْكُماَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</text>
       </svg>
     </div>
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
@@ -727,13 +821,13 @@
     </div>
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- TAB BUTTONS (Reel first, then Letter) -->
+    <!-- TAB BUTTONS -->
     <div class="tab-bar animate-on-scroll">
       <button class="tab-btn active" data-tab="reel" data-i18n="tabReel">Reel</button>
       <button class="tab-btn" data-tab="letter" data-i18n="tabLetter">Letter</button>
     </div>
 
-    <!-- TAB CONTENT: REEL (active first) -->
+    <!-- TAB CONTENT: REEL -->
     <div id="tab-reel" class="tab-content active">
       <div class="video-container animate-on-scroll">
         <span class="video-label" data-i18n="saveDate">Save The Date</span>
@@ -753,9 +847,8 @@
 
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- ===== DETAILS with HIGHLIGHTED DATE ===== -->
+    <!-- DETAILS with HIGHLIGHTED DATE -->
     <div class="details animate-on-scroll">
-      <!-- Premium Date Badge -->
       <div class="detail-row">
         <span class="symbol">◈</span>
         <span class="label" data-i18n="labelDate">Date</span>
@@ -767,12 +860,11 @@
               <span class="day-name" data-i18n="dateDay">Sunday</span>
             </div>
             <span class="divider-line"></span>
-            <span class="time-info" data-i18n="timeShort">5:00 PM</span>
+            <span class="time-info" data-i18n="timeShort">5:30 PM</span>
           </div>
         </span>
       </div>
       
-      <!-- Venue -->
       <div class="detail-row">
         <span class="symbol">◈</span>
         <span class="label" data-i18n="labelVenue">Venue</span>
@@ -783,7 +875,6 @@
         <span data-i18n="venueLoc">Vengad, Kerala</span>
       </div>
       
-      <!-- Countdown -->
       <div class="countdown-container" id="countdownContainer">
         <div class="countdown-item">
           <div class="number" id="countDays">00</div>
@@ -804,12 +895,11 @@
       </div>
     </div>
 
-    <!-- ===== RSVP SECTION ===== -->
+    <!-- RSVP SECTION -->
     <div class="rsvp-section animate-on-scroll" id="rsvpSection">
       <div class="rsvp-title" data-i18n="rsvpTitle">Kindly Respond</div>
       <div class="rsvp-subtitle" data-i18n="rsvpSub">— We await your presence —</div>
       
-      <!-- Hidden iframe for form submission -->
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
       
       <form class="rsvp-form" id="rsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdx0aJ-DDerwrzuMysM9Lc9Z9qOrdM8HNDiEanADLPDwfnZgw/formResponse" method="POST" target="hidden_iframe">
@@ -864,7 +954,7 @@
     </div>
   </div>
 
-  <!-- ===== FLOATING CONTROL PANEL ===== -->
+  <!-- CONTROL PANEL -->
   <div class="control-panel" id="controlPanel">
     <div class="control-toggle" id="toggleMenu">
       <span class="toggle-icon">+</span>
@@ -890,6 +980,63 @@
   </div>
 
   <script>
+    // ===== PARTICLES BACKGROUND =====
+    (function() {
+      const canvas = document.getElementById('particles-canvas');
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+      const particleCount = 60;
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      class Particle {
+        constructor() {
+          this.reset();
+        }
+        reset() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.size = Math.random() * 3 + 1;
+          this.speedX = (Math.random() - 0.5) * 0.3;
+          this.speedY = (Math.random() - 0.5) * 0.3;
+          this.opacity = Math.random() * 0.3 + 0.1;
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+            this.reset();
+          }
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(155, 123, 92, ${this.opacity})`;
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animateParticles);
+      }
+      animateParticles();
+    })();
+
     // ===== VOICE WELCOME =====
     let welcomeSpoken = false;
     
@@ -930,30 +1077,41 @@
       }
     }
 
-    // ===== LOADING =====
+    // ===== LOADING (1.5 seconds) =====
     window.addEventListener('load', () => {
-      // Show loading for exactly 3 seconds
       setTimeout(() => {
         document.getElementById('loadingScreen').classList.add('hidden');
-        // Speak welcome after loading
         setTimeout(speakWelcome, 500);
-      }, 3000);
+        // Trigger text reveal
+        triggerTextReveal();
+      }, 1500);
     });
 
-    // Also speak on first click (ensures it works in all browsers)
+    // ===== TEXT REVEAL ANIMATION =====
+    function triggerTextReveal() {
+      const names = document.querySelectorAll('.groom-name, .bride-name');
+      names.forEach((el, index) => {
+        const text = el.textContent;
+        el.innerHTML = '';
+        text.split('').forEach((char, i) => {
+          const span = document.createElement('span');
+          span.className = 'reveal-text';
+          span.textContent = char;
+          span.style.animationDelay = `${(index * 0.15) + (i * 0.05)}s`;
+          el.appendChild(span);
+        });
+      });
+    }
+
+    // Also speak on first click
     document.addEventListener('click', () => {
-      if (!welcomeSpoken) {
-        speakWelcome();
-      }
+      if (!welcomeSpoken) speakWelcome();
     }, { once: true });
-
     document.addEventListener('touchstart', () => {
-      if (!welcomeSpoken) {
-        speakWelcome();
-      }
+      if (!welcomeSpoken) speakWelcome();
     }, { once: true });
 
-    // ===== TABS (Reel active first) =====
+    // ===== TABS =====
     const tabs = document.querySelectorAll('.tab-btn');
     const contents = { 
       letter: document.getElementById('tab-letter'), 
