@@ -28,10 +28,10 @@
       border-color: rgba(200, 170, 140, 0.15);
     }
     body.dark .groom-name, body.dark .bride-name { 
-      background: linear-gradient(135deg, #c9b094 0%, #f0e6d8 50%, #c9b094 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      background: linear-gradient(135deg, #c9b094 0%, #f0e6d8 50%, #c9b094 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
     }
     body.dark .family-box .name { color: #f0e6d8; }
     body.dark .family-box .address { color: #b8a99a; }
@@ -97,7 +97,6 @@
       gap: 30px;
     }
     
-    /* Gold Monogram Morph Animation */
     .loading-screen .monogram {
       position: relative;
       width: 120px;
@@ -286,11 +285,15 @@
       transition: all 0.4s ease;
       display: inline-block;
       cursor: default;
+      animation: shimmerGold 3s ease-in-out infinite;
+    }
+    @keyframes shimmerGold {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
     .groom-name:hover, .bride-name:hover {
-      filter: drop-shadow(0 0 20px rgba(155, 123, 92, 0.3));
-      transform: scale(1.02);
-      background-position: 100% 50%;
+      filter: drop-shadow(0 0 25px rgba(155, 123, 92, 0.4));
+      transform: scale(1.03);
     }
     .ampersand { 
       font-family: 'Cormorant Garamond',serif; 
@@ -740,12 +743,10 @@
               <stop offset="100%" stop-color="#9B7B5C"/>
             </linearGradient>
           </defs>
-          <!-- Morphing gold monogram -->
           <path class="gold-fill" d="M30,60 Q30,25 60,25 Q90,25 90,60 Q90,95 60,95 Q30,95 30,60 Z" />
           <path class="letter" d="M35,50 L55,50 L55,35 L65,35 L65,50 L85,50 L85,60 L65,60 L65,75 L55,75 L55,60 L35,60 Z" />
           <path class="letter" d="M35,40 C35,30 50,25 60,25 C70,25 85,30 85,40" />
           <path class="letter" d="M35,80 C35,90 50,95 60,95 C70,95 85,90 85,80" />
-          <!-- Decorative dots -->
           <circle cx="60" cy="10" r="3" fill="#9B7B5C" opacity="0.3"/>
           <circle cx="60" cy="110" r="3" fill="#9B7B5C" opacity="0.3"/>
           <circle cx="10" cy="60" r="3" fill="#9B7B5C" opacity="0.3"/>
@@ -783,11 +784,11 @@
     </div>
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
 
-    <!-- Names with reveal animation -->
+    <!-- Names with reveal animation - FIXED VISIBILITY -->
     <div class="names-container animate-on-scroll" id="namesContainer">
-      <span class="groom-name" data-i18n="groom">MUNAWIR</span>
+      <span class="groom-name" data-i18n="groom" style="color: #3D2C1B; -webkit-text-fill-color: #3D2C1B; background: none;">MUNAWIR</span>
       <span class="ampersand">&amp;</span>
-      <span class="bride-name" data-i18n="bride">LABEEBA</span>
+      <span class="bride-name" data-i18n="bride" style="color: #3D2C1B; -webkit-text-fill-color: #3D2C1B; background: none;">LABEEBA</span>
     </div>
     <div class="sub-text animate-on-scroll" data-i18n="invite">— Invite You to Celebrate —</div>
     <div class="divider-symbol animate-on-scroll">❧ ❧ ❧</div>
@@ -1087,17 +1088,30 @@
       }, 1500);
     });
 
-    // ===== TEXT REVEAL ANIMATION =====
+    // ===== TEXT REVEAL ANIMATION (with proper visibility) =====
     function triggerTextReveal() {
       const names = document.querySelectorAll('.groom-name, .bride-name');
       names.forEach((el, index) => {
-        const text = el.textContent;
+        const text = el.getAttribute('data-i18n') === 'groom' ? 'MUNAWIR' : 'LABEEBA';
         el.innerHTML = '';
+        // Add gradient background for reveal but keep text visible
+        el.style.background = 'linear-gradient(135deg, #3D2C1B 0%, #9B7B5C 50%, #3D2C1B 100%)';
+        el.style.backgroundSize = '200% 200%';
+        el.style.webkitBackgroundClip = 'text';
+        el.style.webkitTextFillColor = 'transparent';
+        el.style.backgroundClip = 'text';
+        el.style.animation = 'shimmerGold 3s ease-in-out infinite';
+        
         text.split('').forEach((char, i) => {
           const span = document.createElement('span');
           span.className = 'reveal-text';
           span.textContent = char;
           span.style.animationDelay = `${(index * 0.15) + (i * 0.05)}s`;
+          // Ensure each letter inherits the gradient
+          span.style.background = 'inherit';
+          span.style.webkitBackgroundClip = 'text';
+          span.style.webkitTextFillColor = 'transparent';
+          span.style.backgroundClip = 'text';
           el.appendChild(span);
         });
       });
